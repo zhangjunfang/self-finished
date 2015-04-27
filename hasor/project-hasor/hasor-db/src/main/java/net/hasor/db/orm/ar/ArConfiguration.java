@@ -30,7 +30,7 @@ public final class ArConfiguration {
     private static ConcurrentHashMap<Class<?>, Sechma> sechmaMap = new ConcurrentHashMap<Class<?>, Sechma>();
     //
     protected Identify getIdentify(Sechma sechma) {
-        // TODO Auto-generated method stub
+        //  Auto-generated method stub
         return null;
     }
     //

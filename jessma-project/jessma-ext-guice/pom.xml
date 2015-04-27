@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>org.jessma</groupId>
+		<artifactId>jessma-project</artifactId>
+		<version>3.5.1</version>
+	</parent>
+	
+	<groupId>org.jessma</groupId>
+	<artifactId>jessma-ext-guice</artifactId>
+	<version>3.5.1</version>
+	<name>jessma-ext-guice</name>
+	<url>http://www.jessma.org</url>
+	<description>JessMA GUICE extension</description>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	
+	<organization>
+		<name>JessMA Open Source</name>
+		<url>http://www.jessma.org</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<name>JessMA Open Source</name>
+			<email>ldcsaa@gmail.com</email>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:ldcsaa/JessMA.git</connection>
+		<developerConnection>scm:git:git@github.com:ldcsaa/JessMA.git</developerConnection>
+		<url>git@github.com:ldcsaa/JessMA.git</url>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.jessma</groupId>
+			<artifactId>jessma-core</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+		</dependency>
+	</dependencies>
+</project>

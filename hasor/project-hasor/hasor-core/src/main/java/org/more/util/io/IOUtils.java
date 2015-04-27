@@ -51,7 +51,7 @@ import org.more.util.io.output.StringBuilderWriter;
  * This class provides static utility methods for input/output operations.
  * <ul>
  * <li>closeQuietly - these methods close a stream ignoring nulls and exceptions
- * <li>toXxx/read - these methods read data from a stream
+ * <li>to/read - these methods read data from a stream
  * <li>write - these methods write data to a stream
  * <li>copy - these methods copy all the data from one stream to another
  * <li>contentEquals - these methods compare the content of two streams
@@ -1903,7 +1903,7 @@ public class IOUtils {
     public static void copy(final Reader input, final OutputStream output, final Charset encoding) throws IOException {
         OutputStreamWriter out = new OutputStreamWriter(output, Charsets.toCharset(encoding));
         IOUtils.copy(input, out);
-        // XXX Unless anyone is planning on rewriting OutputStreamWriter,
+        //  Unless anyone is planning on rewriting OutputStreamWriter,
         // we have to flush here.
         out.flush();
     }

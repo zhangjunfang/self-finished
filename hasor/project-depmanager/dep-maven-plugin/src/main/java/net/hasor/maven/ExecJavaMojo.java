@@ -356,7 +356,7 @@ public class ExecJavaMojo extends AbstractExecMojo {
         } else {
             int activeCount = threadGroup.activeCount();
             if (activeCount != 0) {
-                // TODO this may be nothing; continue on anyway; perhaps don't even log in future
+                //  this may be nothing; continue on anyway; perhaps don't even log in future
                 Thread[] threadsArray = new Thread[1];
                 threadGroup.enumerate(threadsArray);
                 getLog().debug("strange; " + activeCount + " thread(s) still active in the group " + threadGroup + " such as " + threadsArray[0]);

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns="http://www.jessma.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	targetNamespace="http://www.jessma.org">
+	<xs:element name="REST">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" name="global">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="1" minOccurs="0" name="encoding">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="UTF-8">
+										</xs:enumeration>
+										<xs:enumeration value="GB2312">
+										</xs:enumeration>
+										<xs:enumeration value="GB18030">
+										</xs:enumeration>
+										<xs:enumeration value="GBK">
+										</xs:enumeration>
+										<xs:enumeration value="BIG5">
+										</xs:enumeration>
+										<xs:enumeration value="UTF-16">
+										</xs:enumeration>
+										<xs:enumeration value="UTF-16BE">
+										</xs:enumeration>
+										<xs:enumeration value="UTF-16LE">
+										</xs:enumeration>
+										<xs:enumeration value="ISO-8859-1">
+										</xs:enumeration>
+										<xs:enumeration value="US-ASCII">
+										</xs:enumeration>
+										<xs:enumeration value="">
+										</xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element maxOccurs="1" minOccurs="0" name="action-suffix">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="((\.)?([a-zA-Z0-9])+)?">
+										</xs:pattern>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="rest-base-path" minOccurs="0" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="(/((\w+([-/.])?)*\w+/?)?)?">
+										</xs:pattern>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="default-action-path" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="(/((\w+([-/.])?)*\w+/?)?)?">
+										</xs:pattern>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="support-render-types" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="((\w+,? ?)*\w+)?">
+										</xs:pattern>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="entities">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="entity">
+								<xs:complexType>
+									<xs:attribute name="name" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1" />
+												<xs:pattern value="(\w+([-_.])?)*\w+"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="action">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="([a-zA-Z][a-zA-Z0-9]*(-?[a-zA-Z0-9]+)*)?">
+												</xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="action-path" default="/">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="(/((\w+([-/.])?)*\w+/?)?)?">
+									</xs:pattern>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

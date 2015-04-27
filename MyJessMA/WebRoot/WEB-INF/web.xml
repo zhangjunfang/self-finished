@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+	<!-- 应用程序配置文件和日志配置文件 -->
+	<!-- 
+	<context-param>
+		<param-name>app-config-file</param-name>
+		<param-value>app-config.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logger-config-file</param-name>
+		<param-value>log4j2.xml</param-value>
+	</context-param>
+	-->
+	
+	<!-- Spring 配置文件位置（默认：/WEB-INF/applicationContext.xml） -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+	 
+	<!-- OSCache 缓存过滤器 -->
+	<!-- 
+	<filter>
+		<filter-name>CacheFilter</filter-name>
+		<filter-class>com.opensymphony.oscache.web.filter.CacheFilter</filter-class>
+		<init-param>
+			<param-name>time</param-name>
+			<param-value>30</param-value>
+		</init-param>
+		<init-param>
+			<param-name>scope</param-name>
+			<param-value>session</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CacheFilter</filter-name>
+		<url-pattern>/jsp/filter_cache/*</url-pattern>
+	</filter-mapping>
+	-->
+	
+	<!-- EHCache-Web 页面缓存过滤器 -->
+	<filter>  
+		<filter-name>PageCacheFilter</filter-name>
+		<filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<!-- EHCache 的 Cache Name（可选，默认：SimplePageCachingFilter） -->
+			<param-name>cacheName</param-name>
+			<param-value>MyWebCache</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>PageCacheFilter</filter-name>
+		<url-pattern>/page/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+	
+	<!-- URL Rewrite 过滤器 -->
+	<filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<!-- UrlRewriteFilter 的配置文件（可选，默认：/WEB-INF/urlrewrite.xml） -->
+			<param-name>confPath</param-name>
+			<param-value>/WEB-INF/classes/urlrewrite.xml</param-value>
+		</init-param>
+		<init-param>
+			<!-- UrlRewriteFilter 的状态监控页面地址（可选，默认：/rewrite-status） -->
+			<param-name>statusPath</param-name>
+			<param-value>/page/rewrite-status</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<!-- 拦截 URL 的 Pattern -->
+		<url-pattern>/page/*</url-pattern>
+		<url-pattern>*.jsp</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+	
+	<!-- EHCache-Web 页面缓存过滤器 -->
+	<!-- 
+	<filter>  
+		<filter-name>PageCacheFilter</filter-name>
+			<filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
+		<init-param>
+			<param-name>cacheName</param-name>
+			<param-value>MyWebCache</param-value>
+		</init-param>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>PageCacheFilter</filter-name>
+		<url-pattern>/test/page/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+	-->
+
+	<!-- REST 请求过滤器 -->
+	<filter>
+		<filter-name>RestDispatcher</filter-name>
+		<filter-class>org.jessma.ext.rest.RestDispatcher</filter-class>
+		<async-supported>true</async-supported>
+		
+		<!-- REST 配置文件（可选，默认：rest-config.xml） -->
+		<!-- 
+		<init-param>
+			<param-name>rest-config-file</param-name>
+			<param-value>rest-config.xml</param-value>
+		</init-param>
+		-->
+	</filter>
+	<filter-mapping>
+		<filter-name>RestDispatcher</filter-name>
+		<!-- 一般设置为：REST 配置文件的 ${rest-base-path}/* -->
+		<url-pattern>/*</url-pattern>
+		<!-- 通常只需处理 REQUEST 请求 -->
+		<dispatcher>REQUEST</dispatcher>
+		<!-- 
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+		-->
+	</filter-mapping>
+
+	<!-- MVC 前端控制器 -->
+	<filter>
+		<filter-name>ActionDispatcher</filter-name>
+		<filter-class>org.jessma.mvc.ActionDispatcher</filter-class>
+		<async-supported>true</async-supported>
+	
+		<!-- MVC 主配置文件 -->
+		<!-- 
+		<init-param>
+			<param-name>mvc-config-file</param-name>
+			<param-value>mvc-config.xml</param-value>
+		</init-param>
+		-->
+	</filter>
+	<filter-mapping>
+		<filter-name>ActionDispatcher</filter-name>
+		<url-pattern>*.action</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+
+	<!-- Spring 监听器（可选，如果 web.xml 中没用配置 ContextLoaderListener，
+		 则 SpringInjectFilter 会启动一个私有 ContextLoaderListener） -->
+	<!--
+	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	-->
+	
+	<!-- EHCache 清理器 -->
+	<listener>
+		<listener-class>net.sf.ehcache.constructs.web.ShutdownListener</listener-class>
+	</listener>
+
+	<!-- JessMA 启动器 -->
+	<listener>
+		<listener-class>org.jessma.app.AppListener</listener-class>
+	</listener>
+	
+	<!-- Freemarker 模板处理器 -->
+	<servlet>
+		<!-- 模板处理器 Servlet -->
+		<servlet-name>freemarker</servlet-name>
+		<servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
+		<!-- <servlet-class>global.MyFreemarkerServlet</servlet-class> -->
+		
+		<!-- ########## FreemarkerServlet 配置参数 ########## -->
+		<init-param>
+			<!-- 模板文件路径 -->
+			<param-name>TemplatePath</param-name>
+			<param-value>/</param-value>
+		</init-param>
+		<init-param>
+			<!-- 是否禁止浏览器缓存 -->
+			<param-name>NoCache</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<!--  页面编码格式 -->
+			<param-name>ContentType</param-name>
+			<param-value>text/html; charset=UTF-8</param-value>
+		</init-param>
+		<!-- ############################################### -->
+		
+		<!-- ####### Freemarker Configuration 配置参数 ###### -->
+		<init-param>
+			<!-- 模板更新延时（ 0 只对开发使用! 否则使用大一点的值） -->
+			<param-name>template_update_delay</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<!-- 模板文件的编码方式. -->
+			<param-name>default_encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<!-- 是否去除页面中多余的空格符 -->
+			<param-name>whitespace_stripping</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<!-- ############################################### -->
+		
+		<!-- 应用程序启动时加载 FreemarkerServlet -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+	  <!-- 处理所有以 ".ftl" 结尾的 URL 请求 -->
+	  <servlet-name>freemarker</servlet-name>
+	  <url-pattern>*.ftl</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.ftl</welcome-file>
+		<welcome-file>index.action</welcome-file>
+	</welcome-file-list>
+</web-app>

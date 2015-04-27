@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="mybatis.cfg.properties">
+		<property name="driver" value="com.mysql.jdbc.Driver"/>
+	</properties>
+	<environments default="product">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+		<environment id="product">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+				<property name="poolMaximumActiveConnections" value="20"/>
+				<property name="poolMaximumIdleConnections" value="10"/>
+				<property name="poolMaximumCheckoutTime" value="30000"/>
+				<property name="poolTimeToWait" value="3000"/>
+				<property name="poolPingQuery" value="SELECT 1"/>
+				<property name="poolPingEnabled" value="true"/>
+				<property name="poolPingConnectionsNotUsedFor" value="600000"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<!-- MyBatisSessionMgr 设置了自动扫描 SQL Mapper，不需要下面的 Mapper 配置 -->
+		<!-- <mapper resource="vo/mapper/UserMapper.xml" /> -->
+	</mappers>
+</configuration>

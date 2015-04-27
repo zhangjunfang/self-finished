@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+	<description>"the JessMA user tags."</description>
+	<display-name>"JessMA Tags"</display-name>
+	<tlib-version>3.5</tlib-version>
+	<short-name>p</short-name>
+	<uri>http://www.jessma.org/jsp/tags</uri>
+	
+	<tag>
+		<description>print i18n message</description>
+		<display-name>i18n message</display-name>
+		<name>msg</name>
+		<tag-class>org.jessma.tag.Message</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>消息键</description>
+			<name>key</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>第1个消息参数</description>
+			<name>p0</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第2个消息参数</description>
+			<name>p1</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第3个消息参数</description>
+			<name>p2</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第4个消息参数</description>
+			<name>p3</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第5个消息参数</description>
+			<name>p4</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第6个消息参数</description>
+			<name>p5</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第7个消息参数</description>
+			<name>p6</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第8个消息参数</description>
+			<name>p7</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第9个消息参数</description>
+			<name>p8</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>第10个消息参数</description>
+			<name>p9</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>消息参数数组</description>
+			<name>params</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description>是否过滤 XML 特殊字符</description>
+			<name>escape</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description>资源 Bundle</description>
+			<name>res</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>语言区域</description>
+			<name>locale</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description>print action error messages</description>
+		<display-name>action error message</display-name>
+		<name>err</name>
+		<tag-class>org.jessma.tag.Error</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>消息键</description>
+			<name>key</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>某个键下的第 index 个消息（从 0 开始），如果设置为 -1 则获取该键下的所有消息</description>
+			<name>index</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+		</attribute>
+		<attribute>
+			<description>（div / span / ul / ol）使用 DIV, SPAN（默认） 或 UL/OL 元素显示消息</description>
+			<name>element</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>是否过滤 XML 特殊字符</description>
+			<name>escape</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description>DIV, SPAN 或 UL/OL 的 class 属性</description>
+			<name>cssClass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>DIV, SPAN 或 UL/OL 的 style 属性</description>
+			<name>cssStyle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>DIV 的 align 属性（只对 DIV 有效）</description>
+			<name>cssAlign</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>DIV, SPAN 或 UL/OL 的 id 属性</description>
+			<name>cssId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>DIV, SPAN 或 UL/OL 的 dir 属性</description>
+			<name>cssDir</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>DIV, SPAN 或 UL/OL 的 lang 属性</description>
+			<name>cssLang</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>DIV, SPAN 或 UL/OL 的 title 属性</description>
+			<name>cssTitle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>UL/OL 的 type 属性（只对 UL/OL 有效）</description>
+			<name>cssType</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>UL/OL 的 compact 属性（只对 UL/OL 有效）</description>
+			<name>cssCompact</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>OL 的 start 属性（只对 OL 有效）</description>
+			<name>cssStart</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>DIV, SPAN 或 UL/OL 的自由定义属性（如：cssAttrs="class='myclass' onclick='myonclick()'"）</description>
+			<name>cssAttrs</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+</taglib>

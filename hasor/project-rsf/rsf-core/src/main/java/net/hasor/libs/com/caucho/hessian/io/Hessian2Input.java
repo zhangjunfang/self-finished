@@ -416,7 +416,7 @@ public class Hessian2Input
   public void startReply()
     throws Throwable
   {
-    // XXX: for variable length (?)
+    //  for variable length (?)
     
     readReply(Object.class);
   }

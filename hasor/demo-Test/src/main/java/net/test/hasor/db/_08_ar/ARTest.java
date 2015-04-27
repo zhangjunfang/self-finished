@@ -77,6 +77,6 @@ public class ARTest implements AppContextAware {
         PageResult<Record> record = dataBase.queryBySQL("select * from aaa");
         Record r = null;
         //
-        // TODO Auto-generated method stub
+        //  Auto-generated method stub
     }
 }

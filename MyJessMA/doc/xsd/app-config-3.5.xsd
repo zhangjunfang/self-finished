@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.jessma.org" xmlns="http://www.jessma.org"
+	elementFormDefault="qualified">
+	<xs:element name="APP">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="system" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="database-session-managers" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="manager" minOccurs="0" maxOccurs="10">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="initialize-args" minOccurs="0" maxOccurs="1">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="arg" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="name" use="required">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1">
+															</xs:minLength>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="class" use="required">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*"></xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="user-config-parser" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:attribute name="class">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="3"></xs:minLength>
+												<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="app-life-cycle-listener" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:attribute name="class">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"></xs:minLength>
+												<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="user" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded">
+							</xs:any>
+						</xs:sequence>
+						<xs:anyAttribute processContents="lax"></xs:anyAttribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

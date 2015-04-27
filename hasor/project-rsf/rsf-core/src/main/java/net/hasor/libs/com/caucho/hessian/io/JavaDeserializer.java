@@ -271,7 +271,7 @@ public class JavaDeserializer extends AbstractMapDeserializer {
                     continue;
                 else if (fieldMap.get(field.getName()) != null)
                     continue;
-                // XXX: could parameterize the handler to only deal with public
+                // : could parameterize the handler to only deal with public
                 try {
                     field.setAccessible(true);
                 } catch (Throwable e) {

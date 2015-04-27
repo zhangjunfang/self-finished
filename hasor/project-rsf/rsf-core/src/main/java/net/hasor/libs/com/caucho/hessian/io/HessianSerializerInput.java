@@ -147,7 +147,7 @@ public class HessianSerializerInput extends Hessian2Input {
                 if (Modifier.isTransient(field.getModifiers()) || Modifier.isStatic(field.getModifiers())) {
                     continue;
                 }
-                // XXX: could parameterize the handler to only deal with public
+                // : could parameterize the handler to only deal with public
                 field.setAccessible(true);
                 fieldMap.put(field.getName(), field);
             }

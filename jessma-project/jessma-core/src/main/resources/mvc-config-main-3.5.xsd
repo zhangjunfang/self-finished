@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns="http://www.jessma.org" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.jessma.org">
+	<xs:element name="MVC-MAIN">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="1" minOccurs="0" name="global">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="1" minOccurs="0" name="encoding">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="UTF-8"></xs:enumeration>
+										<xs:enumeration value="GB2312"></xs:enumeration>
+										<xs:enumeration value="GB18030"></xs:enumeration>
+										<xs:enumeration value="GBK"></xs:enumeration>
+										<xs:enumeration value="BIG5"></xs:enumeration>
+										<xs:enumeration value="UTF-16"></xs:enumeration>
+										<xs:enumeration value="UTF-16BE"></xs:enumeration>
+										<xs:enumeration value="UTF-16LE"></xs:enumeration>
+										<xs:enumeration value="ISO-8859-1"></xs:enumeration>
+										<xs:enumeration value="US-ASCII"></xs:enumeration>
+										<xs:enumeration value=""></xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element maxOccurs="1" minOccurs="0" name="action-suffix">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="((\.)?([a-zA-Z0-9])+)?"></xs:pattern>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="base-path" maxOccurs="1" minOccurs="0">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="type" default="auto">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="auto"></xs:enumeration>
+														<xs:enumeration value="manual"></xs:enumeration>
+														<xs:enumeration value="none"></xs:enumeration>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="href">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:pattern value="http(s)?\:\/\/(\w)+.*"></xs:pattern>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="i18n" minOccurs="0">
+								<xs:complexType>
+									<xs:attribute name="default-locale" default="zh_CN">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="([a-z]{2}(_[A-Z]{2})?)?"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="default-bundle" default="res.application-message">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="((\w+((\-|\_)?\w+)*)(\.\w+((\-|\_)?\w+)*)*)?"></xs:pattern>
+
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="bean-validation" minOccurs="0">
+								<xs:complexType>
+									<xs:attribute name="enable" default="true">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="4"></xs:minLength>
+												<xs:maxLength value="5"></xs:maxLength>
+												<xs:enumeration value="true"></xs:enumeration>
+												<xs:enumeration value="false"></xs:enumeration>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+                                    <xs:attribute name="bundle" default="res.validation-message">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="((\w+((\-|\_)?\w+)*)(\.\w+((\-|\_)?\w+)*)*)?"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+                                    <xs:attribute name="validator" default="org.jessma.mvc.validation.HibernateBeanValidator">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+
+												<xs:pattern value="([a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*)?"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+                                    </xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="action-convention" maxOccurs="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence></xs:sequence>
+									<xs:attribute name="enable" default="true">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="true"></xs:enumeration>
+												<xs:enumeration value="false"></xs:enumeration>
+												<xs:minLength value="4"></xs:minLength>
+												<xs:maxLength value="5"></xs:maxLength>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="detect-physical-file" default="true">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="true"></xs:enumeration>
+												<xs:enumeration value="false"></xs:enumeration>
+												<xs:minLength value="4"></xs:minLength>
+												<xs:maxLength value="5"></xs:maxLength>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="action-base-package" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="([a-z]\w*)*(\.([a-z]\w*))*"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="dispatch-file-path" default="/WEB-INF/page">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern
+													value="(/((\w+([-/.])?)*\w+/?)?)?|/?(((\$\{)(\w+([-.])?)*\w+)+\})?/?">
+												</xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="dispatch-file-type" default="jsp">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"></xs:minLength>
+												<xs:pattern value="((\.)|(\*\.))?\w+"></xs:pattern>
+												<xs:enumeration value="jsp"></xs:enumeration>
+												<xs:enumeration value="ftl"></xs:enumeration>
+												<xs:enumeration value="vm"></xs:enumeration>
+												<xs:enumeration value="html"></xs:enumeration>
+												<xs:enumeration value="htm"></xs:enumeration>
+												<xs:maxLength value="10"></xs:maxLength>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="physical-file-path">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern
+													value="(/((\w+([-/.])?)*\w+/?)?)?|/?(((\$\{)(\w+([-.])?)*\w+)+\})?/?">
+												</xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="file-name-separator" default="_">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:length value="1"></xs:length>
+												<xs:enumeration value="_"></xs:enumeration>
+												<xs:enumeration value="-"></xs:enumeration>
+												<xs:enumeration value="@"></xs:enumeration>
+												<xs:enumeration value="#"></xs:enumeration>
+												<xs:enumeration value="%"></xs:enumeration>
+												<xs:enumeration value="^"></xs:enumeration>
+												<xs:enumeration value="&amp;"></xs:enumeration>
+												<xs:enumeration value="."></xs:enumeration>
+												<xs:enumeration value="~"></xs:enumeration>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="action-filters" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="class" use="required">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1"></xs:minLength>
+															<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*">
+															</xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="pattern" use="optional" default=".*">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1"></xs:minLength>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="methods" default=".*">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1"></xs:minLength>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="result-path-aliases" maxOccurs="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="alias" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:attribute name="name" use="required">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1"></xs:minLength>
+															<xs:pattern value="(\w+[-|_]?)*\w+"></xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="path" type="xs:string" use="required"></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="global-results" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="result" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="name" default="$0">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:pattern value="(\$|\#|\-|\_|\.|\w)+">
+																	</xs:pattern>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+														<xs:attribute name="type" default="dispatch">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="dispatch"></xs:enumeration>
+																	<xs:enumeration value="redirect"></xs:enumeration>
+																	<xs:enumeration value="chain"></xs:enumeration>
+																	<xs:enumeration value="finish"></xs:enumeration>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="global-exception-mappings" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="exception-mapping" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="exception" default="java.lang.Exception">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1"></xs:minLength>
+															<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*">
+															</xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="result" default="exception">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:pattern value="(\$|\#|\-|\_|\.|\w)+"></xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="include">
+					<xs:complexType>
+						<xs:attribute name="file" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="5" />
+									<xs:pattern value=".+\w\.xml"></xs:pattern>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="actions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" minOccurs="0" name="action">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="entry" maxOccurs="unbounded"
+											minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element maxOccurs="unbounded" minOccurs="0"
+														name="result">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute name="name" default="success">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:pattern value="(\$|\#|\-|\_|\.|\w)+">
+																				</xs:pattern>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																	<xs:attribute name="type" default="dispatch">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:enumeration value="dispatch" />
+																				<xs:enumeration value="redirect" />
+																				<xs:enumeration value="chain" />
+																				<xs:enumeration value="finish">
+																				</xs:enumeration>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="exception-mapping" maxOccurs="unbounded"
+														minOccurs="0">
+														<xs:complexType>
+															<xs:attribute name="exception" default="java.lang.Exception">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:minLength value="1">
+																		</xs:minLength>
+																		<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*">
+																		</xs:pattern>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+															<xs:attribute name="result" default="exception">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:pattern value="(\$|\#|\-|\_|\.|\w)+">
+																		</xs:pattern>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="name" use="optional">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="0">
+															</xs:minLength>
+															<xs:pattern value="(\w+([-_.])?)*\w*">
+															</xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="method">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1">
+															</xs:minLength>
+															<xs:pattern value="[a-z_$]+([\w_$])*">
+															</xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element maxOccurs="unbounded" minOccurs="0"
+											name="result">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="name" default="success">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:pattern value="(\$|\#|\-|\_|\.|\w)+">
+																	</xs:pattern>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+														<xs:attribute name="type" default="dispatch">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="dispatch" />
+																	<xs:enumeration value="redirect" />
+																	<xs:enumeration value="chain" />
+																	<xs:enumeration value="finish">
+																	</xs:enumeration>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="exception-mapping" maxOccurs="unbounded"
+											minOccurs="0">
+											<xs:complexType>
+												<xs:attribute name="exception" default="java.lang.Exception">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:minLength value="1">
+															</xs:minLength>
+															<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*">
+															</xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="result" default="exception">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:pattern value="(\$|\#|\-|\_|\.|\w)+">
+															</xs:pattern>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="name" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1" />
+												<xs:pattern value="(\w+([-_.])?)*\w+"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="class">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"></xs:minLength>
+												<xs:pattern value="[a-z]\w*(\.([a-z]\w*))*\.[A-Z]\w*"></xs:pattern>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="path" default="/">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="(/((\w+([-/.])?)*\w+/?)?)?">
+									</xs:pattern>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

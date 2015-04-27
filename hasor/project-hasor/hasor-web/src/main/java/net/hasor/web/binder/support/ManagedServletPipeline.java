@@ -87,7 +87,7 @@ public class ManagedServletPipeline {
     /**返回一个RequestDispatcher*/
     RequestDispatcher getRequestDispatcher(final String path) {
         final String newRequestUri = path;
-        // TODO 需要检查下面代码是否符合Servlet规范（带request参数情况下也需要检查）
+        //  需要检查下面代码是否符合Servlet规范（带request参数情况下也需要检查）
         for (final ServletDefinition servletDefinition : this.servletDefinitions) {
             if (servletDefinition.matchesUri(path)) {
                 return new RequestDispatcher() {

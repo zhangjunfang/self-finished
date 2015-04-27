@@ -100,7 +100,7 @@ public class Hessian2StreamingInput
   {
     if (_is.startPacket()) {
       _in.resetReferences();
-      _in.resetBuffer(); // XXX:
+      _in.resetBuffer(); // :
       return _in;
     }
     else
@@ -111,7 +111,7 @@ public class Hessian2StreamingInput
     throws IOException
   {
     _is.endPacket();
-    _in.resetBuffer(); // XXX:
+    _in.resetBuffer(); // :
   }
 
   public Hessian2Input getHessianInput()

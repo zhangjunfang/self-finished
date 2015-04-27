@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.jessma</groupId>
+		<artifactId>jessma-project</artifactId>
+		<version>3.5.1</version>
+	</parent>
+
+	<groupId>org.jessma</groupId>
+	<artifactId>jessma-sample-hello</artifactId>
+	<version>3.5.1</version>
+	<packaging>war</packaging>
+	<name>jessma-sample-hello Maven Webapp</name>
+	<url>http://www.jessma.org</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jessma</groupId>
+			<artifactId>jessma-core</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.1</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>hello</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat6-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<url>http://localhost:8080/manager</url>
+						<path>/${project.build.finalName}</path>
+						<username>admin</username>
+						<password>ppmm</password>
+						<update>true</update>
+						<!--
+						<server>tomcat7</server>
+						<username>admin</username>
+						<password></password>
+						<uriEncoding>UTF-8</uriEncoding>
+						-->
+						<systemProperties>
+							<!-- <JAVA_OPTS>-Xms128m -Xmx512m -XX:MaxPermSize=256m</JAVA_OPTS> -->
+						</systemProperties>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<url>http://localhost:8080/manager/text</url>
+						<path>/${project.build.finalName}</path>
+						<username>admin</username>
+						<password>ppmm</password>
+						<update>true</update>
+						<!--
+						<server>tomcat7</server>
+						<username>admin</username>
+						<password></password>
+						<uriEncoding>UTF-8</uriEncoding>
+						-->
+						<systemProperties>
+							<!-- <JAVA_OPTS>-Xms128m -Xmx512m -XX:MaxPermSize=256m</JAVA_OPTS> -->
+						</systemProperties>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

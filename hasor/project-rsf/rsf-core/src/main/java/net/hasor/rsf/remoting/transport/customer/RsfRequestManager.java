@@ -112,7 +112,7 @@ public class RsfRequestManager extends AbstractRequestManager {
     /**要求重新发起请求*/
     public void tryAgain(long requestID) {
         this.putResponse(requestID, new RsfException(ProtocolStatus.ChooseOther, "Server response  ChooseOther!"));
-        System.out.println("RequestID:" + requestID + " -> ChooseOther"); //TODO
+        System.out.println("RequestID:" + requestID + " -> ChooseOther"); //
     }
     //
     /**负责客户端引发的超时逻辑。*/

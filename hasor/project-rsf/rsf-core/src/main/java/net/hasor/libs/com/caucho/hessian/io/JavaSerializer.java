@@ -98,7 +98,7 @@ public class JavaSerializer extends AbstractSerializer {
                 Field field = fields[i];
                 if (Modifier.isTransient(field.getModifiers()) || Modifier.isStatic(field.getModifiers()))
                     continue;
-                // XXX: could parameterize the handler to only deal with public
+                // : could parameterize the handler to only deal with public
                 field.setAccessible(true);
                 if (field.getType().isPrimitive() || (field.getType().getName().startsWith("java.lang.") && !field.getType().equals(Object.class)))
                     primitiveFields.add(field);

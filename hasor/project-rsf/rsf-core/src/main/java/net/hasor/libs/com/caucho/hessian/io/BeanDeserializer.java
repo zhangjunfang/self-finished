@@ -165,7 +165,7 @@ public class BeanDeserializer extends AbstractMapDeserializer {
                     continue;
                 if (findGetter(methods, name, paramTypes[0]) == null)
                     continue;
-                // XXX: could parameterize the handler to only deal with public
+                // : could parameterize the handler to only deal with public
                 try {
                     method.setAccessible(true);
                 } catch (Throwable e) {

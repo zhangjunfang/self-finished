@@ -130,7 +130,7 @@ public abstract class AbstractBindInfoFactory implements BindInfoFactory, AppCon
     }
     //
     public void doInitialize(ApiBinder apiBinder) {
-        // TODO Auto-generated method stub
+        //  Auto-generated method stub
     }
     public void doInitializeCompleted(Object context) {
         this.defineManager.doFinish();/*数据检测*/
@@ -141,16 +141,16 @@ public abstract class AbstractBindInfoFactory implements BindInfoFactory, AppCon
         }
     }
     public void doStart(AbstractAppContext appContext) {
-        // TODO Auto-generated method stub
+        //  Auto-generated method stub
     }
     public void doStartCompleted(AbstractAppContext appContext) {
-        // TODO Auto-generated method stub
+        //  Auto-generated method stub
     }
     public void doShutdown(AbstractAppContext appContext) {
         this.defineManager = null;
     }
     public void doShutdownCompleted(AbstractAppContext appContext) {
-        // TODO Auto-generated method stub
+        //  Auto-generated method stub
     }
     protected abstract void configBindInfo(AbstractBindInfoProviderAdapter<Object> bindInfo, Object context);
 }

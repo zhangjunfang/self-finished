@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/2002/xmlspec/dtd/2.10/xmlspec.dtd">
+<jdbc>
+	<property name="driver">com.mysql.jdbc.Driver</property>
+	<property name="url">
+		jdbc:mysql://localhost:3306/myjessma?autoReconnect=true&amp;failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=UTF-8
+	</property>
+	<property name="user">bruce</property>
+	<property name="password">ppmm</property>
+</jdbc>

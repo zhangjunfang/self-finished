@@ -190,7 +190,7 @@ public abstract class ResourcesUtils {
             String resourcePath = formatResource(resourceURL.getPath());
             return getResourceAsStream(resourcePath);
         }
-        // TODO 该处处理其他协议的资源加载。诸如OSGi等协议。
+        //该处处理其他协议的资源加载。诸如OSGi等协议。
         return null;
     }
     /**获取classpath中可能存在的资源，以流的形式返回。*/
@@ -346,7 +346,7 @@ public abstract class ResourcesUtils {
         //             * 在Jetty中WebappsClassLoader只实现了没有重写findResources
         //             * 在Tomcat中WebappsClassLoader只实现了没有重写getResources
         //             * 
-        //             * TODO : 该处逻辑为：首先判断findResources方法是否被重写，如果被重写则调用它否则调用getResources
+        //             *  该处逻辑为：首先判断findResources方法是否被重写，如果被重写则调用它否则调用getResources
         //             */
         //            try {
         //                Class<?> loaderType = urlLoader.getClass();

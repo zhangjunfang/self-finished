@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vo.mapper.UserMapper">
+    <select id="findUsers" resultMap="usersResult">
+        SELECT * FROM user 
+        <where>
+        	<if test="name != null and name != ''"> name LIKE CONCAT('%','${name}','%') </if>
+        	<if test="experience != 0"> AND experience = #{experience} </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+    <select id="queryInterest" resultMap="usersResult">
+        SELECT * FROM user 
+        <where>
+        	<if test="gender != 0"> gender = #{gender} </if>
+        	<if test="experience != 0"> AND experience = #{experience} </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+     
+     <resultMap type="vo.User" id="usersResult">
+     	<id property="id" column="id" />
+     	<collection	property="interests" 
+     				ofType="java.lang.Integer" 
+     				column="id" 
+     				select="vo.mapper.UserMapper.findUserInterests" />
+     </resultMap>
+</mapper>

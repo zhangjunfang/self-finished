@@ -282,7 +282,7 @@ public class ArrayConverter extends AbstractConverter {
         // Convert and set each element in the new Array
         for (int i = 0; i < size; i++) {
             Object element = iterator == null ? Array.get(value, i) : iterator.next();
-            // TODO - probably should catch conversion errors and throw
+            //  - probably should catch conversion errors and throw
             //        new exception providing better info back to the user
             element = this.elementConverter.convert(componentType, element);
             Array.set(newArray, i, element);

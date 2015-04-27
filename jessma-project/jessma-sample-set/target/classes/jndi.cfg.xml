@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi jndi-name="java:/comp/env/jdbc/myjessma">
+	<property name="java.naming.factory.initial"></property>
+	<property name="java.naming.provider.url"></property>
+	<property name="java.naming.security.principal"></property>
+	<property name="java.naming.security.credentials"></property>
+</jndi>

@@ -120,7 +120,7 @@ public class ExecMojoTest
      * This one won't work yet public void xxtestSimpleRunPropertiesAndArguments() throws MojoExecutionException,
      * Exception { File pom = new File( getBasedir(), "src/test/projects/project1/pom.xml" ); String output = execute(
      * pom, "exec" ); System.out.println(" OUTPUT" + output + "\n\n\n"); String expectedOutput =
-     * "arg.arg1\narg.arg2\nproject.env1=value1"; // FIXME should work on Windows as well assertEquals( expectedOutput,
+     * "arg.arg1\narg.arg2\nproject.env1=value1"; //  should work on Windows as well assertEquals( expectedOutput,
      * output ); }
      */
 
@@ -199,7 +199,7 @@ public class ExecMojoTest
 
         MavenProject project = (MavenProject) getVariableValueFromObject( mojo, "project" );
 
-        // why isn't this set up by the harness based on the default-value?  TODO get to bottom of this!
+        // why isn't this set up by the harness based on the default-value?   get to bottom of this!
         // setVariableValueToObject( mojo, "includeProjectDependencies", Boolean.TRUE );
         // setVariableValueToObject( mojo, "killAfter", new Long( -1 ) );
 

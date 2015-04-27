@@ -41,7 +41,7 @@ public class SimpleSettingsTest {
         LoggerHelper.logInfo("my Age is %s.", myAge);
         //
         Date myBirthday = settings.getDate("mySelf.myBirthday");
-        LoggerHelper.logInfo("my Birthday is %s.", myBirthday);//TODO 需要解决通用格式转换问题
+        LoggerHelper.logInfo("my Birthday is %s.", myBirthday);// 需要解决通用格式转换问题
         //
         String myWork = settings.getString("mySelf.myWork");
         LoggerHelper.logInfo("my Work is %s.", myWork);

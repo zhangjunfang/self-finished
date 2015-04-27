@@ -120,7 +120,7 @@ public class ExecMojo extends AbstractExecMojo {
      * @since 1.0
      */
     @Parameter
-    private List<?>             arguments;                                           // TODO: Change ? into something more meaningfull
+    private List<?>             arguments;                                           //  Change ? into something more meaningfull
     /**
      * <p>
      * This will control if you like to fail the build if an arguments element is empty. This means that for arguments
@@ -132,7 +132,7 @@ public class ExecMojo extends AbstractExecMojo {
      * @see #arguments
      */
     @Parameter(defaultValue = "true")
-    private boolean             failWithEmptyArgument;                               // TODO: Remove this related to http://jira.codehaus.org/browse/MEXEC-127
+    private boolean             failWithEmptyArgument;                               //  Remove this related to http://jira.codehaus.org/browse/MEXEC-127
     /**
      * <p>
      * The following will control if you like to get a warning during the build if an entry either key/value of
@@ -143,7 +143,7 @@ public class ExecMojo extends AbstractExecMojo {
      * @see #environmentVariables
      */
     @Parameter(defaultValue = "true")
-    private boolean             failWithNullKeyOrValueInEnvironment;                 // TODO: Remove this related to
+    private boolean             failWithNullKeyOrValueInEnvironment;                 //  Remove this related to
                                                                                       // http://jira.codehaus.org/browse/MEXEC-127
     /**
      * @since 1.0

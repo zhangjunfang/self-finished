@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<REST	xmlns="http://www.jessma.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.jessma.org http://www.jessma.org/schema/rest-config-3.5.xsd">
+	<global>
+		<!-- request 和 response 的默认编码（可选，默认：不设置） -->
+		<encoding>UTF-8</encoding>
+		<!-- Action 请求的后缀（可选，默认：'.action'） -->
+		<action-suffix>.action</action-suffix>
+		<!-- REST 请求的起始路径（可选，默认：'/'） -->
+		<rest-base-path>/</rest-base-path>
+		<!-- 默认 Action 路径（可选，默认：'/'） -->
+		<default-action-path>/test/rest</default-action-path>
+		<!-- 应用程序支持的视图类型（可选，默认：'html'） -->
+		<!-- JessMA 3.2.1 支持 'html, xml, json' 三种类型 -->
+		<!-- （注：第一个元素作为不带后缀名请求的默认视图类型） -->
+		<support-render-types>html, xml, json</support-render-types>
+	</global>
+
+	<!-- REST 实体 user-2 映射到Action：/test/my-rest-2/my-user-2.action -->
+	<entities action-path="/test/my-rest-2">
+		<entity name="user-2" action="my-user-2"/>
+	</entities>
+	<entities action-path="/test/rest-3">
+	</entities>
+	<entities action-path="/test/async/">
+		<entity name="test-rest"/>
+	</entities>
+</REST>

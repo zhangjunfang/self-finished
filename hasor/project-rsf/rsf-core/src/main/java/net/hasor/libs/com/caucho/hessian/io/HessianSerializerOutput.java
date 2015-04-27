@@ -116,7 +116,7 @@ public class HessianSerializerOutput extends Hessian2Output {
                     Field field = fields[i];
                     if (Modifier.isTransient(field.getModifiers()) || Modifier.isStatic(field.getModifiers()))
                         continue;
-                    // XXX: could parameterize the handler to only deal with public
+                    // : could parameterize the handler to only deal with public
                     field.setAccessible(true);
                     writeString(field.getName());
                     writeObject(field.get(obj));

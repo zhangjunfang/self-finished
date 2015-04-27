@@ -85,7 +85,7 @@ public class BeanSerializer extends AbstractSerializer {
                     continue;
                 if (findSetter(methods, name, type) == null)
                     continue;
-                // XXX: could parameterize the handler to only deal with public
+                // : could parameterize the handler to only deal with public
                 method.setAccessible(true);
                 if (type.isPrimitive() || type.getName().startsWith("java.lang.") && !type.equals(Object.class))
                     primitiveMethods.add(method);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	the proxool configuration can be embedded within your own
+	application's. Anything outside the "proxool" tag is ignored.
+-->
+<proxool-config>
+<proxool>
+	<alias>jessma</alias>
+	
+	<driver-url>jdbc:mysql://localhost:3306/myjessma?autoReconnect=true&amp;failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=UTF-8</driver-url>
+	<driver-class>com.mysql.jdbc.Driver</driver-class>
+	<driver-properties>
+		<property name="user" value="bruce"/>
+		<property name="password" value="ppmm"/>
+	</driver-properties>
+
+	<!-- 最小连接数(默认2个) -->
+	<minimum-connection-count>3</minimum-connection-count>
+	<!-- 最大连接数(默认5个),超过了这个连接数,再有请求时,就排在队列中等候,最大的等待请求数由 maximum-new-connections 决定 -->
+	<maximum-connection-count>20</maximum-connection-count>
+	<!-- 一次性产生连接的数 (默认2个) -->
+	<prototype-count>5</prototype-count>
+	<!--最大的等待请求数,即因没有空闲连接可以分配而在队列中等候的最大请求数,超过这个请求数的 用户连接就不会被接受-->
+	<simultaneous-build-throttle>10</simultaneous-build-throttle>
+	<!-- proxool自动侦察各个连接状态的时间间隔(毫秒),侦察到空闲的连接就马上回收,超时的销毁 默认30秒 -->
+	<house-keeping-sleep-time>180000</house-keeping-sleep-time>
+	<!-- 用于保持连接的测试语句 -->
+	<house-keeping-test-sql>select CURRENT_DATE</house-keeping-test-sql>
+	<!-- 在使用之前测试 (默认 false) -->
+	<!-- <test-before-use>true</test-before-use> -->
+</proxool>
+</proxool-config>

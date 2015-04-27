@@ -123,7 +123,7 @@ public class ExecJavaMojoTest extends AbstractMojoTestCase {
         assertEquals(MainWithThreads.TIMER_IGNORED, output.trim());
     }
     /**
-     * See <a href="http://jira.codehaus.org/browse/MEXEC-15">MEXEC-15</a>. FIXME: this sometimes fail with
+     * See <a href="http://jira.codehaus.org/browse/MEXEC-15">MEXEC-15</a>.  this sometimes fail with
      * unit.framework.ComparisonFailure: expected:<...> but was:<...3(f)>
      */
     public void testUncooperativeThread() throws Exception {
@@ -162,7 +162,7 @@ public class ExecJavaMojoTest extends AbstractMojoTestCase {
         mojo = (ExecJavaMojo) lookupMojo(goal, pom);
         setUpProject(pom, mojo);
         MavenProject project = (MavenProject) getVariableValueFromObject(mojo, "project");
-        // why isn't this set up by the harness based on the default-value? TODO get to bottom of this!
+        // why isn't this set up by the harness based on the default-value?  get to bottom of this!
         setVariableValueToObject(mojo, "includeProjectDependencies", Boolean.TRUE);
         setVariableValueToObject(mojo, "killAfter", (long) -1);
         setVariableValueToObject(mojo, "cleanupDaemonThreads", Boolean.TRUE);

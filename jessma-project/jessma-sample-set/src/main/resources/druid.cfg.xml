@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<druid>
+	<property name="driverClassName">com.mysql.jdbc.Driver</property>
+	<property name="url">
+		jdbc:mysql://localhost:3306/myjessma?autoReconnect=true&amp;failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=UTF-8
+	</property>
+	<property name="username">bruce</property>
+	<property name="password">ppmm</property>
+	<property name="maxActive">30</property>
+	<property name="minIdle">3</property>
+	<property name="maxIdle"></property>
+	<property name="initialSize">3</property>
+	<property name="maxWait">20</property>
+	<property name="defaultCatalog"></property>
+	<property name="defaultTransactionIsolation"></property>
+	<property name="defaultAutoCommit"></property>
+	<property name="defaultReadOnly"></property>
+	<property name="testOnBorrow">true</property>
+	<property name="testOnReturn"></property>
+	<property name="timeBetweenEvictionRunsMillis"></property>
+	<property name="numTestsPerEvictionRun"></property>
+	<property name="minEvictableIdleTimeMillis"></property>
+	<property name="testWhileIdle"></property>
+	<property name="validationQuery">SELECT 1</property>
+	<property name="validationQueryTimeout">300000</property>
+	<property name="initConnectionSqls"></property>
+	<property name="accessToUnderlyingConnectionAllowed"></property>
+	<property name="removeAbandoned"></property>
+	<property name="removeAbandonedTimeout"></property>
+	<property name="logAbandoned"></property>
+	<property name="poolPreparedStatements"></property>
+	<property name="maxOpenPreparedStatements"></property>
+	<property name="connectionProperties"></property>
+	<property name="filters"></property>
+	<property name="exceptionSorter"></property>
+	<property name="exception-sorter-class-name"></property>
+	<property name="init">true</property>
+</druid>

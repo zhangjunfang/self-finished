@@ -101,7 +101,7 @@ public class XmlReader {
         if (testWild == null) {
             return false;
         }
-        //XXX:XPath比较算法，比较currentXPath是否属于testXPath范围内的，目前使用的是?和*通配符。
+        //XPath比较算法，比较currentXPath是否属于testXPath范围内的，目前使用的是?和*通配符。
         return MatchUtils.matchWild(testWild, currentXPath);
     }
     /**

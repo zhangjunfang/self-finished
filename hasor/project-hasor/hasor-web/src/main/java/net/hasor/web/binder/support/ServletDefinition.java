@@ -110,7 +110,7 @@ class ServletDefinition extends AbstractServletModuleBinding {
         HttpServletRequest request = new HttpServletRequestWrapper((HttpServletRequest) servletRequest) {
             private String  path;
             private boolean pathComputed     = false;
-            //must use a boolean on the memo field, because null is a legal value (TODO no, it's not)
+            //must use a boolean on the memo field, because null is a legal value ( no, it's not)
             private boolean pathInfoComputed = false;
             private String  pathInfo;
             @Override

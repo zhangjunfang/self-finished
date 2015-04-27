@@ -390,7 +390,7 @@ public class BasicDeserializer extends AbstractDeserializer {
                 return data;
             } else {
                 ArrayList<Object> list = new ArrayList<Object>();
-                in.addRef(list); // XXX: potential issues here
+                in.addRef(list); 
                 while (!in.isEnd()) {
                     list.add(in.readObject());
                 }

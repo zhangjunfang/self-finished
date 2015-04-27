@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MVC-INCLUDE	xmlns="http://www.jessma.org"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.jessma.org http://www.jessma.org/schema/mvc-config-include-3.5.xsd">
+	<actions>
+	
+	</actions>	
+</MVC-INCLUDE>

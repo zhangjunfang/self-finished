@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MVC-MAIN	xmlns="http://www.jessma.org"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.jessma.org http://www.jessma.org/schema/mvc-config-main-3.5.xsd">
+	<global>
+		<!-- request 和 response 的默认编码（可选，默认：不设置） -->
+		<encoding>UTF-8</encoding>
+		<!-- Action 请求的后缀（可选，默认：.action） -->
+		<action-suffix></action-suffix>
+		<!-- 页面的  ${__base}  变量设置（可选，默认：type = 'auto', href = ''） -->
+		<base-path type="auto"/>
+
+		<!--
+			default-locale	：应用程序默认语言选项（默认：与当前操作系统一致）
+			default-bundle	：应用程序默认 Bundle（默认：res.application-message）
+		-->
+		<i18n default-locale="" default-bundle="" />
+		
+		<!--
+			enable		：是否开启 Bean Validation 机制（默认：开启）
+			bundle		：验证文本消息的 Bundle（默认：res.validation-message）
+			validator	：验证器类（默认：org.jessma.mvc.validation.HibernateBeanValidator）
+		-->
+		<bean-validation
+			enable="false"
+			bundle=""
+			validator=""
+		/>
+		
+		<!-- Action Convention 配置
+			enable					：是否启用 Action Convention 功能（默认：true）
+			detect-physical-file	：是否检查 Action Result 物理视图文件的确存在（默认：true）
+			action-base-package		：Action 类的基包（默认：""）
+			dispatch-file-path		：转发视图的基路径（默认："/WEB-INF/page"）
+			dispatch-file-type		：转发视图的类型（默认："jsp"）
+			physical-file-path		：物理视图文件的基路径（默认：""，与 'dispatch-file-path' 一致）
+			file-name-separator		：视图名称分隔符（默认："_"）
+		-->
+		<action-convention
+			enable="true"
+			detect-physical-file="true"
+			action-base-package="com.bruce.action"
+			dispatch-file-path="${jsp-path}"
+			dispatch-file-type="jsp"
+			physical-file-path=""
+			file-name-separator="_"
+		/>
+		
+		<action-filters>
+			<!--  
+			<filter pattern=".*" class="org.jessma.app.DaoInjectFilter"/>
+			<filter pattern=".*" class="org.jessma.ext.spring.SpringInjectFilter"/>
+			<filter class="org.jessma.mvc.i18n.URLI18nFilter"/>
+			<filter class="org.jessma.mvc.i18n.CookieI18nFilter"/>
+			-->
+		</action-filters>
+		
+		<!-- 设置 Action Result 路径的全局别名 -->
+		<result-path-aliases>
+			<alias name="jsp-path" path="/jsp"/>
+			<alias name="index" path="${jsp-path}/index.jsp"/>
+		</result-path-aliases>
+		
+		<global-results>
+			<!-- MVC 框架会自动加入 'none' global result -->
+		</global-results>
+	</global>
+	
+	<!-- 包含  MVC 从配置文件 -->
+	<include file="mvc-config-inc.xml"/>
+	
+</MVC-MAIN>

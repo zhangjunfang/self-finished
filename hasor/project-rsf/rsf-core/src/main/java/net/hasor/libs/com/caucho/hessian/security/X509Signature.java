@@ -290,7 +290,6 @@ public class X509Signature extends HessianEnvelope {
                     if (signature[i] != sig[i])
                         throw new IOException("mismatched signature");
                 }
-                // XXX: save principal
             }
         }
     }

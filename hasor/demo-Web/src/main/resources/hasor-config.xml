@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/2002/xmlspec/dtd/2.10/xmlspec.dtd">
 <config xmlns="http://project.hasor.net/hasor/schema/main">
 	<!-- 启动模块配置：方式2 -->
 	<!-- <hasor> <modules>...<modules> <hasor> 下面是简便写法： -->

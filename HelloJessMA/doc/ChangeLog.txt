@@ -1,0 +1,497 @@
+﻿
+									×××××××××××××××××××××××××××××××××××××××××
+													修改记录
+									×××××××××××××××××××××××××××××××××××××××××
+   
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.5.1    时间: 2015-02-25
+
+1、JessMA 3.5.1 使用 Maven 进行构建和发布管理：
+
+	1) JessMA core
+
+		<dependency>
+			<groupId>org.jessma</groupId>
+			<artifactId>jessma</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+
+	2) JessMA RESTful 扩展
+
+		<dependency>
+			<groupId>org.jessma</groupId>
+			<artifactId>jessma-ext-rest</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+
+	3) JessMA Guice 扩展
+	
+		<dependency>
+			<groupId>org.jessma</groupId>
+			<artifactId>jessma-ext-guice</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+
+	4) JessMA Spring 扩展
+	
+		<dependency>
+			<groupId>org.jessma</groupId>
+			<artifactId>jessma-ext-spring</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+	
+2、日志组件使用 slf4j 替代  Log4j：
+	1) JessMA Logger 对象获取方式：org.jessma.util.LogUtil.getJessMALogger()
+	2) 其它 Logger 对象获取方式：org.jessma.util.LogUtil.getLogger()
+	
+3、其它更新：
+	1) 依赖包更新到最新版本
+	2) 示例工程 jessma-sample-hello、jessma-sample-set 改为 Maven web 项目
+	3) 更新开发手册《JessMA Java Web 应用开发框架 (v3.5.1)》
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.4.1    时间: 2014-09-01
+
+1、升级 Log4J 到 2.x 版本：
+	1) Log4J 默认配置文件为 log4j2.xml
+	2) 默认 Logger 对象获取方式：org.jessma.util.LogUtil.getDefaultLogger()
+	3) 其它 Logger 对象获取方式：org.apache.logging.log4j.LogManager.getLogger()
+	
+2、其它更新：
+	1) 依赖库 “jessma-lib” 中的所有 jar 包更新到最新版本
+	2) 依赖库 “spring-lib” 中的所有 jar 包更新到最新版本
+	3) 更新开发手册《JessMA Java Web 应用开发框架 (v3.4.1)》
+
+3、应用程序升级说明：
+	1) JessMA 3.3.x 升级到 JessMA 3.4.1 需要做以下工作：
+		A) 把原来 log4j-1.x 的依赖包升级到 log4j-2.x（参考：“jessma-lib”）
+		B) 修改获取 Logger 对象的程序代码
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.3.1    时间: 2013-11-25
+
+1、增强国际化功能：
+	1) 支持设置应用程序器默认 Locale 和默认 Bundle
+		A) 如果不配置器默认 Locale 则使用系统原来的默认 Locale
+		B) 如果不配置默认 Bundle，则默认 Bundle 为 'res.application-message'
+		
+		（参考：下面的 MVC 配置文件条目）
+	
+		<!--
+			default-locale	：应用程序默认语言选项（默认：与当前操作系统一致）
+			default-bundle	：应用程序默认 Bundle（默认：res.application-message）
+		-->
+		<i18n default-locale="en_US" default-bundle="com.bruce.res.application-message" />
+	
+	2) 支持基于 URL、Cookie 或浏览器语言选项的国际化方式
+		A) org.jessma.mvc.i18n.URLI18nFilter		：基于 URL 请求参数的国际化拦截器	
+		B) org.jessma.mvc.i18n.CookieI18nFilter		：基于 Cookie 的国际化拦截器
+		C) org.jessma.mvc.i18n.BrowserI18nFilter	：基于浏览器语言选项的国际化拦截器
+		D) JessMA 默认基于 Session 实现国际化，但可以通过配置上述拦截器改为相应的实现方式
+		E) 上述拦截器的国际化属性是基于 Request Attribute 的，因此会屏蔽 Session 的国际化设置
+		F) 上述拦截器可以组合使用，一般顺序为：URL -> Cookie -> Browser
+		
+		（例如：下面同时配置了 URL、Cookie 和 Browser 三个国际化拦截器）
+		
+		<action-filters>
+			<!-- 优先检查客户请求中是否带有名称为 '__locale' 的请求参数 -->
+			<filter class="org.jessma.mvc.i18n.URLI18nFilter"/>
+			<!-- 然后检查请求是否带有名称为 '__locale' 的 Cookie -->
+			<filter class="org.jessma.mvc.i18n.CookieI18nFilter"/>
+			<!-- 最后根据客户端浏览器的语言选项设置当前请求的语言属性 -->
+			<filter class="org.jessma.mvc.i18n.BrowserI18nFilter"/>
+		</action-filters>
+	
+2、支持 JSR 303 Bean Validation 机制：
+	1) 如果开启了Bean Validation 机制，应用程序可对由 @FormBean 注解的 Form Bean 执行自动验证
+	2) @FormBean 注解增加 'validate()' 和 'groups()' 两个属性，分别指示是否对 Form Bean 执行自动验证，以及自动验证的验证组
+	3) 如果自动验证成功则转入 Action 的 validate() 方法继续执行，否则会把错误信息写入 Action 的 errors 集合并跳转到 Action 的 INPUT 视图
+	4) 应用程序还可以随时调用 ActionSupport 的 validateBean() / validateBeanAndAddErrors() 方法验证其它任何 Bean
+	5) 增加错误信息输出标签 <p:err/>，支持多种方式和格式展示错误信息（参考：<p:err/> 及其实现类 org.jessma.tag.Error 相关注释）
+	
+		（参考：下面的 MVC 配置文件条目）
+	
+		<!--
+			enable		：是否开启 Bean Validation 机制（默认：开启）
+			bundle		：验证文本消息的 Bundle（默认：res.validation-message）
+			validator	：验证器类（默认：org.jessma.mvc.validation.HibernateBeanValidator）
+		-->
+		<bean-validation
+			enable="true"
+			bundle="com.bruce.res.validation-message"
+			validator="org.jessma.mvc.validation.HibernateBeanValidator"
+		/>
+
+3、其它更新：
+	1) org.jessma.ext.dao.* 包中的类移到 org.jessma.dao
+	2) 应用程序默认 Bundle 由 “res.message-resource” 改为 “res.application-message”
+	3) 修改 MVC 主/从配置文件、应用程序配置文件以及 REST 配置文件的 Sechema 引用（参考 MyJessMA 测试工程）
+	4) 更新开发手册《JessMA Java Web 应用开发框架 (v3.3.1)》
+	5) 整理依赖库 “jessma-lib”，删除多余的 jar 包
+
+4、应用程序升级说明：
+	1) JessMA 3.2.x 升级到 JessMA 3.3.1 需要做以下工作：
+		A) 把原来对 org.jessma.ext.dao 包的引用改为 org.jessma.dao
+		B) 把资源文件 “res.message-resource” 改为 “res.application-message” 或在 <i18n/> 配置项中指定
+		C) 如有必要，修改 MVC 主从配置文件、应用程序配置文件以及 REST 配置文件的 Sechema
+		D) 如果要在 Tomcat-6.0 中开启 Bean Validation 机制，需要把 “tomcat_7_to_6_lib” 文件夹下的 3 个 jar 文件替换  Tomcat-6.0 的 lib 目录下的同名文件
+	2) Portal-Basic 3.1.1 及更早版本升级到 JessMA 3.3.1：（参考 JessMA 3.2.1 的升级说明）
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.2.3    时间: 2013-09-25
+
+1、增加 Guice 支持：
+	1) 增加  Guice 插件包 jessma-ext-guice-3.2.3.jar 用于整合 Guice
+	2) Action 通过 @GuiceBean/@GuiceBeans 注解声明 Guice Bean
+	3) Action 通过拦截器 com.bruce.ext.guice.GuiceInjectFilter 解析 @GuiceBean/@GuiceBeans 注解并注入 Guice Bean
+	4) 可以在 Guice Bean 中注入 JessMA DAO 对象，从而能在 Guice 环境下使用 JessMA DAO 子框架
+	5) 示例工程 MyJessMA 增加 Guice 整合示例
+	
+	（注：通常情况下，应用程序需要创建 GuiceInjectFilter 的子类并改写 configModules() 方法，用于定义 Module 的绑定规则）
+	
+	public class MyGuiceInjectFilter extends GuiceInjectFilter
+	{
+		@Override
+		protected Collection<Module> configModules()
+		{
+			Set<Module> modules = new HashSet<Module>();
+			
+			// 加入第一个 Module
+			modules.add(new Module()
+			{
+				@Override
+				public void configure(Binder binder)
+				{
+					// 配置绑定规则
+					// ......
+				}
+			});
+			
+			// ......
+	
+			// 加入第 N 个 Module
+			modules.add(new Module()
+			{
+				@Override
+				public void configure(Binder binder)
+				{
+					// 配置绑定规则
+					// ......
+				}
+			});
+	
+			return modules;
+		}
+	}
+
+2、Form Bean 支持联级属性注入：
+	1) @FormBean 注解支持注入联级属性
+	2) org.jessma.util.BeanHelper 的 createBean(...) / setPropertiesOrFieldValues(...) 系列方法支持联级装配 Bean
+	
+		（例如：下面的 Form 对应的 Bean 中，b、x 和 y 为联级 Bean）
+		
+		<form>
+			 <input name="a" value="...">
+			 <input name="b.c" value="...">
+			 <input name="b.d" value="...">
+			 <input name="x.y.z" value="...">
+		</form>
+
+3、规范“嵌套 DAO 方法”调用规则（详情参考：开发手册第 10.6 节）
+	1) 最外层的 DAO 对象必须由 FacadeProxy 创建
+	2) 内层的 DAO 对象可以用 new 或 FacadeProxy 等任意方式创建
+	3) 最外层的 DAO 方法作为一个事务单元，并且不会有嵌套事务
+	4) 事务属性由最外层的 DAO 方法指定，忽略所有内层 DAO 方法的事务属性
+
+4、其它更新：
+	1) 依赖库 “jessma-lib” 中的所有 jar 包更新到最新版本
+	2) 依赖库 “spring-lib” 中的所有 jar 包更新到最新版本
+	3) 增加 Guice 依赖库 “guice-lib”
+	4) 更新开发手册《JessMA Java Web 应用开发框架 (v3.2.3)》
+
+5、应用程序升级说明：
+	1) JessMA 3.2.2 升级到 JessMA 3.2.3：完全兼容，可直接升级
+	2) Portal-Basic 3.1.1 及更早版本升级到 JessMA 3.2.3：（参考 JessMA 3.2.1 的升级说明）
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.2.2    时间: 2013-08-15
+
+1、org.jessma.dao.hbn.HibernateSessionMgr 支持自动扫描实体对象：
+	1) 实体对象用 @Entity 注解取代 *.hbm.xml 映射文件（同时也不必在 hibernate.cfg.xml 中配置 ‘mapping’）
+	2) app-config.xml 中配置 HibernateSessionMgr 时，用第二个可选参数以正则表达式的格式指定实体对象所在包
+	
+		（例如：实体对象位于 ‘com.bruce.<任意子包>.model’ 中）
+		
+		<manager name="mgr-1" class="org.jessma.dao.hbn.HibernateSessionMgr">
+			<initialize-args>
+				<arg></arg>
+				<arg>com\.bruce\..+\.model</arg>
+			</initialize-args>
+		</manager>
+
+2、org.jessma.dao.mybatis.MyBatisSessionMgr 支持自动扫描 SQL Mapper 接口：
+	1) 不必在 mybatis.cfg.xml 中配置 ‘mapper’
+	2) app-config.xml 中配置 MyBatisSessionMgr 时，用第三个可选参数以正则表达式的格式指定 SQL Mapper 接口所在包
+	
+		（例如：SQL Mapper 接口位于 ‘com.bruce.<任意子包>.mapper’ 中）
+		
+		<manager name="mgr-2" class="org.jessma.dao.mybatis.MyBatisSessionMgr">
+			<initialize-args>
+				<arg></arg>
+				<arg></arg>
+				<arg>com\.bruce\..+\.mapper</arg>
+			</initialize-args>
+		</manager>
+
+3、所有 JDBC Session Manager 均取消 ‘isXml’ 配置参数，改为根据配置文件的扩展名自动识别配置文件类型：
+	1) 受影响的 Session Manager：DruidSessionMgr、JdbcSessionMgr、JndiSessionMgr、ProxoolSessionMgr
+
+4、org.jessma.dao.FacadeProxy 增加方法 executeCustomTransaction(...) 支持执行自定义事务：
+	1) JessMA 的事务是 DAO 层事务，也就是说当外部调用某个 DAO 方法时，该方法作为一个事务单元执行。 但在一些特殊情形下可能需要在 DAO 方法
+		外部执行事务（例如：作为一个事务单元调用多个 DAO 对象的多个方法）， 此时可以创建一个自定义事务（CustomTransaction），并调用 
+		FacadeProxy 的 executeCustomTransaction(...) 来执行该自定义事务。
+	2) 增加自定义事务相关接口：
+		A) CustomTransaction	: 自定义事务基接口
+		B) JdbcTransaction		: JDBC 自定义事务接口
+		C) MyBatisTransaction	: MyBatis自定义事务接口
+		D) HibernateTransaction	: Hibernate 自定义事务接口
+		
+		（示例）
+		
+		public static void serviceMethod()
+		{
+			// 获取 SessionMgr
+			HibernateSessionMgr mgr = (HibernateSessionMgr)AppConfig.getSessionManager("mgr-1");
+			// 执行自定义事务
+			FacadeProxy.executeCustomTransaction(mgr, new HibernateTransaction(){
+				// 实现自定义事务方法
+				@Override
+				public void execute(HibernateSessionMgr mgr) throws DAOException
+				{
+					// 创建 dao1 （可以使用 FacadeProxy 创建 DAO 对象）
+					MyDaoA dao1 = new MyDaoA(mgr);
+					// 创建 dao2 （可以使用 ‘new MyDaoB(mgr)’ 创建 DAO 对象）
+					MyDaoB dao2 = Facade.create(MyDaoB.class, mgr);
+					
+					// 执行 DAO 方法
+					dao1.methodXxx();
+					dao2.methodYyy();
+					dao1.methodZzz();
+					dao2.methodNnn();
+				}});
+		}
+
+5、扩大 mvc-confing.xml 中 <result-path-aliases> 别名配置应用范围：
+	1) 支持在 <result-path-aliases> 配置中引用前面定义的别名
+	
+		（示例：下面配置中 ${index} 的实际路径为 '/jsp/test/index.jsp'）
+		
+		<result-path-aliases>
+			<alias name="jsp_base" path="/jsp/test"/>
+			<alias name="index" path="${jsp_base}/index.jsp"/>
+		</result-path-aliases>
+
+	2) 允许在 <action-convention> 的 'dispatch-file-path' 和 'dispatch-file-path' 配置中使用别名
+	
+		（示例：下面配置中 'dispatch-file-path' 的实际路径为 '/jsp'）
+		
+		<action-convention
+			dispatch-file-path="${ac_path}"
+			<!-- 其它配置（略）... -->
+		/>
+		<result-path-aliases>
+			<alias name="ac_path" path="/jsp"/>
+		</result-path-aliases>
+
+6、其它更新：
+	1) 修改 org.jessma.util.PackageHelper，加入包扫描相关方法
+	2) 依赖库 “jessma-lib” 中的所有 jar 包更新到最新版本
+	3) 更新开发手册《JessMA 高效 Java MVC & REST 开发框架 (v3.2.2)》
+	4) 增加一个 JessMA 项目模板工程：HelloJessMA
+
+7、应用程序升级说明：
+	1) JessMA 3.2.1 升级到 JessMA 3.2.2：完全兼容，可直接升级
+	2) Portal-Basic 3.1.1 及更早版本升级到 JessMA 3.2.2：（参考 JessMA 3.2.1 的升级说明）
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.2.1    时间: 2013-07-07
+
+1、Portal-Basic 框架正式更名为 JessMA：
+	1) JessMA 的版本号沿用 Portal-Basic 的版本号
+	2) 包名称 com.bruce.* 统一改为 org.jessma.*
+
+2、mvc-confing.xml 中增加 <base-path> 配置项，支持自定义 ${__base} 变量，满足某些特殊应用程序的需要
+	1) base-path.type 有三种类型：'auto'，'manual'，'none'，其中 'auto' 为默认类型
+	2) 'auto'：根据当前请求的路径信息自动设置 ${__base}（${__base} 保存在 Request Attribute 中）
+		${__base} = {scheme}://{server_name}:{server_port}/{app_context}
+	3) 'manual'：在 MVC 配置文件中手工设置 ${__base}（${__base} 保存在 Application Attribute 中）
+	4) 'none'：不设置 ${__base}
+
+3、mvc-confing.xml 中增加 <result-path-aliases> 配置项，支持用别名置换 Action Result 的路径，例如：
+
+		<result-path-aliases>
+			<alias name="index" path="/jsp/index.jsp"/>
+			<alias name="jsp_base" path="/jsp/test"/>
+		</result-path-aliases>
+
+	以下的几个配置是等效的：
+	
+	1) 不使用别名
+		<result>/jsp/index.jsp</result>		或注解 @Result(path="/jsp/index.jsp")
+		<result>/jsp/test/my.jsp</result>	或注解 @Result(path="/jsp/test/my.jsp")
+	2) 使用别名
+		<result>${index}</result> 			或注解 @Result(path="${index}")
+		<result>${jsp_base}/my.jsp</result>	或注解 @Result(path="${jsp_base}/my.jsp")
+
+4、支持在不重启服务器的情况下，动态更新应用程序配置
+	1) 更新 MVC 配置。org.jessma.mvc.ActionDispatcher 增加方法：
+		A) reload(delay)	更新 MVC 配置
+		B) pause()			暂停 MVC 组件
+		C) resume()			恢复 MVC 组件
+		D) 以上三个方法配合使用：pause() -> reload(delay) -> resume()
+	2) 更新 REST 配置。org.jessma.ext.rest.RestDispatcher 增加方法：
+		A) reload(delay)	更新 REST 配置
+		B) pause()			暂停 REST 组件
+		C) resume()			恢复 REST 组件
+		D) 以上三个方法配合使用：pause() -> reload(delay) -> resume()
+	3) 更新应用程序配置文件（app-config.xml）的 <user> 节点。org.jessma.app.AppConfig 增加方法：
+		A) reloadUserConfig(delay)	调用由 <system>/<user-config-parser> 节点定义的 UserConfigParser 
+									的 parse(user) 方法重新加载 <user> 节点的配置信息
+		B) 执行更新前通常需要暂停 MVC 组件 或 REST 组件（调用它们的 pause() 方法）
+
+5、修改 org.jessma.util.Logger，使 Logger 类更通用
+	1) 默认日志记录器：应用程序默认日志记录器的名称为 'JessMA'，可以调用 Logger.getDefaultLogger() 获取默认日志记录器
+	2) 其他日志记录器：应用程序可以在任何地方调用 new Logger("<logger_name>") 获取在 log4j.properties 中配置的其他日志记录器
+
+6、增加一个 JDBC SessionMgr
+	1) org.jessma.dao.jdbc.JdbcSessionMgr ：没有使用连接池的 JDBC SessionMgr
+
+7、其它更新：
+	1) 原测试工程 MyPortal 改为 MyJessMA
+	2) 原依赖库 portal-basic-lib 改为 jessma-lib
+	3) 依赖库 “jessma-lib” 和 “spring-lib” 中的所有 jar 包更新到最新版本
+	4) 更好地支持在 GAE、BAE 和 OpenShift 等云平台中部署 JessMA 应用程序
+	5) 更新开发手册《JessMA 高效 Java MVC & REST 开发框架 (v3.2)》
+	6) 官方网站 www.jessma.org 将陆续提供各项技术支持
+
+8、应用程序升级说明。JessMA 3.2.1 在功能方面完全兼容 Portal-Basic 3.1.1，原有应用程序升级到 JessMA 3.2.1 需做以下工作：
+	1) 应用程序中所有用到 com.bruce.* 的地方都改为 org.jessma.*
+	2) 修改 XML 配置文件的 XSD Schema 引用（参考 MyJessMA 测试工程）
+	3) 如果应用程序用到 org.jessma.util.Logger，则获取日志记录器对象的代码要作一些调整（参考 MyJessMA 测试工程）
+	4) 如果应用程序用到  base.jsp，则用 JessMA 3.2.1 的 jessma-base.jsp 替换原来的 base.jsp
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.1.1    时间: 2013-04-25
+
+1、支持异步 Action（“异步处理” 是 Servlet 3.0 的新特性之一）：
+	1) com.bruce.mvc 包中增加异步任务接口 AsyncTask 及实现类 AbstractAsyncTask、ActionTask
+	2) com.bruce.mvc.ActionSupport 增加异步处理相关方法：startAsync(...)
+
+2、支持异步 REST Action（在 portal-basic-exe-rest-3.1.1 插件中实现）
+	1) com.bruce.ext.rest 包中增加 REST 异步任务实现类 RestActionTask
+	2) com.bruce.ext.rest.RestActionSupport 增加异步处理支持
+
+3、增加两个 JDBC SessionMgr
+	1) com.bruce.dao.jdbc.DruidSessionMgr ：使用 Druid 连接池连接数据库
+	2) com.bruce.dao.jdbc.JndiSessionMgr  ：使用 JNDI 连接池连接数据库
+
+4、其它更新：
+	1) 测试工程 MyPortal 加入异步处理 Action 请求和异步 Rest Action 请求示例
+	2) 测试工程 MyPortal 的所有 Hibernate 和 JDBC 示例都使用 Druid 取代原来的 Proxool 连接池
+	3) 开发手册《Portal-Basic Java Web 应用开发框架(v3.1.20130425)》加入 “异步 Action” 章节
+	4) Portal-Basic 的依赖库 “portal-basic-lib” 和 “spring-lib” 中的所有 jar 包更新到最新版本
+
+5、应用程序升级说明：
+	1) Portal-Basic 3.1.1 的 “异步处理” 功能只适用于支持 Servlet 3.0 的应用环境（如：JaveEE 6 / Tomcat 7）
+	2) 如果应用环境不支持 Servlet 3.0（如：JaveEE 5 / Tomcat 6），则只能使用原有功能
+	3) Portal-Basic 3.1.1 不再提供 JDK 1.5 的兼容版本
+	4) Portal-Basic 3.1.1 完全兼容 Portal-Basic 3.0.1 （非 JDK 1.5 版本）
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 3.0.1    时间: 2012-12-20
+
+1、增加 Action Convention，支持“Action 零配置”：
+	1) 根据 Action 请求的地址信息自动加载 Action，并调用相应的入口方法处理请求
+	2) 根据 Action 请求的地址信息和 Action Result 自动组合出输出页面的地址并转发
+	3) 通过 @Result/@Results 和 @ExceptionMapping/@ExceptionMappings 注解自定义 Result 和 Exception 处理策略
+	4) Action Convention 相关查找规则：
+		A、【Action Entry】
+			-> Action Entry 配置
+				-> Action Convention（自动匹配）
+		B、【Action Result】
+			-> Action Entry 的 Result 配置
+				-> Action 的 Result 配置
+					-> Action 入口方法的 @Result/@Results 注解
+						-> Action 类的 @Result/@Results 注解
+							-> 全局 Result 配置
+								-> Action Convention（自动匹配）
+		C、【Exception Mapping】
+			-> Action Entry 的 Exception-Mapping 配置
+				-> Action 的 Exception-Mapping 配置
+					-> Action 入口方法的 @ExceptionMapping/@ExceptionMappings 注解
+						-> Action 类的 @ExceptionMapping/@ExceptionMappings 注解
+							-> 全局 Exception-Mapping 配置
+	
+2、增加 REST 支持：
+	1) 增加 REST 插件包 portal-basic-ext-rest-3.0.1.jar 用于支持 REST
+	2) portal-basic-ext 通过 com.bruce.ext.rest.RestDispatcher 过滤器把 REST 请求转换为 Action 请求
+	3) portal-basic-ext 提供 com.bruce.ext.rest.RestActionSupport 作为处理 REST 请求的 Action 基类
+	4) Action 的 REST 请求处理方法通过声明 @Get/@Post/@Put/@Delete 注解来匹配 REST 地址格式，并注入参数
+	5) 内置 Rails-style REST 标准方法
+	6) 同时支持 HTML/XML/JSON 三种视图格式，应用程序也可以扩展自己的视图格式
+	7) portal-basic-ext 与 Action Convention 结合使用能实现“零配置”处理 REST 请求
+
+3、其它更新：
+	1) Action Filter
+		A、应用程序启动时会加载所有 Action Filter
+		B、Action Filter 不重复拦截：如果多个匹配的 Action Filter 配置使用同一个拦截器对象，该拦截器对象的拦截方法只会调用一次
+	2) 取消“默认 Action”：由于“默认 Action”容易导致应用程序跟踪困难等问题，其副作用大于正作用，因此不再支持“默认 Action”
+		（当 ‘/a/b/c/MyAction’ 不出存在时，不再尝试查找默认包中的 ‘/MyAction’）
+	3) 包结构更新：原 com.bruce.util.basedao 包改为 com.bruce.dao
+	4) 修改配置文件的跟元素名称: 
+		应用程序配置文件 -> APP			(参考：app-config.xsd)
+		MVC 主配置文件 -> MVC-MAIN		(参考：mvc-config-main.xsd)
+		MVC 从配置文件 -> MVC-INCLUDE		(参考：mvc-config-include.xsd)
+		REST 配置文件 -> REST				(参考：rest-config.xsd)
+
+4、应用程序升级说明：Portal-Basic-3.x 在功能与配置方面完全兼容 Portal-Basic-2.x，但有两处地方需要调整
+	1) 由于原 com.bruce.util.basedao 包改为 com.bruce.dao，因此需要修改应用程序代码中对这些类的依赖路径并重新编译；
+		另外，还要修改 app-config.xml 的 '<database-session-managers>' 中的 SessionMgr 类路径
+	2) 检查应用程序是否使用了“默认 Action”功能，如果使用了该功能则需要进行调整
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 2.6.2    时间: 2012-11-20
+
+1、增加 Spring 支持：
+	1) 增加  Spring 插件包 portal-basic-ext-spring-2.6.2.jar 用于整合 Spring
+	2) Action 通过 @SpringBean/@SpringBeans 注解声明 Spring Bean
+	3) Action 通过拦截器 com.bruce.ext.spring.SpringInjectFilter 解析 @SpringBean/@SpringBeans 注解并注入 Spring Bean
+	4) Portal-Basic 的 DAO 对象能声明为 Spring Bean，从而能在 Spring 环境下使用 Portal-Basic DAO 子框架
+	5) 示例工程 MyPortal 增加 Spring 整合示例
+	
+2、其他更新：
+	1) @FormBean、@DaoBean/@DaoBeans、@SpringBean/@SpringBeans 和  @Transaction 注解声明为 '@Inherited'，子类可继承父类的注解
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+版本: 2.6.1    时间: 2012-11-01
+
+1、MVC 框架升级：
+	1) 支持多入口 Action（请求格式：http://.../.../<action_name>!<entry_name>.<action_suffix>）
+	2) Action 拦截器的过滤规则可以细化到 Action 入口方法级别
+	3) @FormBean 注解可声明在 Action 的入口方法中（覆盖 Action 类定义中的 @FormBean 声明）
+	4) @FormBean 注解支持成员变量注入（即：属性没有定义公共 setter 方法的成员变量也能注入）
+	5) 增加 @DaoBean/@DaoBeans, 支持 DAO 对象注入（不用显式调用 FacadeProxy.create(...) 方法创建 DAO 代理对象）
+	6) 添加内置 Request Attribute -> '__base'（HTTP 请求的 BASE URL）
+	7) 添加内置 Application Attribute -> '__context'（Servlet Context 的 ROOT PATH）
+	8) 修改 jessma-base.jsp，用 {__base} 取代 {basePath} 
+	9) MVC 配置文件支持多重“include”（即：从配置文件也可以“include”其它配置文件），并能自动过滤重复文件
+	10) 优化 MVC 框架的缓存机制，提升框架性能
+	11) 示例工程 MyPortal 增加 Freemarker 整合示例
+	
+2、DAO 框架升级：
+	1) 增加 FacadeProxy.create(...) 系列 DAO 访问方法
+	2) 为 DAO 类添加 @Transaction 注解，与 FacadeProxy.create(...) 系列方法配合使用
+	3) FacadeProxy.create(...) 系列方法支持在 Action 中自动注入 DAO 对象（利用  @DaoBean/@DaoBeans 注解） 
+	4) 优化 DAO 框架的缓存机制，提升框架性能
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－

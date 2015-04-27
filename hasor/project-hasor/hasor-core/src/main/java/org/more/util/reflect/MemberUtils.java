@@ -34,7 +34,7 @@ import org.more.util.SystemUtils;
  * @version $Id: MemberUtils.java 1057013 2011-01-09 20:04:16Z niallp $
  */
 abstract class MemberUtils {
-    // TODO extract an interface to implement compareParameterSets(...)?
+    //  extract an interface to implement compareParameterSets(...)?
     private static final int        ACCESS_TEST             = Modifier.PUBLIC | Modifier.PROTECTED | Modifier.PRIVATE;
     private static final Method     IS_SYNTHETIC;
     static {
@@ -50,7 +50,7 @@ abstract class MemberUtils {
     /** Array of primitive number types ordered by "promotability" */
     private static final Class<?>[] ORDERED_PRIMITIVE_TYPES = { Byte.TYPE, Short.TYPE, Character.TYPE, Integer.TYPE, Long.TYPE, Float.TYPE, Double.TYPE };
     /**
-     * XXX Default access superclass workaround
+     *  Default access superclass workaround
      *
      * When a public class has a default access superclass with public members,
      * these members are accessible. Calling them from compiled code works fine.

@@ -34,7 +34,7 @@ import org.more.xml.stream.XmlStreamEvent;
 class InnerMimeTypeContext extends ConcurrentHashMap<String, String> implements MimeType {
     private static final long serialVersionUID = -8955832291109288048L;
     public InnerMimeTypeContext(Object content) {
-        // TODO Auto-generated constructor stub 
+        //  Auto-generated constructor stub 
     }
     public String getMimeType(String suffix) {
         return this.get(suffix);

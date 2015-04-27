@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="MyJessMA"
+  id="myeclipse.1331109370468"
+  context-root="/jessma"
+  j2ee-spec="6.0"
+  archive="MyJessMA.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

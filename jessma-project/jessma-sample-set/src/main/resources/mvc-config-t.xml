@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MVC-INCLUDE	xmlns="http://www.jessma.org"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.jessma.org http://www.jessma.org/schema/mvc-config-include-3.5.xsd">
+		
+	<actions path="/test">
+		<action name="testBean_1">
+			<result>${jsp-path}/bean/test_bean_1.jsp</result>
+		</action>
+		<action name="checkBean_1" class="action.test.CheckBean1">
+			<result>${jsp-path}/bean/result_1.jsp</result>
+		</action>
+		<action name="testBean_2">
+			<result>${jsp-path}/bean/test_bean_2.jsp</result>
+		</action>
+		<action name="checkBean_2" class="action.test.CheckBean2">
+			<result>${jsp-path}/bean/result_2.jsp</result>
+		</action>
+		<action name="testBean_3">
+			<result>${jsp-path}/bean/test_bean_3.jsp</result>
+		</action>
+		<action name="checkBean_3" class="action.test.CheckBean3">
+			<result>${jsp-path}/bean/result_3.jsp</result>
+		</action>
+		<action name="testBeanValidation">
+			<result>${jsp-path}/bean/test_bean_vld.jsp</result>
+		</action>
+		<action name="testValidate">
+			<result>${jsp-path}/validate/test_validate.jsp</result>
+		</action>
+		<action name="checkValidate" class="action.test.CheckValidate">
+			<result>${jsp-path}/validate/result.jsp</result>
+			<result name="input">${jsp-path}/validate/test_validate.jsp</result>
+		</action>
+		<action name="checkNickName" class="action.test.CheckNickName" />
+		<action name="testI18N" class="action.test.ChangeLocale">
+			<result>${jsp-path}/i18n/change_locale.jsp</result>
+		</action>
+		<action name="testI18N_Cookie" class="action.test.ChangeLocaleByCookie">
+			<result>${jsp-path}/i18n/change_locale_cookie.jsp</result>
+		</action>
+		<action name="testUpload">
+			<result>${jsp-path}/upload/test_upload.jsp</result>
+		</action>
+		<action name="checkUpload" class="action.test.CheckUpload">
+			<result>${jsp-path}/upload/success.jsp</result>
+			<result name="fail">${jsp-path}/upload/fail.jsp</result>
+		</action>
+		<action name="testDownload">
+			<result>${jsp-path}/download/test_download.jsp</result>
+		</action>
+		<action name="checkDownload" class="action.test.CheckDownload">
+		</action>
+	</actions>
+	
+	<actions path="/test/dao">
+		<action name="testJdbc">
+			<result>${jsp-path}/dao/test_user_1.jsp</result>
+		</action>
+		<action name="createUser1" class="action.test.JdbcCreateUser">
+			<result type="chain">./queryUser1</result>
+		</action>
+		<action name="queryUser1" class="action.test.JdbcQueryUser">
+			<result>${jsp-path}/dao/test_user_1.jsp?fromQueryAction=true</result>
+		</action>
+		<action name="deleteUser1" class="action.test.JdbcDeleteUser">
+			<result type="chain">./queryUser1</result>
+		</action>
+		<action name="testMyBatis">
+			<result>${jsp-path}/dao/test_user_2.jsp</result>
+		</action>
+		<action name="createUser2" class="action.test.MyBatisCreateUser">
+			<result type="chain">./queryUser2</result>
+		</action>
+		<action name="queryUser2" class="action.test.MyBatisQueryUser">
+			<result>${jsp-path}/dao/test_user_2.jsp?fromQueryAction=true</result>
+		</action>
+		<action name="deleteUser2" class="action.test.MyBatisDeleteUser">
+			<result type="chain">./queryUser2</result>
+		</action>
+		<action name="testHibernate">
+			<result>${jsp-path}/dao/test_user_3.jsp</result>
+		</action>
+		<action name="createUser3" class="action.test.HibernateCreateUser">
+			<result type="chain">./queryUser3</result>
+		</action>
+		<action name="queryUser3" class="action.test.HibernateQueryUser">
+			<result>${jsp-path}/dao/test_user_3.jsp?fromQueryAction=true</result>
+		</action>
+		<action name="deleteUser3" class="action.test.HibernateDeleteUser">
+			<result type="chain">./queryUser3</result>
+		</action>
+	</actions>
+	
+	<actions path="/test/page">
+		<action name="queryInterest" class="action.test.QueryInterest">
+			<result>${jsp-path}/static/test_query.jsp</result>
+		</action>
+	</actions>
+	
+	<actions path="/test/ftl">
+		<action name="queryInterest" class="action.test.QueryInterest">
+			<result>${ftl-path}/test_query.ftl</result>
+		</action>
+	</actions>
+	
+	<actions path="/test/entry">
+		<!-- <action name="user" class="action.test.UserAction1"> -->
+		<!-- <action name="user" class="action.test.UserAction2"> -->
+		<!-- <action name="user" class="action.test.UserAction3"> -->
+		<action name="user" class="action.test.UserAction">
+			<entry name="create">
+				<result type="chain">./user!query</result>
+			</entry>
+			<entry name="delete">
+				<result type="chain">./user!query</result>
+			</entry>
+			<entry name="query" method="findUsers">
+				<result>${jsp-path}/entry/test_user.jsp?fromQueryAction=true</result>
+			</entry>
+			<result>${jsp-path}/entry/test_user.jsp</result>
+		</action>
+	</actions>
+	
+	<actions path="/test/spring">
+		<action name="user" class="action.test.SpringUserAction">
+			<entry name="create">
+				<result type="chain">./user!query</result>
+			</entry>
+			<entry name="delete">
+				<result type="chain">./user!query</result>
+			</entry>
+			<entry name="query" method="findUsers">
+				<result>${jsp-path}/spring/test_user.jsp?fromQueryAction=true</result>
+			</entry>
+			<result>${jsp-path}/spring/test_user.jsp</result>
+		</action>	    
+	</actions>
+	
+	<actions path="/test/guice">
+		<action name="user" class="action.test.GuiceUserAction">
+			<entry name="create">
+				<result type="chain">./user!query</result>
+			</entry>
+			<entry name="delete">
+				<result type="chain">./user!query</result>
+			</entry>
+			<entry name="query" method="findUsers">
+				<result>${jsp-path}/guice/test_user.jsp?fromQueryAction=true</result>
+			</entry>
+			<result>${jsp-path}/guice/test_user.jsp</result>
+		</action>	    
+	</actions>
+	
+</MVC-INCLUDE>
