@@ -26,8 +26,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+
 import net.hasor.mvc.Call;
 import net.hasor.mvc.CallStrategy;
 import net.hasor.mvc.MappingInfo;
@@ -40,6 +42,7 @@ import net.hasor.mvc.api.Param;
 import net.hasor.mvc.api.PathParam;
 import net.hasor.mvc.api.Produces;
 import net.hasor.mvc.api.QueryParam;
+
 import org.more.convert.ConverterUtils;
 import org.more.logger.LoggerHelper;
 import org.more.util.BeanUtils;
@@ -80,7 +83,8 @@ public class DefaultCallStrategy implements CallStrategy {
     }
     /**准备参数*/
     protected final Object[] resolveParams(Call call) throws Throwable {
-        Method targetMethod = call.getMethod();
+      //  Method targetMethod = 
+        		call.getMethod();
         //
         Class<?>[] targetParamClass = call.getParameterTypes();
         Annotation[][] targetParamAnno = call.getMethodParamAnnos();
@@ -206,7 +210,8 @@ public class DefaultCallStrategy implements CallStrategy {
     }
     /**/
     private Map<String, List<String>> queryParamLocal;
-    private Map<String, List<String>> getQueryParamMap(Call call) {
+    @SuppressWarnings("unchecked")
+	private Map<String, List<String>> getQueryParamMap(Call call) {
         if (queryParamLocal != null) {
             return queryParamLocal;
         }

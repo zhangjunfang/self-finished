@@ -21,6 +21,7 @@ import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.more.util.ArrayUtils;
 /**
  * <p>
@@ -96,6 +97,7 @@ import org.more.util.ArrayUtils;
  * @since 1.0
  * @version $Id: HashCodeBuilder.java 1057009 2011-01-09 19:48:06Z niallp $
  */
+@SuppressWarnings("unchecked")
 public class HashCodeBuilder {
     /**
      * <p>
@@ -494,7 +496,8 @@ public class HashCodeBuilder {
      * @param value
      *            The object to register.
      */
-    static void register(Object value) {
+    @SuppressWarnings("rawtypes")
+	static void register(Object value) {
         synchronized (HashCodeBuilder.class) {
             if (getRegistry() == null) {
                 REGISTRY.set(new HashSet());

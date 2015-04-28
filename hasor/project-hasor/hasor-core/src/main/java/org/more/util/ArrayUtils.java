@@ -42,6 +42,7 @@ import java.util.Map;
  * @since 2.0
  * @version $Id: ArrayUtils.java 1056988 2011-01-09 17:58:53Z niallp $
  */
+@SuppressWarnings({"rawtypes","unchecked"})
 public class ArrayUtils {
     /** An empty immutable <code>Object</code> array. */
     public static final Object[]    EMPTY_OBJECT_ARRAY           = new Object[0];

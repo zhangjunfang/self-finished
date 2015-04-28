@@ -53,7 +53,7 @@ class MappingDefine implements MappingInfo {
     private String                    mappingTo;
     private String                    mappingToMatches;
     private String[]                  httpMethod;
-    private CallStrategy              callStrategy;
+   // private CallStrategy              callStrategy;
     private AtomicBoolean             inited = new AtomicBoolean(false);
     //
     protected MappingDefine(String bindID, Method targetMethod) {

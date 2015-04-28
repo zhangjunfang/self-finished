@@ -16,10 +16,12 @@
 package net.hasor.mvc.api;
 import java.util.Enumeration;
 import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import net.hasor.core.AppContext;
 import net.hasor.mvc.ModelController;
 import net.hasor.web.startup.RuntimeFilter;
@@ -32,6 +34,7 @@ import net.hasor.web.startup.RuntimeFilter;
  * @author JFinal
  * @author 赵永春 (zyc@hasor.net)
  */
+@SuppressWarnings("unchecked")
 public abstract class AbstractWebController implements ModelController {
     private ThreadLocal<HttpServletRequest>  httpRequest  = new ThreadLocal<HttpServletRequest>();
     private ThreadLocal<HttpServletResponse> httpResponse = new ThreadLocal<HttpServletResponse>();

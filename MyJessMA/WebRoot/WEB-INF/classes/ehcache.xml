@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd" updateCheck="false">
+	<!-- 缓存到磁盘的路径 -->
+	<diskStore path="java.io.tmpdir/EhCache"/>
+	<!-- 
+    <defaultCache
+		maxElementsInMemory="1000"
+		eternal="false"
+		timeToIdleSeconds="300"
+		timeToLiveSeconds="600"
+		overflowToDisk="true"
+		diskSpoolBufferSizeMB="30"
+		maxElementsOnDisk="100"
+		diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="100"
+		memoryStoreEvictionPolicy="LRU"
+		statistics="false"
+	/>
+     <cache name="mycache"
+		maxElementsInMemory="3000"
+		eternal="false"
+		timeToIdleSeconds="300"
+		timeToLiveSeconds="600"
+		overflowToDisk="true"
+		diskSpoolBufferSizeMB="30"
+		maxElementsOnDisk="100"
+		diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="100"
+		memoryStoreEvictionPolicy="LFU"
+		statistics="false"
+	/>
+	-->
+	
+	<!-- 
+		name : 缓存器名称（与 web.xml 中 Filter 的 cacheName 对应）
+		maxElementsInMemory : 内存中缓存元素的最大数目
+		maxElementsOnDisk : 磁盘中缓存元素的最大数目
+		eternal : 缓存是否会过期，如果为 true 则忽略 timeToIdleSeconds 和 timeToLiveSeconds
+		overflowToDisk : 内存中缓存已满时是否缓存到磁盘，如果为 false 则忽略 maxElementsOnDisk
+		timeToIdleSeconds : 缓存元素的最大闲置时间（秒），这段时间内如果不访问该元素则缓存失效
+		timeToLiveSeconds : 缓存元素的最大生存时间（秒），超过这段时间则强制缓存失效
+		memoryStoreEvictionPolicy : 使用 LFU 算法清除缓存 
+	-->
+	<cache name="MyWebCache"
+		maxElementsInMemory="3000"
+		maxElementsOnDisk="10000"
+		eternal="false"
+		overflowToDisk="true"
+		timeToIdleSeconds="60"
+		timeToLiveSeconds="300"
+		memoryStoreEvictionPolicy="LFU"
+	/>
+</ehcache>
+

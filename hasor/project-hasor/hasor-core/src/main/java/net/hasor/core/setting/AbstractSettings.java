@@ -26,8 +26,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+
 import net.hasor.core.Settings;
 import net.hasor.core.XmlNode;
+
 import org.more.convert.ConverterUtils;
 import org.more.util.ScanClassPath;
 import org.more.util.StringUtils;
@@ -36,6 +38,7 @@ import org.more.util.StringUtils;
  * @version : 2013-4-2
  * @author 赵永春 (zyc@hasor.net)
  */
+@SuppressWarnings("unchecked")
 public abstract class AbstractSettings implements Settings {
     /**获取一个 Map，该Map中保存了所有配置信息。*/
     protected abstract Map<String, Map<String, SettingValue>> getFullSettingsMap();

@@ -17,12 +17,14 @@ package net.hasor.core.factorys;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.hasor.core.ApiBinder.Matcher;
 import net.hasor.core.BindInfo;
 import net.hasor.core.Provider;
 import net.hasor.core.info.AbstractBindInfoProviderAdapter;
 import net.hasor.core.info.CustomerProvider;
 import net.hasor.core.info.DefaultBindInfoProviderAdapter;
+
 import org.more.classcode.MoreClassLoader;
 import org.more.classcode.aop.AopClassConfig;
 import org.more.classcode.aop.AopMatcher;
@@ -32,6 +34,7 @@ import org.more.util.ExceptionUtils;
  * @version : 2014年7月4日
  * @author 赵永春(zyc@hasor.net)
  */
+@SuppressWarnings({"unchecked"})
 public class HasorRegisterFactory extends AbstractBindInfoFactory {
     /**创建对象*/
     protected <T> T createObject(Class<T> newType, HasorBindInfoProviderAdapter<T> infoAdapter) throws Exception {

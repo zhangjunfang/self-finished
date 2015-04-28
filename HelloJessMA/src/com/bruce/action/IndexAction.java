@@ -1,4 +1,4 @@
-package com.bruce.action;
+package com.bruce.action;  
 
 import java.util.Date;
 

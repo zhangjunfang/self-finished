@@ -19,6 +19,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import net.hasor.core.ApiBinder;
 import net.hasor.core.AppContext;
 import net.hasor.core.AppContextAware;
@@ -29,6 +30,7 @@ import net.hasor.core.context.listener.ContextInitializeListener;
 import net.hasor.core.context.listener.ContextShutdownListener;
 import net.hasor.core.context.listener.ContextStartListener;
 import net.hasor.core.info.AbstractBindInfoProviderAdapter;
+
 import org.more.util.ArrayUtils;
 import org.more.util.BeanUtils;
 import org.more.util.ExceptionUtils;
@@ -38,6 +40,7 @@ import org.more.util.StringUtils;
  * @version : 2014-5-10
  * @author 赵永春 (zyc@byshell.org)
  */
+@SuppressWarnings("unchecked")
 public abstract class AbstractBindInfoFactory implements BindInfoFactory, AppContextAware,//
         ContextInitializeListener, ContextStartListener, ContextShutdownListener {
     private BindInfoDefineManager defineManager = null;

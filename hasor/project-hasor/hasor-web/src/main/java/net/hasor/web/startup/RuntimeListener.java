@@ -19,11 +19,13 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+
 import net.hasor.core.AppContext;
 import net.hasor.core.Module;
 import net.hasor.web.WebAppContext;
 import net.hasor.web.binder.ListenerPipeline;
 import net.hasor.web.context.WebStandardAppContext;
+
 import org.more.logger.LoggerHelper;
 import org.more.util.ContextClassLoaderLocal;
 import org.more.util.ExceptionUtils;
@@ -33,6 +35,7 @@ import org.more.util.StringUtils;
  * @version : 2013-3-25
  * @author 赵永春 (zyc@hasor.net)
  */
+@SuppressWarnings("unchecked")
 public class RuntimeListener implements ServletContextListener, HttpSessionListener {
     public static final String                             AppContextName          = AppContext.class.getName();
     private WebAppContext                                  appContext              = null;

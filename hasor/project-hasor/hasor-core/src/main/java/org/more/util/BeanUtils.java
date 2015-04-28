@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import org.more.NullArgumentException;
 import org.more.convert.ConverterUtils;
 /**
@@ -29,6 +30,7 @@ import org.more.convert.ConverterUtils;
  * @version : 2011-6-3
  * @author 赵永春 (zyc@hasor.net)
  */
+@SuppressWarnings({"rawtypes","unchecked"})
 public abstract class BeanUtils {
     /**获取指定类型的默认值。*/
     public static Object getDefaultValue(final Class<?> returnType) {

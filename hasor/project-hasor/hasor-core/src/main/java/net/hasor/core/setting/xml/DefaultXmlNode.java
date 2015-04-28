@@ -19,8 +19,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import net.hasor.core.XmlNode;
 import net.hasor.core.setting.FieldProperty;
+
 import org.more.convert.ConverterUtils;
 import org.more.util.StringUtils;
 /**
@@ -28,6 +30,7 @@ import org.more.util.StringUtils;
  * @version : 2013-4-22
  * @author 赵永春 (zyc@hasor.net)
  */
+@SuppressWarnings("unchecked")
 public class DefaultXmlNode implements XmlNode, FieldProperty {
     private String              elementName       = null;
     private String              textString        = null;

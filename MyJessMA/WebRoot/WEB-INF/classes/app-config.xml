@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APP	xmlns="http://www.jessma.org"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.jessma.org http://www.jessma.org/schema/app-config-3.5.xsd">
+		
+	<!-- 系统配置（必填） -->
+	<system>
+		<!-- Session 管理器（可选） -->
+		<!-- 可以配置多个，不同的 Session 管理器可使用不同的方式连接不同的数据库 -->
+		<database-session-managers>
+			<!-- name - 名称（必填），class - 管理器实现类（必填） -->
+			<manager name="session-mgr-1" class="org.jessma.dao.jdbc.DruidSessionMgr" />
+			<manager name="session-mgr-2" class="org.jessma.dao.mybatis.MyBatisSessionMgr">
+				<!-- 传递给 Session 管理器的初始化参数 -->
+				<initialize-args>
+					<!-- 第一个参数 -->
+					<arg></arg>
+					<!-- 第二个参数 -->
+					<arg></arg>
+					<!-- 第三个参数 -->
+					<arg>vo\.mapper</arg>
+				</initialize-args>
+			</manager>
+			<manager name="session-mgr-3" class="org.jessma.dao.hbn.HibernateSessionMgr">
+				<initialize-args>
+					<arg></arg>
+					<arg>vo</arg>
+				</initialize-args>
+			</manager>
+		</database-session-managers>
+		<!-- 应用程序生命周期监听器（可选）：接收应用程序启动和关闭通知 -->
+		<app-life-cycle-listener class="global.MyLifeCycleListener" />
+		<!-- 用户配置信息解析器（可选）：解析 '<user></user>' 中的配置信息 -->
+		<user-config-parser class="global.MyConfigParser" />
+	</system>
+	
+	<!-- 用户配置（可选） -->
+	<user>
+		<my-home>http://www.jessma.org</my-home>
+	</user>
+</APP>

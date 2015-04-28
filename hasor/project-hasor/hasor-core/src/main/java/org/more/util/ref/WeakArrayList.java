@@ -25,13 +25,14 @@ import java.util.Collection;
  * @version : 2013-11-8
  * @author (网络收集)
  */
+@SuppressWarnings("unchecked")
 public class WeakArrayList<T> extends AbstractList<T> {
     private static final Object               NULL_VALUE = new Object();
     private final transient ReferenceQueue<T> queue;
     private Object[]                          data;
     private int                               size;
     private boolean                           enquedElement;
-    private static <T> T maskNull(final T value) {
+	private static <T> T maskNull(final T value) {
         return (T) (value == null ? WeakArrayList.NULL_VALUE : value);
     }
     private static <T> T unmaskNull(final T value) {
@@ -99,7 +100,6 @@ public class WeakArrayList<T> extends AbstractList<T> {
             this.data = Arrays.copyOf(this.data, this.size);
         }
     }
-    @SuppressWarnings("unchecked")
     public int expurge() {
         int j;
         while (this.queue.poll() != null) {
@@ -149,7 +149,6 @@ public class WeakArrayList<T> extends AbstractList<T> {
         return this.expurge();
     }
     @Override
-    @SuppressWarnings("unchecked")
     public T get(final int index) {
         Object value;
         do {
@@ -159,7 +158,6 @@ public class WeakArrayList<T> extends AbstractList<T> {
         return (T) WeakArrayList.unmaskNull(value);
     }
     @Override
-    @SuppressWarnings("unchecked")
     public T set(final int index, final T element) {
         Object oldValue;
         Reference<T> ref;
@@ -183,7 +181,6 @@ public class WeakArrayList<T> extends AbstractList<T> {
         this.modCount += 1;
     }
     @Override
-    @SuppressWarnings("unchecked")
     public T remove(final int index) {
         Object oldValue;
         Reference<T> ref;

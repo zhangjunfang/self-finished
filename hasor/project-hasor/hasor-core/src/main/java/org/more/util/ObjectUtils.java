@@ -35,6 +35,7 @@ import java.io.Serializable;
  * @version $Id: ObjectUtils.java 1057434 2011-01-11 01:27:37Z niallp $
  */
 //@Immutable
+@SuppressWarnings({"rawtypes","unchecked"})
 public class ObjectUtils {
     /**
      * <p>Singleton used as a <code>null</code> placeholder where

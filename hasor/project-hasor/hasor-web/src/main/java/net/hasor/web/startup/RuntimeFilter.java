@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -27,10 +28,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import net.hasor.core.AppContext;
 import net.hasor.core.Hasor;
 import net.hasor.web.WebAppContext;
 import net.hasor.web.binder.FilterPipeline;
+
 import org.more.logger.LoggerHelper;
 /**
  * 入口Filter，同一个应用程序只能实例化一个 RuntimeFilter 对象。
@@ -42,7 +45,8 @@ public class RuntimeFilter implements Filter {
     private FilterPipeline filterPipeline = null;
     //
     /**初始化过滤器，初始化会同时初始化FilterPipeline*/
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public synchronized void init(final FilterConfig filterConfig) throws ServletException {
         if (this.appContext == null) {
             ServletContext servletContext = filterConfig.getServletContext();

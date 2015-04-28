@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.Comparator;
+
 import org.more.util.ArrayUtils;
 import org.more.util.NumberUtils;
 /** 
@@ -87,6 +88,7 @@ import org.more.util.NumberUtils;
  * @since 1.0
  * @version $Id: CompareToBuilder.java 1056843 2011-01-09 00:29:01Z niallp $
  */
+@SuppressWarnings({"rawtypes","unchecked"})
 public class CompareToBuilder {
     /**
      * Current state of the comparison as appended fields are checked.

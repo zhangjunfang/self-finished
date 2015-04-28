@@ -20,6 +20,7 @@ import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Map;
 import java.util.WeakHashMap;
+
 import org.more.util.ClassUtils;
 import org.more.util.ObjectUtils;
 import org.more.util.SystemUtils;
@@ -64,8 +65,13 @@ import org.more.util.SystemUtils;
  * @since 1.0
  * @version $Id: ToStringStyle.java 907168 2010-02-06 03:33:50Z mbenson $
  */
+@SuppressWarnings({"rawtypes","unchecked"})
 public abstract class ToStringStyle implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6480456319104314605L;
+	/**
      * The default toString style. Using the Using the <code>Person</code>
      * example from {@link ToStringBuilder}, the output would look like this:
      *
@@ -123,7 +129,7 @@ public abstract class ToStringStyle implements Serializable {
      * to detect cyclical object references and avoid infinite loops.
      * </p>
      */
-    private static final ThreadLocal  REGISTRY             = new ThreadLocal();
+	private static final ThreadLocal  REGISTRY             = new ThreadLocal();
     /**
      * <p>
      * Returns the registry of objects being traversed by the <code>reflectionToString</code>

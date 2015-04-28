@@ -26,6 +26,7 @@ import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.UUID;
+
 import net.hasor.core.ApiBinder.Matcher;
 import net.hasor.core.BindInfo;
 import net.hasor.core.BindInfoBuilder;
@@ -34,6 +35,7 @@ import net.hasor.core.MethodInterceptor;
 import net.hasor.core.binder.InstanceProvider;
 import net.hasor.core.info.AbstractBindInfoProviderAdapter;
 import net.hasor.core.info.DefaultBindInfoProviderAdapter;
+
 import org.more.RepeateException;
 import org.more.logger.LoggerHelper;
 import org.more.util.Iterators;
@@ -43,6 +45,7 @@ import org.more.util.StringUtils;
  * @version : 2014-5-10
  * @author 赵永春 (zyc@byshell.org)
  */
+@SuppressWarnings({"unchecked"})
 public abstract class AbstractBindInfoDefineManager implements BindInfoDefineManager {
     private Map<Class<?>, List<AbstractBindInfoProviderAdapter<?>>> registerDataSource = new HashMap<Class<?>, List<AbstractBindInfoProviderAdapter<?>>>();
     private Map<String, AbstractBindInfoProviderAdapter<?>>         idDataSource       = new HashMap<String, AbstractBindInfoProviderAdapter<?>>();
