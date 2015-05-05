@@ -47,7 +47,7 @@
     <span #annTitle("Add the &d parameter")>
       Distance (KM):
       <input id="d" name="d" type="text" size="6"
-        value="#if($dist != '')${dist}#{else}10#end"  ## TODO: isn't the default of 10 above sufficient?  no if/else needed?
+        value="#if($dist != '')${dist}#{else}10#end"  ## : isn't the default of 10 above sufficient?  no if/else needed?
       />
     </span>
 

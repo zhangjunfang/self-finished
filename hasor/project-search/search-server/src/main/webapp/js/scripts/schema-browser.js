@@ -665,7 +665,7 @@ sammy.get(new RegExp(app.core_regex_base + '\\/(schema-browser)$'), function(con
 							arg_content = key + ': ';
 
 							if ('synonyms' === key || 'words' === key) {
-								// @TODO: set link target for file
+								// @: set link target for file
 								arg_content += '<a>' + analyzer_data.args[key] + '</a>';
 							} else {
 								arg_content += analyzer_data.args[key];
@@ -798,7 +798,7 @@ sammy.get(new RegExp(app.core_regex_base + '\\/(schema-browser)$'), function(con
 		}
 	} else {
 		trigger_params.callback = function(schema_browser_data, data_element) {
-			data_element.show();// TODO
+			data_element.show();// 
 		};
 	}
 

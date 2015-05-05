@@ -48,8 +48,8 @@ function addWizardFields(active_core, wizard) {
 	var select_options = "";
 	// Populate the select options based off the Fields REST API
 	$.getJSON(window.location.protocol + '//' + window.location.host + core_basepath + "/schema/fields").done(
-	// TODO: handle dynamic fields
-	// TODO: get the unique key, too
+	// : handle dynamic fields
+	// : get the unique key, too
 	function(data) {
 		var field_select = $("#wiz-field-select", wizard);
 		field_select.empty();
@@ -205,7 +205,7 @@ sammy.get(new RegExp(app.core_regex_base + '\\/(documents)$'), function(context)
 				} else if (the_document.indexOf("{") >= 0) {
 					// JSON
 					content_type = "application/json";
-				} // TODO: do we need to handle others?
+				} // : do we need to handle others?
 			} else {
 				// How to handle other?
 			}

@@ -25,6 +25,6 @@ public abstract class SearchModule extends RsfModule {
     @Override
     public void loadModule(RsfApiBinder apiBinder) throws Throwable {
         
-        // TODO Auto-generated method stub
+        //  Auto-generated method stub
     }
 }

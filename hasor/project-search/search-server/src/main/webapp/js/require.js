@@ -1800,7 +1800,7 @@ var requirejs, require, define;
      * Adds a node to the DOM. Public function since used by the order plugin.
      * This method should not normally be called by outside code.
      */
-    req.addScriptToDom = function (node) {
+    req.addScriptm = function (node) {
         //For some cache cases in IE 6-8, the script executes before the end
         //of the appendChild execution, so to tie an anonymous define
         //call to the module name (which is stored on the node), hold on
@@ -1939,7 +1939,7 @@ var requirejs, require, define;
 
             //Fetch only means waiting to attach to DOM after loaded.
             if (!fetchOnlyFunction) {
-                req.addScriptToDom(node);
+                req.addScriptm(node);
             }
 
             return node;
@@ -5168,7 +5168,7 @@ jQuery.event = {
 		// Handle a global trigger
 		if ( !elem ) {
 
-			// TODO: Stop taunting the data cache; remove global events and always attach to document
+			// : Stop taunting the data cache; remove global events and always attach to document
 			cache = jQuery.cache;
 			for ( i in cache ) {
 				if ( cache[ i ].events && cache[ i ].events[ type ] ) {
@@ -6501,7 +6501,7 @@ var Expr = Sizzle.selectors = {
 				Sizzle.error( match[0] );
 			}
 
-			// TODO: Move to normal caching system
+			// : Move to normal caching system
 			match[0] = done++;
 
 			return match;

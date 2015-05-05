@@ -53,7 +53,7 @@ public class DemoStartModule extends WebModule implements StartModule {
         //3.RSF
         apiBinder.installModule(new RsfModule() {
             public void loadModule(RsfApiBinder apiBinder) throws Throwable {
-                // TODO Auto-generated method stub
+                //  Auto-generated method stub
             }
         });
         //4.Search

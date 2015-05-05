@@ -636,7 +636,7 @@ function d3_dispatch_event(dispatch) {
 
   return event;
 }
-// TODO align
+//  align
 d3.format = function(specifier) {
   var match = d3_format_re.exec(specifier),
       fill = match[1] || " ",
@@ -653,7 +653,7 @@ d3.format = function(specifier) {
   if (precision) precision = +precision.substring(1);
 
   if (zfill) {
-    fill = "0"; // TODO align = "=";
+    fill = "0"; //  align = "=";
     if (comma) width -= Math.floor((width - 1) / 4);
   }
 
@@ -1769,8 +1769,8 @@ d3_selectionPrototype.html = function(value) {
       ? function() { this.innerHTML = ""; }
       : function() { this.innerHTML = value; });
 };
-// TODO append(node)?
-// TODO append(function)?
+//  append(node)?
+//  append(function)?
 d3_selectionPrototype.append = function(name) {
   name = d3.ns.qualify(name);
 
@@ -1784,9 +1784,9 @@ d3_selectionPrototype.append = function(name) {
 
   return this.select(name.local ? appendNS : append);
 };
-// TODO insert(node, function)?
-// TODO insert(function, string)?
-// TODO insert(function, function)?
+//  insert(node, function)?
+//  insert(function, string)?
+//  insert(function, function)?
 d3_selectionPrototype.insert = function(name, before) {
   name = d3.ns.qualify(name);
 
@@ -1804,9 +1804,9 @@ d3_selectionPrototype.insert = function(name, before) {
 
   return this.select(name.local ? insertNS : insert);
 };
-// TODO remove(selector)?
-// TODO remove(node)?
-// TODO remove(function)?
+//  remove(selector)?
+//  remove(node)?
+//  remove(function)?
 d3_selectionPrototype.remove = function() {
   return this.each(function() {
     var parent = this.parentNode;
@@ -2043,7 +2043,7 @@ d3_selectionPrototype.each = function(callback) {
 // Note: assigning to the arguments array simultaneously changes the value of
 // the corresponding argument!
 //
-// TODO The `this` argument probably shouldn't be the first argument to the
+//  The `this` argument probably shouldn't be the first argument to the
 // callback, anyway, since it's redundant. However, that will require a major
 // version bump due to backwards compatibility, so I'm not changing it right
 // away.
@@ -2082,15 +2082,15 @@ var d3_selectionRoot = d3_selection([[document]]);
 
 d3_selectionRoot[0].parentNode = d3_selectRoot;
 
-// TODO fast singleton implementation!
-// TODO select(function)
+//  fast singleton implementation!
+//  select(function)
 d3.select = function(selector) {
   return typeof selector === "string"
       ? d3_selectionRoot.select(selector)
       : d3_selection([[selector]]); // assume node
 };
 
-// TODO selectAll(function)
+//  selectAll(function)
 d3.selectAll = function(selector) {
   return typeof selector === "string"
       ? d3_selectionRoot.selectAll(selector)
@@ -3814,7 +3814,7 @@ d3.svg.chord = function() {
       startAngle = d3_svg_arcStartAngle,
       endAngle = d3_svg_arcEndAngle;
 
-  // TODO Allow control point to be customized.
+  //  Allow control point to be customized.
 
   function chord(d, i) {
     var s = subgroup(this, source, d, i),
@@ -4010,7 +4010,7 @@ function d3_svg_symbolCircle(size) {
       + "Z";
 }
 
-// TODO cross-diagonal?
+//  cross-diagonal?
 var d3_svg_symbols = d3.map({
   "circle": d3_svg_symbolCircle,
   "cross": function(size) {
@@ -4632,7 +4632,7 @@ var d3_svg_brushResizes = [
   []
 ];
 d3.behavior = {};
-// TODO Track touch points by identifier.
+//  Track touch points by identifier.
 
 d3.behavior.drag = function() {
   var event = d3_eventDispatch(drag, "drag", "dragstart", "dragend"),
@@ -5021,8 +5021,8 @@ d3.layout.chord = function() {
     }
 
     // Convert the sum to scaling factor for [0, 2pi].
-    // TODO Allow start and end angle to be specified.
-    // TODO Allow padding to be specified as percentage?
+    //  Allow start and end angle to be specified.
+    //  Allow padding to be specified as percentage?
     k = (2 * Math.PI - padding * n) / k;
 
     // Compute the start and end angle for each group and subgroup.
@@ -6903,7 +6903,7 @@ function d3_csv_formatValue(text) {
 d3.geo = {};
 
 var d3_geo_radians = Math.PI / 180;
-// TODO clip input coordinates on opposite hemisphere
+//  clip input coordinates on opposite hemisphere
 d3.geo.azimuthal = function() {
   var mode = "orthographic", // or stereographic, gnomonic, equidistant or equalarea
       origin,
@@ -7061,7 +7061,7 @@ d3.geo.albers = function() {
 // A composite projection for the United States, 960x500. The set of standard
 // parallels for each region comes from USGS, which is published here:
 // http://egsc.usgs.gov/isb/pubs/MapProjections/projections.html#albers
-// TODO allow the composite projection to be rescaled?
+//  allow the composite projection to be rescaled?
 d3.geo.albersUsa = function() {
   var lower48 = d3.geo.albers();
 
@@ -7464,12 +7464,12 @@ d3.geo.path = function() {
 
   var centroidType = path.centroid = d3_geo_type({
 
-    // TODO FeatureCollection
-    // TODO Point
-    // TODO MultiPoint
-    // TODO LineString
-    // TODO MultiLineString
-    // TODO GeometryCollection
+    //  FeatureCollection
+    //  Point
+    //  MultiPoint
+    //  LineString
+    //  MultiLineString
+    //  GeometryCollection
 
     Feature: function(o) {
       return centroidType(o.geometry);
@@ -7610,7 +7610,7 @@ function d3_geo_boundsPolygon(o, f) {
     f.apply(null, a[i]);
   }
 }
-// TODO breakAtDateLine?
+//  breakAtDateLine?
 
 d3.geo.circle = function() {
   var origin = [0, 0],
@@ -7619,7 +7619,7 @@ d3.geo.circle = function() {
       arc = d3.geo.greatArc().target(Object);
 
   function circle() {
-    // TODO render a circle as a Polygon
+    //  render a circle as a Polygon
   }
 
   function visible(point) {
@@ -8809,22 +8809,22 @@ var d3_time_parsers = {
   e: d3_time_parseDay,
   H: d3_time_parseHour24,
   I: d3_time_parseHour24,
-  // j: function(d, s, i) { /*TODO day of year [001,366] */ return i; },
+  // j: function(d, s, i) { /* day of year [001,366] */ return i; },
   L: d3_time_parseMilliseconds,
   m: d3_time_parseMonthNumber,
   M: d3_time_parseMinutes,
   p: d3_time_parseAmPm,
   S: d3_time_parseSeconds,
-  // U: function(d, s, i) { /*TODO week number (sunday) [00,53] */ return i; },
-  // w: function(d, s, i) { /*TODO weekday [0,6] */ return i; },
-  // W: function(d, s, i) { /*TODO week number (monday) [00,53] */ return i; },
+  // U: function(d, s, i) { /* week number (sunday) [00,53] */ return i; },
+  // w: function(d, s, i) { /* weekday [0,6] */ return i; },
+  // W: function(d, s, i) { /* week number (monday) [00,53] */ return i; },
   x: d3_time_parseLocaleDate,
   X: d3_time_parseLocaleTime,
   y: d3_time_parseYear,
   Y: d3_time_parseFullYear
   // ,
-  // Z: function(d, s, i) { /*TODO time zone */ return i; },
-  // "%": function(d, s, i) { /*TODO literal % */ return i; }
+  // Z: function(d, s, i) { /* time zone */ return i; },
+  // "%": function(d, s, i) { /* literal % */ return i; }
 };
 
 // Note: weekday is validated, but does not set the date.
@@ -8979,7 +8979,7 @@ var d3_time_amPmLookup = d3.map({
   pm: 1
 });
 
-// TODO table of time zone offset names?
+//  table of time zone offset names?
 function d3_time_zone(d) {
   var z = d.getTimezoneOffset(),
       zs = z > 0 ? "-" : "+",
@@ -9239,7 +9239,7 @@ function d3_time_scale(linear, methods, format) {
   return d3.rebind(scale, linear, "range", "rangeRound", "interpolate", "clamp");
 }
 
-// TODO expose d3_scaleExtent?
+//  expose d3_scaleExtent?
 function d3_time_scaleExtent(domain) {
   var start = domain[0], stop = domain[domain.length - 1];
   return start < stop ? [start, stop] : [stop, start];

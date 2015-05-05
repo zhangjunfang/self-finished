@@ -1,0 +1,245 @@
+/*
+ * Copyright 2011-2013 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.springframework.data.redis.connection.jedis;
+
+import org.junit.After;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.data.redis.connection.AbstractConnectionTransactionIntegrationTests;
+import org.springframework.data.redis.test.util.RelaxedJUnit4ClassRunner;
+import org.springframework.test.annotation.IfProfileValue;
+import org.springframework.test.context.ContextConfiguration;
+
+/**
+ * Integration test of {@link JedisConnection} transaction functionality.
+ * <p>
+ * Each method of {@link JedisConnection} behaves differently if executed with a transaction (i.e. between multi and
+ * exec or discard calls), so this test covers those branching points
+ * 
+ * @author Jennifer Hickey
+ */
+@RunWith(RelaxedJUnit4ClassRunner.class)
+@ContextConfiguration("JedisConnectionIntegrationTests-context.xml")
+public class JedisConnectionTransactionIntegrationTests extends AbstractConnectionTransactionIntegrationTests {
+
+	@Override
+	@After
+	public void tearDown() {
+		try {
+			connection.flushDb();
+			connection.close();
+		} catch (Exception e) {
+			// Jedis leaves some incomplete data in OutputStream on NPE caused
+			// by null key/value tests
+			// Attempting to close the connection will result in error on
+			// sending QUIT to Redis
+		}
+		connection = null;
+	}
+
+	@Override
+	@Ignore("Jedis issue: Transaction tries to return String instead of List<String>")
+	public void testGetConfig() {}
+
+	// Unsupported Ops
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testScriptLoadEvalSha() {
+		super.testScriptLoadEvalSha();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalShaArrayStrings() {
+		super.testEvalShaArrayStrings();
+	}
+	
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalShaArrayBytes() {
+		super.testEvalShaArrayBytes();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalShaNotFound() {
+		super.testEvalShaNotFound();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalShaArrayError() {
+		super.testEvalShaArrayError();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalArrayScriptError() {
+		super.testEvalArrayScriptError();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnString() {
+		super.testEvalReturnString();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnNumber() {
+		super.testEvalReturnNumber();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnSingleOK() {
+		super.testEvalReturnSingleOK();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnSingleError() {
+		super.testEvalReturnSingleError();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnFalse() {
+		super.testEvalReturnFalse();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnTrue() {
+		super.testEvalReturnTrue();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnArrayStrings() {
+		super.testEvalReturnArrayStrings();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnArrayNumbers() {
+		super.testEvalReturnArrayNumbers();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnArrayOKs() {
+		super.testEvalReturnArrayOKs();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnArrayFalses() {
+		super.testEvalReturnArrayFalses();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnArrayTrues() {
+		super.testEvalReturnArrayTrues();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testScriptExists() {
+		super.testScriptExists();
+	}
+
+	@Override
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	@Test(expected = UnsupportedOperationException.class)
+	public void testScriptKill() {
+		connection.scriptKill();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testScriptFlush() {
+		connection.scriptFlush();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testInfoBySection() throws Exception {
+		super.testInfoBySection();
+	}
+
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	public void testZAddMultiple() {
+		super.testZAddMultiple();
+	}
+
+	@Override
+	@Test(expected = InvalidDataAccessApiUsageException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testRestoreBadData() {
+		super.testRestoreBadData();
+	}
+
+	@Override
+	@Test(expected = InvalidDataAccessApiUsageException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testRestoreExistingKey() {
+		super.testRestoreExistingKey();
+	}
+
+	/**
+	 * @see DATAREDIS-269
+	 */
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	public void clientSetNameWorksCorrectly() {
+		super.clientSetNameWorksCorrectly();
+	}
+
+	/**
+	 * @see DATAREDIS-268
+	 */
+	@Override
+	@Test(expected = UnsupportedOperationException.class)
+	public void testListClientsContainsAtLeastOneElement() {
+		super.testListClientsContainsAtLeastOneElement();
+	}
+}

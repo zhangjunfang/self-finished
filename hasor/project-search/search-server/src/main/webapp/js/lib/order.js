@@ -134,7 +134,7 @@ THE SOFTWARE.
             if (loadedNode &&
                 loadedNode.getAttribute('data-orderloaded') === 'loaded') {
                 delete scriptNodes[resourceName];
-                require.addScriptToDom(loadedNode);
+                require.addScriptm(loadedNode);
             } else {
                 break;
             }

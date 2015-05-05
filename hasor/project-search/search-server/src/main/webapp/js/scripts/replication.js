@@ -65,8 +65,8 @@ var replication_fetch_status = function() {
 				$('span', eta_element).text(app.convert_seconds_to_readable_time(data.slave.timeRemaining));
 
 				var bar_element = $('#bar', progress_element);
-				$('.files span', bar_element).text(data.slave.numFilesToDownload);
-				$('.size span', bar_element).text(data.slave.bytesToDownload);
+				$('.files span', bar_element).text(data.slave.numFileswnload);
+				$('.size span', bar_element).text(data.slave.byteswnload);
 
 				var speed_element = $('#speed', progress_element);
 				$('span', speed_element).text(data.slave.downloadSpeed);

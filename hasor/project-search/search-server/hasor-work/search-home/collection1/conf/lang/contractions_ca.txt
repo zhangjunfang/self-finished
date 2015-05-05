@@ -1,5 +1,5 @@
 # Set of Catalan contractions for ElisionFilter
-# TODO: load this as a resource from the analyzer and sync it in build.xml
+# : load this as a resource from the analyzer and sync it in build.xml
 d
 l
 m

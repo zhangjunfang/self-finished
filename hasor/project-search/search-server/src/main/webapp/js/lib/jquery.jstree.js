@@ -423,7 +423,7 @@ THE SOFTWARE.
 					}
 				}
 				if(done) { 
-					// TODO: find a more elegant approach to syncronizing returning requests
+					// : find a more elegant approach to syncronizing returning requests
 					if(this.data.core.reopen) { clearTimeout(this.data.core.reopen); }
 					this.data.core.reopen = setTimeout(function () { _this.__callback({}, _this); }, 50);
 					this.data.core.refreshing = false;
@@ -728,7 +728,7 @@ THE SOFTWARE.
 				p.ot = $.jstree._reference(p.o) || this;
 				p.o = p.ot._get_node(o);
 				p.r = r === - 1 ? -1 : this._get_node(r);
-				p.p = (typeof p === "undefined") ? "last" : pos; // TODO: move to a setting
+				p.p = (typeof p === "undefined") ? "last" : pos; // : move to a setting
 				if(!is_cb && prepared_move.o && prepared_move.o[0] === p.o[0] && prepared_move.r[0] === p.r[0] && prepared_move.p === p.p) {
 					this.__callback(prepared_move);
 					if(cb) { cb.call(this, prepared_move); }
@@ -3221,7 +3221,7 @@ THE SOFTWARE.
 					d = 0;
 					if(md === 0) { return false; }
 					if(typeof m.o.d === "undefined") {
-						// TODO: deal with progressive rendering and async when checking max_depth (how to know the depth of the moved node)
+						// : deal with progressive rendering and async when checking max_depth (how to know the depth of the moved node)
 						t = m.o;
 						while(t.length > 0) {
 							t = t.find("> ul > li");

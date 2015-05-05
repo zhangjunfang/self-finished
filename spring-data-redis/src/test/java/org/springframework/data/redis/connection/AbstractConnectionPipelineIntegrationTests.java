@@ -1,0 +1,166 @@
+/*
+ * Copyright 2011-2013 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.springframework.data.redis.connection;
+
+import org.junit.Ignore;
+import org.junit.Test;
+import org.springframework.test.annotation.IfProfileValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+/**
+ * Base test class for integration tests that execute each operation of a Connection while a pipeline is open, verifying
+ * that the operations return null and the proper values are returned when closing the pipeline.
+ * <p>
+ * Pipelined results are generally native to the provider and not transformed by our {@link RedisConnection}, so this
+ * test overrides {@link AbstractConnectionIntegrationTests} when result types are different
+ * 
+ * @author Jennifer Hickey
+ */
+abstract public class AbstractConnectionPipelineIntegrationTests extends AbstractConnectionIntegrationTests {
+
+	@Override
+	@Ignore
+	public void testNullKey() throws Exception {}
+
+	@Override
+	@Ignore
+	public void testNullValue() throws Exception {}
+
+	@Override
+	@Ignore
+	public void testHashNullKey() throws Exception {}
+
+	@Override
+	@Ignore
+	public void testHashNullValue() throws Exception {}
+
+	@Override
+	@Ignore("Pub/Sub not supported while pipelining")
+	public void testPubSubWithNamedChannels() throws Exception {}
+
+	@Override
+	@Ignore("Pub/Sub not supported while pipelining")
+	public void testPubSubWithPatterns() throws Exception {}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	public void testExecWithoutMulti() {
+		super.testExecWithoutMulti();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	public void testErrorInTx() {
+		super.testErrorInTx();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	public void exceptionExecuteNative() throws Exception {
+		super.exceptionExecuteNative();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalShaNotFound() {
+		super.testEvalShaNotFound();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalReturnSingleError() {
+		super.testEvalReturnSingleError();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testRestoreBadData() {
+		super.testRestoreBadData();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testRestoreExistingKey() {
+		super.testRestoreExistingKey();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalArrayScriptError() {
+		super.testEvalArrayScriptError();
+	}
+
+	@Override
+	@Test(expected = RedisPipelineException.class)
+	@IfProfileValue(name = "redisVersion", value = "2.6+")
+	public void testEvalShaArrayError() {
+		super.testEvalShaArrayError();
+	}
+
+	@Test
+	public void testOpenPipelineTwice() {
+		connection.openPipeline();
+		// ensure things still proceed normally with an extra openPipeline
+		testGetSet();
+	}
+
+	@Test
+	public void testClosePipelineNotOpen() {
+		getResults();
+		List<Object> results = connection.closePipeline();
+		assertTrue(results.isEmpty());
+	}
+
+	@Override
+	protected void initConnection() {
+		connection.openPipeline();
+	}
+
+	@Override
+	protected void verifyResults(List<Object> expected) {
+		List<Object> expectedPipeline = new ArrayList<Object>();
+		for (int i = 0; i < actual.size(); i++) {
+			expectedPipeline.add(null);
+		}
+		assertEquals(expectedPipeline, actual);
+		List<Object> results = getResults();
+		assertEquals(expected, results);
+	}
+
+	@Override
+	protected List<Object> getResults() {
+
+		try {
+			// we give redis some time to keep up
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		return connection.closePipeline();
+	}
+}

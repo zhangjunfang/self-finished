@@ -69,11 +69,11 @@ quien          |  whom, that
   | están      from ESTAR
   | estado     from ESTAR
 desde          |  from
-todo           |  all
+           |  all
 nos            |  us
 durante        |  during
   | estados    from ESTAR
-todos          |  all
+s          |  all
 uno            |  a
 les            |  to them
 ni             |  nor

@@ -8,7 +8,7 @@
 
 #macro(url_root)/solr#end
 
-## TODO: s/url_for_solr/url_for_core/ and s/url_root/url_for_solr/
+## : s/url_for_solr/url_for_core/ and s/url_root/url_for_solr/
 #macro(core_name)$request.core.name#end
 #macro(url_for_solr)#{url_root}#if($request.core.name != "")/$request.core.name#end#end
 #macro(url_for_home)#url_for_solr/browse#end
@@ -45,7 +45,7 @@
 
 #macro(url_for_nested_facet_query $field)#url_for_home#lens&fq=$esc.url($field)#end
 
-## TODO: convert to use {!raw f=$field}$value (with escaping of course)
+## : convert to use {!raw f=$field}$value (with escaping of course)
 #macro(url_for_facet_filter $field $value)#url_for_home#lens&fq=#if($value!=$null)$esc.url($field):%22$esc.url($value)%22#else-$esc.url($field):[*+TO+*]#end#end
 
 #macro(url_for_facet_date_filter $field $value)#url_for_home#lens&fq=$esc.url($field):$esc.url($value)#end
@@ -175,7 +175,7 @@ $val##
 #if(${gapval.class.name} == "java.lang.String")
 $inval$gapval##
 #elseif(${gapval.class.name} == "java.lang.Float" || ${inval.class.name} == "java.lang.Float")
-$math.toDouble($math.add($inval,$gapval))##
+$math.uble($math.add($inval,$gapval))##
 #else
 $math.add($inval,$gapval)##
 #end

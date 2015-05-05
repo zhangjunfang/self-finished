@@ -324,7 +324,7 @@ public class SearchDocument implements Map<String, Object>, Iterable<Map.Entry<S
     public Set<Entry<String, Object>> entrySet() {
         return fields.entrySet();
     }
-    //TODO: Shouldn't the input parameter here be a String?  The fields map requires a String.
+    //: Shouldn't the input parameter here be a String?  The fields map requires a String.
     @Override
     public Object get(Object key) {
         return fields.get(key);

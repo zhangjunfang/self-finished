@@ -264,7 +264,7 @@ public class ClassReader {
                 ++i;
                 break;
             case ClassWriter.DOUBLE:
-                item.set(Double.longBitsToDouble(readLong(index)));
+                item.set(Double.longBitsuble(readLong(index)));
                 ++i;
                 break;
             case ClassWriter.UTF8: {
@@ -1478,7 +1478,7 @@ public class ClassReader {
             case 'D':
                 double[] dv = new double[size];
                 for (i = 0; i < size; i++) {
-                    dv[i] = Double.longBitsToDouble(readLong(items[readUnsignedShort(v)]));
+                    dv[i] = Double.longBitsuble(readLong(items[readUnsignedShort(v)]));
                     v += 3;
                 }
                 av.visit(name, dv);
@@ -1986,7 +1986,7 @@ public class ClassReader {
         case ClassWriter.LONG:
             return new Long(readLong(index));
         case ClassWriter.DOUBLE:
-            return new Double(Double.longBitsToDouble(readLong(index)));
+            return new Double(Double.longBitsuble(readLong(index)));
         case ClassWriter.CLASS:
             return Type.getObjectType(readUTF8(index, buf));
         case ClassWriter.STR:

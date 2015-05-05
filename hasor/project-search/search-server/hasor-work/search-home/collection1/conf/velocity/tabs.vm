@@ -3,7 +3,7 @@
  *  Usually displayed near the top of the page
  *#
 
-##TODO: Make some nice tabs here
+##: Make some nice tabs here
 
 #set($queryOpts = $params.get("queryOpts"))
 

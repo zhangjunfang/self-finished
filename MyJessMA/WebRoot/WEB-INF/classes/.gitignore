@@ -1,13 +1,8 @@
-/META-INF/
-/action/
 /app-config.xml
 /applicationContext.xml
-/dao/
 /druid.cfg.properties
 /druid.cfg.xml
 /ehcache.xml
-/global/
-/guice/
 /hibernate.cfg.xml
 /jdbc.cfg.properties
 /jdbc.cfg.xml
@@ -23,7 +18,5 @@
 /proxool.xml
 /res/
 /rest-config.xml
-/service/
-/test/
 /urlrewrite.xml
 /vo/

@@ -1,5 +1,5 @@
 # Set of overrides for the dutch stemmer
-# TODO: load this as a resource from the analyzer and sync it in build.xml
+# : load this as a resource from the analyzer and sync it in build.xml
 fiets	fiets
 bromfiets	bromfiets
 ei	eier
