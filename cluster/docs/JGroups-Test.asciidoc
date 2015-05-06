@@ -1,0 +1,112 @@
+How to run JGroups API Test Code?
+---------------------------------
+
+* All Test code
+----
+java -cp JGroups-stu.jar:jgroups-3.0.14.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.JGupsAPITestRunner
+----
+
+* `com.kylin.jgroups.te.JChannelGetTest`
+----
+java -cp JGroups-stu.jar:jgroups-3.0.14.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.test.JChannelGetTest
+----
+
+NOTE: JChannelGetTest can explicitily explain the relations among View Id, View Creater, View Coordinator, View Memembers
+
+* `com.kylin.jgroups.demo.SimplisticChat`
+----
+java -cp JGroups-stu.jar:jgroups-3.0.14.Final.jar -Djava.net.preferIPv4Stack=true com.kylin.jgroups.demo.SimplisticChat
+----
+
+* `com.kylin.jgroups.demo.ProgrammaticChat`
+----
+java -cp JGroups-stu.jar:jgroups-3.0.14.Final.jar -Djava.net.preferIPv4Stack=true com.kylin.jgroups.demo.ProgrammaticChat
+----
+
+NOTE: difference between `SimplisticChat` and `ProgrammaticChat` is one use default *udp.xml* construct JChnnel, the other use *JGroups API*
+
+Block Layer Test
+-----------------
+
+1. MessageDispather Test
+++++++++++++++++++++++++
+* Use maven build `JGroups-stu` project 
+----
+mvn clean dependency:copy-dependencies install
+----
+
+* Copy JGroups and log4j relevant jar to `target` from `dependency`
+
+* Open multiple terminal, run `com.kylin.jgroups.blocks.MessageDispatcherTest` as bellow
+----
+java -cp JGroups-stu.jar:jgroups-3.1.0.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.blocks.MessageDispatcherTest -n <name>
+----
+
+* This Test will illustrate how to use MessageDispatcher
+
+2. RpcDispatcher Content Test
+++++++++++++++++++++++++++++++
+* Use maven build `JGroups-stu` project 
+----
+mvn clean dependency:copy-dependencies install
+----
+
+* Copy JGroups and log4j relevant jar to `target` from `dependency`
+
+* Open multiple terminal, run `com.kylin.jgroups.blocks.RpcDispatcherContentTest` as bellow
+----
+java -cp JGroups-stu.jar:jgroups-3.1.0.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.blocks.RpcDispatcherContentTest -n <name>
+----
+
+* This Test will illustrate how to use RpcDispatcher
+
+3. RpcDispatcher Content Test With Future
++++++++++++++++++++++++++++++++++++++++++
+* Use maven build `JGroups-stu` project 
+----
+mvn clean dependency:copy-dependencies install
+----
+
+* Copy JGroups and log4j relevant jar to `target` from `dependency`
+
+* Open multiple terminal, run `com.kylin.jgroups.blocks.RpcDispatcherContentTestWithFuture` as bellow
+----
+java -cp JGroups-stu.jar:jgroups-3.1.0.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.blocks.RpcDispatcherContentTestWithFuture -n <name>
+----
+
+4. RpcDispatcher Content Test With ResFilter
+++++++++++++++++++++++++++++++++++++++++++++
+* Use maven build `JGroups-stu` project 
+----
+mvn clean dependency:copy-dependencies install
+----
+
+* Copy JGroups and log4j relevant jar to `target` from `dependency`
+
+* Open multiple terminal, run `com.kylin.jgroups.blocks.RpcDispatcherContentTestWithRspFilter` as bellow
+----
+java -cp JGroups-stu.jar:jgroups-3.1.0.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.blocks.RpcDispatcherContentTestWithRspFilter -n <name>
+----
+
+* This Test will illustrate how to use RpcDispatcher With RspFilter
+
+RpcDispatcher Test
+++++++++++++++++++
+
+* `com.kylin.jgroups.test.RpcDispatcherTest`
+----
+java -cp JGroups-stu.jar:jgroups-3.0.14.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.test.RpcDispatcherTest
+----
+This Test will illustrate how to use RpcDispatcherTest, open multiple terminal window, run RpcDispatcherTest as a sequence, then you can see all view members are invoved, also User object will returned, User use view members zise as id, view id as name, all members as career.
+
+* `com.kylin.jgroups.test.RpcDispatcherTestWithFuture`
+----
+java -cp JGroups-stu.jar:jgroups-3.0.14.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.test.RpcDispatcherTestWithFuture
+----
+This Test will illustrate how to use RpcDispatcherTest with Future listener, open multiple terminal window, run RpcDispatcherTestWithFuture as a sequence, then you can see all view members's getUser method, thread will sleep a random integer less then 3000 miliseconds, then constructor a User instance, which use random sleep time as id, View id as name, all memebers as career.
+
+* `com.kylin.jgroups.test.RpcDispatcherTestWithRespFilter`
+----
+java -cp JGroups-stu.jar:jgroups-3.0.14.Final.jar:log4j-1.2.16.jar  -Djava.net.preferIPv4Stack=true com.kylin.jgroups.test.RpcDispatcherTestWithRespFilter
+----
+This Test will illustrate how to use RpcDispatcherTestWithRespFilter, open multiple terminal window, run RpcDispatcherTest as a sequence, then you can see all view members are invoved, also a User object will returned, User use view members zise as id, view id as name, all members as career.

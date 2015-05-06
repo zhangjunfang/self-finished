@@ -1,0 +1,24 @@
+<infinispan> 
+	<namedCache name="custom-cache-loader">
+		<eviction strategy="FIFO" maxEntries="10" />
+		<loaders passivation="false" shared="false" preload="true">
+		   <!-- We can have multiple cache loaders, which get chained -->
+		   <fileStore
+		           fetchPersistentState="true"
+		           purgerThreads="3"
+		           purgeSynchronously="true"
+		           ignoreModifications="false"
+		           purgeOnStartup="false"
+		           location="${java.io.tmpdir}">
+		      <async
+		           enabled="true"
+		           flushLockTimeout="15000"
+		           threadPoolSize="5" />
+		      <singletonStore
+		           enabled="true"
+		           pushStateWhenCoordinator="true"
+		           pushStateTimeout="20000" />
+			   </fileStore>
+		</loaders>
+	 </namedCache>
+</infinispan>

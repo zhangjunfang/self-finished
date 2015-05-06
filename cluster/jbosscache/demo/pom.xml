@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   
+   <parent>
+        <groupId>org.jboss.cluster.demo</groupId>
+        <artifactId>jbosscache-demo-parent</artifactId>
+        <version>2.0-SNAPSHOT</version>
+    </parent>
+
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>jbosscache-replication-demo</artifactId>
+   <groupId>org.jboss.cache.demo</groupId>
+   <name>JBossCache Replication Demo</name>
+   <description>JBossCache Replication Demo</description>
+
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   </properties>
+
+   <dependencies>
+     <dependency>
+      <groupId>org.jboss.cache</groupId>
+      <artifactId>jbosscache-core</artifactId>
+    </dependency>
+    <dependency>
+		<groupId>org.beanshell</groupId>
+		<artifactId>bsh</artifactId>
+    </dependency>
+    
+    <dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+	</dependency>
+	
+	<dependency>
+        <groupId>org.jboss.cluster.demo</groupId>
+        <artifactId>cluster-demo-utils</artifactId>
+    </dependency>
+
+   </dependencies>
+   
+   <build>
+        <plugins>
+                <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+                <descriptors>
+                    <descriptor>assembly/all-jar.xml</descriptor>
+                </descriptors>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>package-all</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+           </executions>
+       </plugin>
+        </plugins>
+   </build>
+   
+
+
+</project>
