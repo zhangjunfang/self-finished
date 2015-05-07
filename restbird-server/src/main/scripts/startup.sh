@@ -1,0 +1,1 @@
+nohup java -jar restbird-server.jar &

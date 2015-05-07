@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	         http://www.springframework.org/schema/beans/spring-beans.xsd
+	         http://www.springframework.org/schema/tx
+	         http://www.springframework.org/schema/tx/spring-tx.xsd
+	         http://www.springframework.org/schema/aop
+	         http://www.springframework.org/schema/aop/spring-aop.xsd
+	         http://www.springframework.org/schema/context
+	         http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 自动扫描及注册bean -->
+	<context:component-scan base-package="com.restbird.server" />
+
+	<import resource="classpath:db/mybatis-datasource.xml" />
+	<import resource="classpath:controller/controller-mapping.xml" />
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:server.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cacheLoader" class="com.restbird.server.school.cache.CacheLoader"
+		init-method="init" autowire="byName" />
+
+	<bean id="server" class="com.restbird.server.httpserver.Server"
+		init-method="start">
+		<property name="controllerMap" ref="controllerMap" />
+		<property name="port" value="${server.port}" />
+	</bean>
+
+</beans>
