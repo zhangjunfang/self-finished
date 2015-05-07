@@ -19,7 +19,7 @@ public class ListRPC {
 		 * 
 		 * 路由包含：命名空间，所在的组以及版本号
 		 * 
-		 * */
+		 * */  
 		List<Rs> list = new ArrayList<Rs>(20);
 		MyRemotingServer myRemotingServer=new MyRemotingServer(80);
 		Route  route=new Route();
