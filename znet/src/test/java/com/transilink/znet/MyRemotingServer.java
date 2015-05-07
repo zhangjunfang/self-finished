@@ -32,7 +32,12 @@ public class MyRemotingServer extends Rs {
 		this.registerHandler(this.getRoute().toString(), new MessageHandler() {
 					public void handleMessage(Message msg, Session sess) throws IOException {
 						System.out.println("msg:\n\r"+msg);
-						System.out.println("msg.name:"+msg.getParam("name"));
+						//
+						System.out.println("get方式获取===msg.name:"+msg.getParam("name"));
+						System.out.println("HeadOrParam方式获取===msg.name:"+msg.getHeadOrParam("name"));
+						//post方式提交数据，获取参数数据方式
+						System.out.println("post方式获取===msg.name:"+new String(msg.body));
+						
 						sess.attr("sex", "男");
 						System.err.println("sess:\n\r"+sess);
 						msg.setStatus("200");   
