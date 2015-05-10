@@ -1,0 +1,39 @@
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>Archetype Created Web Application</display-name>
+	<listener>
+		<listener-class>org.tinygroup.weblayer.ApplicationStartupListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>IOfficeDocBiz</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.TG_WSServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IOfficeDocBiz</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>TinyFilter</filter-name>
+		<filter-class>org.tinygroup.weblayer.TinyHttpFilter</filter-class>
+		<!--  -->
+		<init-param>
+		 <param-name>excludePath</param-name>
+		 <param-value>.*/services.*</param-value>
+		</init-param>
+		
+		
+	</filter>
+
+	<filter-mapping>
+		<filter-name>TinyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	
+</web-app>

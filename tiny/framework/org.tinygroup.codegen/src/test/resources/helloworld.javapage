@@ -1,0 +1,10 @@
+package $beanPackageName;
+
+import java.io.Serializable;
+
+
+public class $className implements Serializable{
+     #@sayHello("String" "name")
+     #end
+     //sff实打实的
+}

@@ -1,0 +1,20 @@
+<flow id="FlowWithBegin" name="bb">
+	<nodes>
+		<node id="hello">
+			<component name="context2ObjectComponent">
+				<properties>
+					<flow-property name="resultKey" value="object_key" />
+					<flow-property name="className" value="org.tinygroup.bundlejar.BundleTestObject" />
+				</properties>
+			</component>
+		</node>
+		<node id="hello">
+			<component name="bundleComponent">
+				<properties>
+					<flow-property name="object" type="el" value="object_key" />
+					<flow-property name="i" value="1" />
+				</properties>
+			</component>
+		</node>
+	</nodes>
+</flow>

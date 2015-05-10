@@ -1,0 +1,9 @@
+${123}#eol
+${"abc"}#eol
+${true}#eol
+${false}#eol
+${[1,2,3][1]}#eol
+${1+2}#eol
+${"1"+2}#eol
+${"<html>"}#eol
+$!{"<html>"}#eol

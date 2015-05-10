@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generator-config>
+	<object-assemblies>
+		<generator-config-item bean-name=""
+			class-name="org.tinygroup.beanconverter.BeanAssembly">
+		</generator-config-item>
+	</object-assemblies>
+	<type-creators>
+		<generator-config-item bean-name=""
+			class-name="org.tinygroup.beanconverter.BeanTypeCreator">
+		</generator-config-item>
+	</type-creators>
+</generator-config>

@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byType" default-lazy-init="true">
+
+	<bean id="springBeansFileProcessor" scope="singleton"
+		class="org.tinygroup.springutil.fileresolver.SpringBeansFileProcessor">
+	</bean>
+
+	<bean id="applicationPropertyResourceConfigurer" scope="singleton"
+		class="org.tinygroup.springutil.ApplicationPropertyResourceConfigurer">
+		<property name="application">
+			<value>classpath:/application.xml</value>
+		</property>
+	</bean>
+
+</beans>

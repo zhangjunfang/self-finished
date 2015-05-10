@@ -1,0 +1,7 @@
+<processors language="mysql">
+	<processor name="table" bean="mysqlSqlProcessor"></processor>
+	<processor name="initData" bean="initDataSqlProcessor"></processor>
+	<processor name="view" bean="viewSqlProcessor"></processor>
+	<processor name="procedure" bean="mySqlProcedureSqlProcessorImpl"></processor>
+	<processor name="trigger" bean="mysqlTriggerSqlProcessor"></processor>
+</processors>

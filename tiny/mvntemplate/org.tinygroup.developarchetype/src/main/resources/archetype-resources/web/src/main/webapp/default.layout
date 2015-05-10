@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<!--[if IE 7 ]>		 <html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>		 <html class="no-js ie ie8 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>		 <html class="no-js ie ie9 lte9>" lang="en-US"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en-US"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>${pageTitle}</title>
+
+    <script>
+        var contextPath = "${TINY_CONTEXT_PATH}";
+        var CKEDITOR_BASEPATH = contextPath+'/ckeditor/';
+
+        /*
+        jQuery.fn.outerHTML = function(s) {
+            return (s) ? this.before(s).remove() : jQuery("p").append(this.eq(0).clone()).html();
+        }
+        */
+    </script>
+
+
+    <link rel="shortcut icon" href="${TINY_CONTEXT_PATH}/icon/logo.png">
+    
+ #if(DEBUG_MODE && DEBUG_MODE=="true")
+	#foreach(component in uiengine.getHealthUiComponents())
+	<!--UI component $component.name start -->
+	#if(component.cssResource)
+	#set(resources=component.cssResource.split(","))
+	#foreach(path in resources)
+	#set(path=path.trim())
+	#set(newPath=path.replaceAll("[$][{]TINY_THEME[}]","${TINY_THEME}"))
+	<link href="${TINY_CONTEXT_PATH}${newPath}" rel="stylesheet" />
+	#end
+	#end
+	#if(component.jsResource)
+	#set(resources=component.jsResource.split(","))
+	#foreach(path in resources)
+	#set(path=path.trim())
+	<script src="${TINY_CONTEXT_PATH}${path}"></script>
+	#end
+	#end
+	#if(component.jsCodelet)
+	<script>
+	$!{component.jsCodelet}
+	</script>
+	#end
+	#if(component.cssCodelet)
+	<style>
+	$!{component.cssCodelet}
+	</style>
+	#end
+	#end
+ #else
+  <link href="${TINY_CONTEXT_PATH}/uiengine.uicss" rel="stylesheet" />
+  <script src="${TINY_CONTEXT_PATH}/uiengine.uijs"></script>
+ #end
+</head>
+<body>
+    <table border="1" width="100%">
+   <tr>
+      <td colspan="2">
+          本工程提供view层和service-interface依赖<br/>        
+      </td>
+    </tr>
+    <tr>  
+      <td width="20%">内容展示</td>
+      <td>
+         ${pageContent}
+      </td>
+   </tr>
+</table>
+</body>
+</html>

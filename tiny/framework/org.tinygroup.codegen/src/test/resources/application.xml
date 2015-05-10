@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 测试 -->
+<application>
+
+	<application-processors>
+		<application-processor bean="fileResolverProcessor"></application-processor>
+	</application-processors>
+   
+</application>

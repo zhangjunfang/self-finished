@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0"> 
+	<endpoint name="IOfficeDocBiz" implementation="com.jwstest.OfficeDocBizImpl" 
+	url-pattern="/services/agentServices" /> </endpoints> -->
+<!-- http://localhost:8080/JawTester/services/agentServices?wsdl -->
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">  
+  <endpoint name="timeoutMonitor" implementation="org.tinygroup.webservice.server.impl.TimeoutMonitor" url-pattern="/services/timeoutMonitor"/>
+</endpoints>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="fileResolver" scope="singleton"
+		class="org.tinygroup.fileresolver.impl.FileResolverImpl">
+		<property name="fileProcessorList">
+			<list>
+				<ref bean="i18nFileProcessor" />
+				<ref bean="xStreamFileProcessor" />
+			</list>
+		</property>
+	</bean>
+	<bean id="fileResolverProcessor" scope="singleton"
+		class="org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor">
+		<property name="fileResolver" ref="fileResolver"></property>
+	</bean>
+
+	
+	<bean id="ar" scope="singleton"
+		class="org.tinygroup.cepcorenettysc.operator.ArOperator">
+		<property name="ip" value="192.168.2.106"></property>
+		<property name="port" value="11111"></property>
+		<property name="remoteIp" value="192.168.2.106"></property>
+		<property name="remotePort" value="8888"></property>
+		<property name="timeout" value="20000"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	
+	<bean id="sc" scope="singleton"
+		class="org.tinygroup.cepcorenettysc.operator.ScOperator">
+		<property name="port" value="8888"></property>
+	</bean>
+	
+</beans>

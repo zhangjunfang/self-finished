@@ -1,0 +1,89 @@
+<service-components>
+	<service-component type="org.tinygroup.bundle.service.BundleService"
+		group-id="org.tinygroup.bundle.service" artifact-id="BundleService">
+
+		<service-method name="addTinyBundle" local-name="addTinyBundle"
+			service-id="addTinyBundle" version="" description="动态添加一个bundle"
+			method-name="addBundle">
+			<service-parameters>
+				<service-parameter name="bundleDefine"
+					type="org.tinygroup.bundle.config.BundleDefine" required="true"
+					is-array="false" />
+			</service-parameters>
+			<service-result name="void" required="false" is-array="false"
+				type="void" />
+		</service-method>
+
+		<service-method name="removeTinyBundle" local-name="removeTinyBundle"
+			service-id="removeTinyBundle" version="" description="动态删除一个bundle"
+			method-name="removeBundle">
+			<service-parameters>
+				<service-parameter name="bundleDefine"
+					type="org.tinygroup.bundle.config.BundleDefine" required="true"
+					is-array="false" />
+			</service-parameters>
+			<service-result name="void" required="false" is-array="false"
+				type="void" />
+		</service-method>
+
+		<service-method name="startTinyBundle" local-name="startTinyBundle"
+			service-id="startTinyBundle" version="" description="动态启动一个bundle"
+			method-name="startBundle">
+			<service-parameters>
+				<service-parameter name="bundleDefine"
+					type="org.tinygroup.bundle.config.BundleDefine" required="true"
+					is-array="false" />
+			</service-parameters>
+			<service-result name="void" required="false" is-array="false"
+				type="void" />
+		</service-method>
+
+		<service-method name="stopTinyBundle" local-name="stopTinyBundle"
+			service-id="stopTinyBundle" version="" description="动态停止一个bundle"
+			method-name="stopBundle">
+			<service-parameters>
+				<service-parameter name="bundleDefine"
+					type="org.tinygroup.bundle.config.BundleDefine" required="true"
+					is-array="false" />
+			</service-parameters>
+			<service-result name="void" required="false" is-array="false"
+				type="void" />
+		</service-method>
+		
+		<service-method name="removeTinyBundle" local-name="removeTinyBundle"
+			service-id="removeTinyBundle" version="" description="动态删除一个bundle"
+			method-name="removeBundle">
+			<service-parameters>
+				<service-parameter name="bundleDefine"
+					type="org.tinygroup.bundle.config.BundleDefine" required="true"
+					is-array="false" />
+			</service-parameters>
+			<service-result name="void" required="false" is-array="false"
+				type="void" />
+		</service-method>
+
+
+		<service-method name="getTinyBundleDefines" local-name="getTinyBundleDefines"
+			service-id="getTinyBundleDefines" version="" description="获取所有的bundle"
+			method-name="getBundleDefines">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="bundleDefines" required="true"
+				is-array="false" collection-type="java.util.List"
+				type="org.tinygroup.bundle.config.BundleDefine" />
+		</service-method>
+
+
+		<service-method name="checkTinyBundleStop" local-name="checkTinyBundleStop"
+			service-id="checkTinyBundleStop" version=""
+			description="判断bundle是否停止,如果停止了返回true，否则返回false" method-name="checkBundleStop">
+			<service-parameters>
+				<service-parameter name="bundleName" type="java.lang.String"
+					required="true" is-array="false" />
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="boolean" />
+		</service-method>
+
+	</service-component>
+</service-components>

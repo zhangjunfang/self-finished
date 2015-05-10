@@ -13,7 +13,7 @@ import com.restbird.server.school.service.SchoolService;
 /**
  * 业务Controller
  * 
- * @author littleBirdTao
+ * @author ocean
  *
  */
 public class SchoolController implements Controller {

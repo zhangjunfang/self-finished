@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byName" default-lazy-init="true">
+	
+	<bean id="weightChooser" name="weightChooser" scope="singleton"
+		class="org.tinygroup.cepcore.impl.WeightChooser">
+	</bean>
+	<bean id="cepcore_aop_bean" name="cepcore_aop_bean"
+		scope="singleton" class="org.tinygroup.cepcore.aop.impl.CEPCoreAopManagerImpl">
+	</bean>
+	<bean id="requestParamValidate" name="requestParamValidate"
+		scope="singleton" class="org.tinygroup.cepcore.aop.impl.RequestParamValidate">
+		
+		<property name="cepCore">
+			<ref bean="cepcore" />
+		</property>
+	</bean>
+	
+	<bean id="cepCoreAopConfig" name="cepCoreAopConfig"
+		scope="singleton" class="org.tinygroup.cepcore.aop.impl.CepCoreAopConfig">
+		
+		<property name="manager">
+			<ref bean="cepcore_aop_bean" />
+		</property>
+	</bean>
+	<!-- 
+	<bean id="CEPProcessor" name="CEPProcessor"
+		scope="singleton" class="org.tinygroup.cepcore.applicationprocessor.CEPProcessor">
+		<property name="cep">
+			<ref bean="cepcore" />
+		</property>
+	</bean>
+	 -->
+</beans>

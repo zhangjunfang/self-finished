@@ -1,0 +1,14 @@
+#set(packageName="com.aaa.bbb",className="Helloworld")
+
+#set(importArray=["aaa","bbb","ccc"])
+#macro importMacro()
+    #for(imp:importArray)
+        import ${imp};
+    #end
+#end
+
+#set(importList=call("importMacro"))
+
+public static void main(String[]args){
+
+}

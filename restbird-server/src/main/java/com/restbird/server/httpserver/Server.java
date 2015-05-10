@@ -24,7 +24,7 @@ import com.restbird.server.httpserver.netty.HttpServerHandler;
 /**
  * start http server
  * 
- * @author littleBirdTao
+ * @author ocean
  *
  */
 public class Server {
@@ -34,6 +34,29 @@ public class Server {
 	/** controller mapping **/
 	private ControllerMap controllerMap;
 
+	
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public ControllerMap getControllerMap() {
+		return controllerMap;
+	}
+
+	public void setControllerMap(ControllerMap controllerMap) {
+		this.controllerMap = controllerMap;
+	}
+	
+	
+	
+	
+	
+	
 	public void run() throws Exception {
 		EventLoopGroup bossGroup = new NioEventLoopGroup();
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -69,7 +92,12 @@ public class Server {
 			logger.error("restbird server start failed: ", e);
 		}
 	}
-
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		try {
 			@SuppressWarnings({ "unused", "resource" })
@@ -80,21 +108,4 @@ public class Server {
 			System.exit(-1);
 		}
 	}
-
-	public int getPort() {
-		return port;
-	}
-
-	public void setPort(int port) {
-		this.port = port;
-	}
-
-	public ControllerMap getControllerMap() {
-		return controllerMap;
-	}
-
-	public void setControllerMap(ControllerMap controllerMap) {
-		this.controllerMap = controllerMap;
-	}
-
 }

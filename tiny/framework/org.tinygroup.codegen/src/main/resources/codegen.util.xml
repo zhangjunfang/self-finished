@@ -1,0 +1,6 @@
+<gen-util-config>
+        <static-classes>
+            <static-class name="codeGenUtil" className="org.tinygroup.codegen.util.CodeGenUtil"></static-class>
+            <static-class name="stringUtil" className="org.tinygroup.commons.tools.StringUtil"></static-class>
+        </static-classes>
+</gen-util-config>

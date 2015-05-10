@@ -1,0 +1,5 @@
+${0.001}#eol
+#set(aaa=[1..5])
+#for(var:aaa)
+ this is message ${var}#eol
+#end

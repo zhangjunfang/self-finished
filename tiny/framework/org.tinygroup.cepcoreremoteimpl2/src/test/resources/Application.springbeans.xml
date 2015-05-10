@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="fileResolver" scope="singleton"
+		class="org.tinygroup.fileresolver.impl.FileResolverImpl">
+		<property name="fileProcessorList">
+			<list>
+				<ref bean="i18nFileProcessor" />
+				<ref bean="xStreamFileProcessor" />
+				<ref bean="xmlServiceFileProcessor" />
+			</list>
+		</property>
+	</bean>
+	<bean id="fileResolverProcessor" scope="singleton"
+		class="org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor">
+		<property name="fileResolver" ref="fileResolver"></property>
+	</bean>
+
+	<bean id="sc" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.sc.ScOperator">
+		<property name="port" value="9191"></property>
+	</bean>
+	<bean id="scb" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.sc.ScOperator">
+		<property name="port" value="9292"></property>
+	</bean>
+	
+	<bean id="node" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.node.NodeOperator">
+		<property name="localHost" value="192.168.232.37"></property>
+		<property name="localPort" value="8181"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	<bean id="node2" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.node.NodeOperator">
+		<property name="localHost" value="192.168.232.37"></property>
+		<property name="localPort" value="8282"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	<bean id="node3" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.node.NodeOperator">
+		<property name="localHost" value="192.168.232.37"></property>
+		<property name="localPort" value="8383"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	
+	
+	<bean id="nodea" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.node.NodeOperator">
+		<property name="localHost" value="192.168.232.37"></property>
+		<property name="localPort" value="7171"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	<bean id="nodeb" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.node.NodeOperator">
+		<property name="localHost" value="192.168.232.37"></property>
+		<property name="localPort" value="7172"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	<bean id="nodec" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.node.NodeOperator">
+		<property name="localHost" value="192.168.232.37"></property>
+		<property name="localPort" value="7173"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	<bean id="noded" scope="singleton"
+		class="org.tinygroup.cepcoreremoteimpl.node.NodeOperator">
+		<property name="localHost" value="192.168.232.37"></property>
+		<property name="localPort" value="7174"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+</beans>

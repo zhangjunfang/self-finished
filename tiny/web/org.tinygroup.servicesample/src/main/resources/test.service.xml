@@ -1,0 +1,27 @@
+<service-components>
+	<service-component type="org.tinygroup.servicesample.ServiceSample"
+		group-id="org.tinygroup.servicesample" artifact-id="ServiceSample">
+
+		<service-method name="read" local-name="read"
+			service-id="read" version="" description="" method-name="read">
+			<service-parameters>
+				<service-parameter name="s" required="false"
+					is-array="false" type="org.tinygroup.servicesample.SampleParam" />
+			</service-parameters>
+			<service-result name="result" required="false"
+				is-array="false" type="void" />
+		</service-method>
+
+		<service-method name="write" local-name="write"
+			service-id="write" version="" description="" method-name="write">
+			<service-parameters>
+				<service-parameter name="s" required="true"
+					is-array="false" type="org.tinygroup.servicesample.SampleParam" />
+			</service-parameters>
+			<service-result name="result1" required="false"
+				is-array="false" type="org.tinygroup.servicesample.SampleParam" />
+		</service-method>
+
+	</service-component>
+
+</service-components>

@@ -1,0 +1,7 @@
+1234567890#eol
+#if (true)
+ABCDEFG#eol
+#else
+abcdefg#eol
+#end
+AAABBB#eol

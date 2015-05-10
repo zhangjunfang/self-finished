@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+	<application-processors>
+		<application-processor bean="fileResolverProcessor"></application-processor>
+		<application-processor bean="cepCoreProcessor"></application-processor>
+	</application-processors>
+	<cep-configuration node-name="node">
+		<operator name="node"></operator>
+		<scs>
+			<sc host="192.168.232.37" port="9191"></sc>
+		</scs>
+		<params>
+			<param name="request-time-out" value="15000"/>
+		</params>
+	</cep-configuration>
+</application>

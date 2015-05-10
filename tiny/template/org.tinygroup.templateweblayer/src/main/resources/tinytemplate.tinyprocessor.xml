@@ -1,0 +1,9 @@
+<!--tiny-processor实现 -->
+<tiny-processors>
+   <tiny-processor id="tinyTemplateProcessor" class="tinyTemplateProcessor">
+       <init-param name="templateWithLayoutExtFileName" value=".page"></init-param>
+	     <init-param name="templateExtFileName" value=".pagelet"></init-param>
+       <servlet-mapping url-pattern=".*\.page"></servlet-mapping>
+       <servlet-mapping url-pattern=".*\.pagelet"></servlet-mapping>
+   </tiny-processor>     
+</tiny-processors>

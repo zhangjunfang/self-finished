@@ -1,0 +1,19 @@
+<components>
+	<component name="callService" bean="callService" title="调用服务" icon="" category="服务调用组件" >
+		<short-description>调用服务，通过cepcore调用服务</short-description>
+		<long-description>调用服务，通过cepcore调用服务</long-description>
+		<parameter name="serviceId" title="服务标识" type="java.lang.String"></parameter>
+	</component>
+	
+	<component name="callFlow" bean="callFlow" title="调用业务流" icon="" category="服务调用组件">
+		<short-description>调用logicflow,通过cepcore调用流程</short-description>
+		<long-description>调用logicflow,通过cepcore调用流程</long-description>
+		<parameter name="flowId" title="流程标识|名称" type="java.lang.String"></parameter>
+	</component>
+	<component name="callPageFlow" bean="callPageFlow" title="调用页面流" icon="" category="服务调用组件">
+		<short-description>调用pageflow,直接获取executor调用</short-description>
+		<long-description>调用pageflow,直接获取executor调用</long-description>
+		<parameter name="flowId" title="流程标识" type="java.lang.String"></parameter>
+	</component>
+</components>
+

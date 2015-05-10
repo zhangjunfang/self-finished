@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle name="testJar" title="testJar" dependencies="" common-jars=""
+	bundle-activator="" short-description="testJar" long-description="testJar">
+
+</bundle>

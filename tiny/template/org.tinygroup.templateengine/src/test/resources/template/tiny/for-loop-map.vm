@@ -1,0 +1,4 @@
+#set ( map = {"abc": 1, "def": 2})
+#for (x : map)
+    ${x.key} - ${x.value}
+#end

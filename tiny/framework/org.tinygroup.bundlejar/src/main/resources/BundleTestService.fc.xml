@@ -1,0 +1,17 @@
+<components>
+
+
+
+	<component name="bundleComponent" bean="bundleComponent"
+		title="bundleComponent测试 " icon="">
+		<short-description></short-description>
+		<long-description></long-description>
+		<parameter name="object" title=""
+			type="org.tinygroup.bundlejar.BundleTestObject"></parameter>
+		<parameter name="i" title="" type="int"></parameter>
+	</component>
+
+
+
+</components>
+

@@ -1,0 +1,4 @@
+#include("include-sub.vm")
+#include("./include-sub.vm")
+#include("/template/tiny/test/include-sub.vm")
+#include("include-sub.vm", {"myvar": "hello from parent"})

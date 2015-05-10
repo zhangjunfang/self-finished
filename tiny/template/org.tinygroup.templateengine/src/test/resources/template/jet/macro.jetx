@@ -1,0 +1,62 @@
+#macro bold()
+<b>#bodyContent</b>
+#end
+
+#macro div()
+<div>#bodyContent</div>
+#end
+
+##1. macroName方式   无包含内容调用
+
+#bold() #eol
+
+##2. macroName方式   有包含内容调用
+
+#@div()
+ #@bold()
+   macroName
+ #end
+#end #eol
+
+##3. call方式   无包含内容调用
+
+#call("bold") #eol
+
+
+#macro hello(a,b,c,d,e)
+  ${a}${b}${c}${d}${e}
+#end
+
+#hello(1,2,3,4,5) #eol
+#hello(1,2) #eol
+
+##4. 递归调用
+#macro printNumber(number)
+    ${number}#eol
+    #if(number<10)
+        #printNumber(number+1)
+    #end
+#end
+#printNumber(1)
+
+##5. 宏定义中调用宏
+
+
+#macro firstMacro()
+<div>
+    #@secondMacro()
+      #bodyContent
+    #end
+</div>
+#end
+
+#macro secondMacro()
+<b>
+    #bodyContent
+</b>
+#end
+
+#@firstMacro()
+  Information
+#end
+

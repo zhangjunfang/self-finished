@@ -11,7 +11,7 @@ import com.restbird.server.school.db.service.StudentService;
 /**
  * 数据库中读取数据载入本地缓存，也可自己配置redis缓存等
  * 
- * @author littleBirdTao
+ * @author ocean
  *
  */
 public class CacheLoader {

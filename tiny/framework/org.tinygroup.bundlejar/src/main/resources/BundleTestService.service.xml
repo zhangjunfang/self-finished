@@ -1,0 +1,30 @@
+<service-components>
+	<service-component type="org.tinygroup.bundlejar.BundleTestServic"
+		group-id="org.tinygroup.bundlejar" artifact-id="BundleTestServic">
+
+		<service-method name="put" local-name="put" service-id="put"
+			version="" description="put" method-name="put">
+			<service-parameters>
+				<service-parameter name="bundleTestObject"
+					type="org.tinygroup.bundlejar.BundleTestObject" required="true"
+					is-array="false" />
+			</service-parameters>
+			<service-result name="void" required="false" is-array="false"
+				type="void" />
+		</service-method>
+
+
+		<service-method name="get" local-name="get" service-id="get"
+			version="" description="get" method-name="get">
+			<service-parameters>
+				<service-parameter name="name" type="java.lang.String"
+					required="true" is-array="false" />
+			</service-parameters>
+			<service-result name="object" required="true"
+				is-array="false" type="org.tinygroup.bundlejar.BundleTestObject" />
+		</service-method>
+
+
+
+	</service-component>
+</service-components>

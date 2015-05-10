@@ -1,0 +1,6 @@
+<bean-query-configs>
+   <bean-query-config bean-type="animal">
+      <condition-config property-name="name" condition-mode="containsWith"></condition-config>
+      <order-by-config property-name="name" order-mode="asc"></order-by-config>
+   </bean-query-config>
+</bean-query-configs>

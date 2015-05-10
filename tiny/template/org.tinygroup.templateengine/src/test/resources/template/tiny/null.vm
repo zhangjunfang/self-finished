@@ -1,0 +1,2 @@
+#set(obj=null)
+${obj?.equals(null)}

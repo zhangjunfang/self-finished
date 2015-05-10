@@ -1,0 +1,44 @@
+<service-components>
+	<service-component
+		type="org.tinygroup.webservice.test.service.ServiceClass"
+		group-id="org.tinygroup.webservice.test.service" artifact-id="ServiceClass">
+		
+		<service-method name="stringService" local-name="stringService"
+			service-id="stringService" version="" description=""
+			method-name="stringService">
+			<service-parameters>
+				<service-parameter name="str"
+					type="java.lang.String" required="false" is-array="false" />
+			</service-parameters>
+			<service-result name="void" required="false" is-array="false"
+				type="void" />
+		</service-method>
+		
+		
+		<service-method name="stringService2" local-name="stringService2"
+			service-id="stringService2" version="" description=""
+			method-name="stringService2">
+			<service-parameters>
+				<service-parameter name="str"
+					type="java.lang.String" required="false" is-array="false" />
+			</service-parameters>
+			<service-result name="result" required="false" is-array="false"
+				type="java.lang.String" />
+		</service-method>
+		
+		
+		<service-method name="stringListService" local-name="stringListService"
+			service-id="stringListService" version="" description=""
+			method-name="stringListService">
+			<service-parameters>
+				<service-parameter name="str"
+					type="java.lang.String" required="false" is-array="false" collection-type="java.util.List"/>
+			</service-parameters>
+			<service-result name="result" required="false" is-array="false"
+				type="java.lang.String" />
+		</service-method>
+		
+		
+		
+	</service-component>
+</service-components>

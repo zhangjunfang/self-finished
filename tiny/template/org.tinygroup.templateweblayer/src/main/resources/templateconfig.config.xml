@@ -1,0 +1,3 @@
+<!--template config配置 -->
+<template-config templateExtFileName="page" layoutExtFileName="layout"
+                     componentExtFileName="component"></template-config>

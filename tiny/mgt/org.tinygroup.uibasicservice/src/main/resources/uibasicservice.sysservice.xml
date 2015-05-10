@@ -1,0 +1,62 @@
+<service-components>
+	<service-component type="org.tinygroup.uibasicservice.UIBasicService"
+		group-id="org.tinygroup.uibasicservice" artifact-id="UIBasicService">
+
+		<service-method name="getTinyUiComponents" local-name="getTinyUiComponents"
+			service-id="getTinyUiComponents" version="" description="获取所有的UI组件"
+			method-name="getUiComponents">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="uiComponents" required="true"
+				is-array="false" type="org.tinygroup.uiengine.config.UIComponent"
+				collection-type="java.util.ArrayList" />
+		</service-method>
+
+		<service-method name="getTinyUIComponent" local-name="getTinyUIComponent"
+			service-id="getTinyUIComponent" version="" description="根据name获取UI组件"
+			method-name="getUIComponent">
+			<service-parameters>
+				<service-parameter name="name" required="true"
+					is-array="false" type="java.lang.String"></service-parameter>
+			</service-parameters>
+			<service-result name="uiComponent" required="true"
+				is-array="false" type="org.tinygroup.uiengine.config.UIComponent" />
+		</service-method>
+
+		<service-method name="getTinyHealthUiComponents"
+			local-name="getTinyHealthUiComponents" service-id="getTinyHealthUiComponents"
+			version="" description="获取健康组件列表" method-name="getHealthUiComponents">
+			<service-parameters>
+				<service-parameter name="name" required="true"
+					is-array="false" type="java.lang.String"></service-parameter>
+			</service-parameters>
+			<service-result name="uiComponents" required="true"
+				is-array="false" type="org.tinygroup.uiengine.config.UIComponent"
+				collection-type="java.util.ArrayList" />
+		</service-method>
+
+		<service-method name="getTinyComponentJsArray" local-name="getTinyComponentJsArray"
+			service-id="getTinyComponentJsArray" version="" description="获取指定组件的JSPath"
+			method-name="getComponentJsArray">
+			<service-parameters>
+				<service-parameter name="name" required="true"
+					is-array="false" type="java.lang.String"></service-parameter>
+			</service-parameters>
+			<service-result name="jsArray" required="true"
+				is-array="true" type="java.lang.String" />
+		</service-method>
+
+		<service-method name="getTinyComponentCssArray" local-name="getTinyComponentCssArray"
+			service-id="getTinyComponentCssArray" version="" description="获取指定组件的CssPath"
+			method-name="getTinyComponentCssArray">
+			<service-parameters>
+				<service-parameter name="name" required="true"
+					is-array="false" type="java.lang.String"></service-parameter>
+			</service-parameters>
+			<service-result name="cssArray" required="true"
+				is-array="true" type="java.lang.String" />
+		</service-method>
+
+
+	</service-component>
+</service-components>

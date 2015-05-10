@@ -1,0 +1,76 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byName" default-lazy-init="true">
+	<bean id="tinyDBService" name="tinyDBService" scope="singleton"
+		class="org.tinygroup.tinydb.service.impl.TinyDBServiceImpl">
+	</bean>
+	<bean id="beanOperatorManager"  scope="singleton"
+		class="org.tinygroup.tinydb.impl.BeanOperatorManagerImpl">
+	</bean>
+	<bean id="beanStringOperator"  scope="prototype"
+		class="org.tinygroup.tinydb.operator.impl.BeanStringOperator">
+	</bean>
+	
+	<bean id="beginsWithConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.BeginsWithConditionGenerater">
+	</bean>
+	<bean id="betweenAndConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.BetweenAndConditionGenerater">
+	</bean>
+	<bean id="containsWithConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.ContainsWithConditionGenerater">
+	</bean>
+	<bean id="endsWithConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.EndsWithConditionGenerater">
+	</bean>
+	<bean id="equalsConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.EqualsConditionGenerater">
+	</bean>
+	<bean id="greaterOrEqualsConditionGenerator"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.GreaterOrEqualsConditionGenerater">
+	</bean>
+	<bean id="greaterThanConditionGenerator"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.GreaterThanConditionGenerater">
+	</bean>
+	<bean id="isEmptyConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.IsEmptyConditionGenerater">
+	</bean>
+	<bean id="isNotEmptyConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.IsNotEmptyConditionGenerater">
+	</bean>
+	<bean id="isNotNullConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.IsNotNullConditionGenerater">
+	</bean>
+	<bean id="isNullConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.IsNullConditionGenerater">
+	</bean>
+	<bean id="lengthEqualsConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.LengthEqualsConditionGenerater">
+	</bean>
+	<bean id="lengthNotEqualsConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.LengthNotEqualsConditionGenerater">
+	</bean>
+	<bean id="lessOrEqualsConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.LessOrEqualsConditionGenerater">
+	</bean>
+	<bean id="lessThanConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.LessThanConditionGenerater">
+	</bean>
+	<bean id="notBetweenAndConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.NotBetweenAndConditionGenerater">
+	</bean>
+	<bean id="notContainsWithConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.NotContainsWithConditionGenerater">
+	</bean>
+	<bean id="notEqualsConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.NotEqualsConditionGenerater">
+	</bean>
+	<bean id="inConditionGenerater"  scope="singleton"
+		class="org.tinygroup.tinydb.sql.condition.impl.InConditionGenerater">
+	</bean>
+	
+</beans>

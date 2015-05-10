@@ -1,0 +1,7 @@
+package ${packageName};
+
+${importList}
+
+class ${className}{
+${pageContent}
+}

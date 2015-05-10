@@ -1,0 +1,7 @@
+#set(array=[1,2,3,4,5])
+#for (x : array)
+    ${x}#eol
+    #if (x > 2.0)
+        it is a big integer.#eol
+    #end
+#end

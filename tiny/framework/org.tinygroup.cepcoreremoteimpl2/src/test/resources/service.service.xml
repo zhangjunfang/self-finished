@@ -1,0 +1,59 @@
+<service-components>
+	<service-component type="org.tinygroup.cepcoreremoteimpl.test.Service">
+		<service-method local-name="hello" service-id="hello"
+			method-name="hello" cacheable="false">
+			<service-parameters>
+				<service-parameter name="name" type="java.lang.String"
+					required="false" is-array="false" />
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="java.lang.String" />
+		</service-method>
+
+		<service-method local-name="helloException" service-id="helloException"
+			method-name="helloException" cacheable="false">
+			<service-parameters>
+
+			</service-parameters>
+			<service-result name="void" required="true" is-array="false"
+				type="void" />
+		</service-method>
+
+
+		<service-method local-name="helloArray" service-id="helloArray"
+			method-name="helloArray" cacheable="false">
+			<service-parameters>
+				<service-parameter name="name" type="java.lang.String"
+					required="false" is-array="true" />
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="java.lang.String" />
+		</service-method>
+		<service-method local-name="helloUserArray" service-id="helloUserArray"
+			method-name="helloUserArray" cacheable="false">
+			<service-parameters>
+				<service-parameter name="b"
+					type="org.tinygroup.cepcoreremoteimpl.test.User" required="false"
+					is-array="true" />
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="java.lang.String" />
+		</service-method>
+	</service-component>
+	<service-component type="org.tinygroup.cepcoreremoteimpl.test.Service2">
+		<service-method local-name="add" service-id="add"
+			method-name="add" cacheable="add">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="void" required="true" is-array="false"
+				type="void" />
+		</service-method>
+		<service-method local-name="overtime" service-id="overtime"
+			method-name="overtime" cacheable="overtime">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="void" required="true" is-array="false"
+				type="void" />
+		</service-method>
+	</service-component>
+</service-components>

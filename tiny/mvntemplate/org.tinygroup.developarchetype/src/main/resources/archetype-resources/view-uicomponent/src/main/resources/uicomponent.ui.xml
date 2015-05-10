@@ -1,0 +1,11 @@
+<ui-components>
+	  <!--dependencies表示依赖的包名，如果有多个依赖采用英文逗号分隔-->
+    <ui-component name="uicomponent" dependencies="">
+    	 <!--css-resource表示引入css资源相对路径，如果有多个路径采用英文逗号分隔-->
+       <css-resource></css-resource>
+       <!--js-resource表示引入js资源相对路径，如果有多个路径采用英文逗号分隔-->
+       <js-resource></js-resource>
+       <css-codelet><![CDATA[]]></css-codelet>
+		   <js-codelet><![CDATA[]]></js-codelet>
+    </ui-component>
+</ui-components>

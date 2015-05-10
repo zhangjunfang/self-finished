@@ -8,7 +8,7 @@ import com.restbird.server.httpserver.netty.mvc.Controller;
 /**
  * controller mapping, configured in controller-mapping.xml
  * 
- * @author littleBirdTao
+ * @author ocean
  *
  */
 public class ControllerMap {

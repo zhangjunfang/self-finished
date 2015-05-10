@@ -1,0 +1,9 @@
+##correct variable name
+_abc=${_abc}  #eol
+abc=${abc}  #eol
+A8=${A8}  #eol
+hello_=${hello_}  #eol
+
+##wrong variable name
+##?abc=${?abc}  #eol
+##9name=${9name}  #eol

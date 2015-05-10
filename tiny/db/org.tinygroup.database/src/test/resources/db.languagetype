@@ -1,0 +1,10 @@
+<language-types>
+	<language-type id="oracle" name="oracle"></language-type>
+	<language-type id="mysql" name="mysql"></language-type>
+	<language-type id="db2" name="db2"></language-type>
+	<language-type id="h2" name="h2"></language-type>
+	<language-type id="derby" name="derby"></language-type>
+	<language-type id="informix" name="informix"></language-type>
+	<language-type id="sybase" name="sybase"></language-type>
+	<language-type id="sqlserver" name="sqlserver"></language-type>
+</language-types>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+	<application-processors>
+		<application-processor bean="fileResolverProcessor"></application-processor>
+		<application-processor bean="serviceApplicationProcessor"></application-processor>
+		<application-processor bean="cepCoreProcessor"></application-processor>
+	</application-processors>
+	<cep-configuration node-name="node3">
+		<operator name="node3"></operator>
+		<scs>
+			<sc host="192.168.232.37" port="9191"></sc>
+		</scs>
+	</cep-configuration>
+</application>

@@ -29,7 +29,7 @@ import com.restbird.server.httpserver.netty.mvc.Controller;
 /**
  * HttpServer Handler, refer to http://kanpiaoxue.iteye.com/blog/2163332
  * 
- * @author littleBirdTao
+ * @author ocean
  *
  */
 // @Sharable //note that this Handler is not sharable

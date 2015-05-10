@@ -1,0 +1,39 @@
+<service-components>
+	<service-component type="org.tinygroup.servicebasicservice.BasicService"
+		group-id="org.tinygroup.servicebasicservice" artifact-id="BasicService">
+
+		<service-method name="getTinyServiceCount" local-name="getTinyServiceCount"
+			service-id="getTinyServiceCount" version="" description="获取服务注册项的数量"
+			method-name="getServiceCount">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="int" />
+		</service-method>
+
+		<service-method name="getTinyServiceRegistryItems"
+			local-name="getTinyServiceRegistryItems" service-id="getTinyServiceRegistryItems"
+			version="" description="获取所有服务注册项" method-name="getServiceRegistryItems">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="org.tinygroup.service.registry.ServiceRegistryItem"
+				collection-type="java.util.ArrayList" />
+		</service-method>
+
+		<service-method name="getTinyServiceRegistryItem"
+			local-name="getTinyServiceRegistryItem" service-id="getTinyServiceRegistryItem"
+			version="" description="根据id获取服务注册项" method-name="getServiceRegistryItem">
+			<service-parameters>
+				<service-parameter name="id" required="true"
+					is-array="false" type="java.lang.String"></service-parameter>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="org.tinygroup.service.registry.ServiceRegistryItem" />
+		</service-method>
+
+
+
+
+	</service-component>
+</service-components>

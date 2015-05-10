@@ -1,0 +1,15 @@
+<tables package-name="sample">
+	<table id="t_user" name="t_user" title="用户表">
+		<table-field standard-field-id="id" primary="true"
+			unique="true" not-null="true" auto-increase="false" id="id" />
+		<table-field standard-field-id="name" primary="false"
+			unique="false" not-null="true" id="name" />
+		<table-field standard-field-id="age" primary="false"
+			unique="false" not-null="false" id="age" />
+	</table>
+	<table id="incrementer" name="incrementer" title="主键自增长表">
+		<table-field standard-field-id="sequence_id" primary="true"
+			unique="true" not-null="true" auto-increase="true" id="sequence_id" />
+		<table-field standard-field-id="dummy" primary="false" id="dummy" />	
+	</table>
+</tables>

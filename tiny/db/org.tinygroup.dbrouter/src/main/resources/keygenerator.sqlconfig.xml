@@ -1,0 +1,20 @@
+<key-tables>
+	<key-table language="mysql" class="org.tinygroup.dbrouter.impl.keygenerator.RouterKeyGeneratorLong" >
+	<sql><![CDATA[CREATE TABLE `@tablename` ( `id` int(20) NOT NULL AUTO_INCREMENT,`end_number` int(20) DEFAULT NULL,`table_name` varchar(30) DEFAULT NULL,PRIMARY KEY (`id`))]]>
+	</sql></key-table>
+	<key-table language="mysql" class="org.tinygroup.dbrouter.impl.keygenerator.RouterKeyGeneratorInteger">
+	<sql><![CDATA[CREATE TABLE `@tablename` ( `id` int(11) NOT NULL AUTO_INCREMENT,`end_number` int(11) DEFAULT NULL,`table_name` varchar(30) DEFAULT NULL,PRIMARY KEY (`id`))]]>
+	</sql></key-table>
+	<key-table language="oracle" class="org.tinygroup.dbrouter.impl.keygenerator.RouterKeyGeneratorLong" >
+	<sql><![CDATA[CREATE TABLE `@tablename` ( `id` number(20,0) NOT NULL ,`end_number` number(20,0) DEFAULT NULL,`table_name` varchar(30) DEFAULT NULL,PRIMARY KEY (`id`))]]>
+	</sql></key-table>
+	<key-table language="oracle" class="org.tinygroup.dbrouter.impl.keygenerator.RouterKeyGeneratorInteger">
+	<sql><![CDATA[CREATE TABLE `@tablename` ( `id` number(11,0) NOT NULL ,`end_number` number(11,0) DEFAULT NULL,`table_name` varchar(30) DEFAULT NULL,PRIMARY KEY (`id`))]]>
+	</sql></key-table>
+	<key-table language="derby" class="org.tinygroup.dbrouter.impl.keygenerator.RouterKeyGeneratorLong" >
+	<sql><![CDATA[CREATE TABLE `@tablename` ( `id` bigint NOT NULL ,`end_number` bigint DEFAULT NULL,`table_name` varchar(30) DEFAULT NULL,PRIMARY KEY (`id`))]]>
+	</sql></key-table>
+	<key-table language="derby" class="org.tinygroup.dbrouter.impl.keygenerator.RouterKeyGeneratorInteger">
+	<sql><![CDATA[CREATE TABLE `@tablename` ( `id` int NOT NULL ,`end_number` int DEFAULT NULL,`table_name` varchar(30) DEFAULT NULL,PRIMARY KEY (`id`))]]>
+	</sql></key-table>
+</key-tables>
