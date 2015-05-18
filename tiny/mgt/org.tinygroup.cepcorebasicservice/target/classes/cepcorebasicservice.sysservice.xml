@@ -1,0 +1,86 @@
+<service-components>
+	<service-component type="org.tinygroup.cepcorebasicservice.CEPService"
+		group-id="org.tinygroup.cepcorebasicservice" artifact-id="CEPService">
+
+		<service-method name="getCEPServiceCount" local-name="getCEPServiceCount"
+			service-id="getCEPServiceCount" version="" description="获取CEP上服务注册项的数量"
+			method-name="getServiceCount">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="int" />
+		</service-method>
+
+		<service-method name="getCEPServiceInfos" local-name="getCEPServiceInfos"
+			service-id="getCEPServiceInfos" version="" description="获取所有CEP服务"
+			method-name="getServiceInfos">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="org.tinygroup.event.ServiceInfo"
+				collection-type="java.util.ArrayList" />
+		</service-method>
+
+		<service-method name="getCEPServiceInfo" local-name="getCEPServiceInfo"
+			service-id="getCEPServiceInfo" version="" description="根据id获取CEP服务"
+			method-name="getServiceInfo">
+			<service-parameters>
+				<service-parameter name="id" required="true"
+					is-array="false" type="java.lang.String"></service-parameter>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="org.tinygroup.event.ServiceInfo" />
+		</service-method>
+
+	</service-component>
+	<!-- <service-component type="org.tinygroup.cepcore.CEPCore" group-id="org.tinygroup.cepcore.impl" 
+		artifact-id="CEPcoreImpl"> <service-method name="serviceGetNodeName" local-name="serviceGetNodeName" 
+		service-id="serviceGetNodeName" version="" description="获取节点名" method-name="getNodeName"> 
+		<service-parameters> </service-parameters> <service-result name="result" 
+		required="true" is-array="false" type="java.lang.String" /> </service-method> 
+		<service-method name="serviceCEPCoreStart" local-name="serviceCEPCoreStart" 
+		service-id="serviceCEPCoreStart" version="" description="启动CEPCore" method-name="start"> 
+		<service-parameters> </service-parameters> <service-result name="result" 
+		required="true" is-array="false" type="void" /> </service-method> <service-method 
+		name="serviceCEPCoreStop" local-name="serviceCEPCoreStop" service-id="serviceCEPCoreStop" 
+		version="" description="停止CEPCore" method-name="stop"> <service-parameters> 
+		</service-parameters> <service-result name="result" required="true" is-array="false" 
+		type="void" /> </service-method> <service-method name="serviceGetProcessorCount" 
+		local-name="serviceGetProcessorCount" service-id="serviceGetProcessorCount" 
+		version="" description="获取CEPCore中的事件处理器个数" method-name="getProcessorCount"> 
+		<service-parameters> </service-parameters> <service-result name="result" 
+		required="true" is-array="false" type="int" /> </service-method> </service-component> 
+		<service-component type="org.tinygroup.cepcore.CEPCore" group-id="org.tinygroup.cepcore.impl" 
+		artifact-id="CEPcoreImpl"> <service-method name="cepNodeRegisteNode" local-name="cepNodeRegisteNode" 
+		service-id="cepNodeRegisteNode" version="" description="注册节点node" method-name="registeNode"> 
+		<service-parameters> <service-parameter name="node" type="org.tinygroup.event.central.Node" 
+		required="true" is-array="false" /> <service-parameter name="sourceNode" 
+		type="org.tinygroup.event.central.Node" required="false" is-array="false" 
+		/> </service-parameters> <service-result name="success" required="false" 
+		is-array="false" type="void" /> </service-method> <service-method name="cepNodeRegisteNodes" 
+		local-name="cepNodeRegisteNodes" service-id="cepNodeRegisteNodes" version="" 
+		description="注册节点列表nodes" method-name="registeNode"> <service-parameters> 
+		<service-parameter name="nodes" type="org.tinygroup.event.central.Node" collection-type="java.util.List" 
+		required="true" is-array="false" /> <service-parameter name="sourceNode" 
+		type="org.tinygroup.event.central.Node" required="false" is-array="false" 
+		/> </service-parameters> <service-result name="success" required="false" 
+		is-array="false" type="void" /> </service-method> <service-method name="cepNodeUnRegisteNode" 
+		local-name="cepNodeUnRegisteNode" service-id="cepNodeUnRegisteNode" version="" 
+		description="注销节点node" method-name="unregisteNode"> <service-parameters> 
+		<service-parameter name="node" type="org.tinygroup.event.central.Node" required="true" 
+		is-array="false" /> <service-parameter name="sourceNode" type="org.tinygroup.event.central.Node" 
+		required="true" is-array="false" /> </service-parameters> <service-result 
+		name="success" required="false" is-array="false" type="void" /> </service-method> 
+		<service-method name="cepNodeUnRegisteNodes" local-name="cepNodeUnRegisteNodes" 
+		service-id="cepNodeUnRegisteNodes" version="" description="注销节点列表nodes" method-name="unregisteNode"> 
+		<service-parameters> <service-parameter name="nodes" type="org.tinygroup.event.central.Node" 
+		collection-type="java.util.List" required="true" is-array="false" /> <service-parameter 
+		name="sourceNode" type="org.tinygroup.event.central.Node" required="false" 
+		is-array="false" /> </service-parameters> <service-result name="success" 
+		required="false" is-array="false" type="void" /> </service-method> <service-method 
+		name="cepNodeBreathCheck" local-name="cepNodeBreathCheck" service-id="cepNodeBreathCheck" 
+		version="" description="心跳方法,node为心跳发起节点" method-name="check"> <service-parameters> 
+		<service-parameter name="node" type="org.tinygroup.event.central.Node" required="true" 
+		is-array="false" /> </service-parameters> <service-result name="success" 
+		required="false" is-array="false" type="boolean" /> </service-method> </service-component> -->
+</service-components>

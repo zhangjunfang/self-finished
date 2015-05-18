@@ -1,0 +1,48 @@
+<custom-sqls>
+	<custom-sql type="before">
+		<sql dialectTypeName="oracle" content="before"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql dialectTypeName="oracle" content="after1"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql dialectTypeName="oracle" content="after2"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql dialectTypeName="oracle" content="after3"></sql>
+	</custom-sql>
+	<custom-sql type="before">
+		<sql dialectTypeName="mysql" content="before sql"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql dialectTypeName="mysql" content="after sql"></sql>
+	</custom-sql>
+	<custom-sql type="before">
+		<sql dialectTypeName="h2" content="before sql"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql dialectTypeName="h2" content="after sql"></sql>
+	</custom-sql>
+	<custom-sql type="before">
+		<sql dialectTypeName="db2" content="before sql"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql dialectTypeName="db2" content="after sql"></sql>
+	</custom-sql>
+	<custom-sql type="before">
+		<sql dialectTypeName="derby" content="before sql"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql dialectTypeName="derby" content="after sql"></sql>
+	</custom-sql>
+
+	<custom-sql type="before">
+		<sql content="before standard sql"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql content="after standard sql 1"></sql>
+	</custom-sql>
+	<custom-sql type="after">
+		<sql content="after standard sql 2"></sql>
+	</custom-sql>
+</custom-sqls>

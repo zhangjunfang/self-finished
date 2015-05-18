@@ -1,0 +1,5 @@
+<xstream-configuration package-name="codegen">
+	<xstream-annotation-classes>
+		<xstream-annotation-class class-name="org.tinygroup.codegen.config.CodeGenMetaData" />
+	</xstream-annotation-classes>
+</xstream-configuration>

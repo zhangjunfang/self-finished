@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd"
+	 default-lazy-init="true">
+	<!--tinyprocessor -->
+	<bean id="tinyTemplateProcessor" scope="singleton"
+		class="org.tinygroup.templateweb.TinyTemplateProcessor">
+		<property name="engine">
+		   <ref bean="templateEngine"/>
+		</property>
+	</bean>
+	<bean id="tinyMacroFileProcessor" scope="singleton"
+		class="org.tinygroup.templateweb.TinyMacroFileProcessor">
+		<property name="engine" ref="templateEngine"></property>
+		<property name="bundleManager" ref="bundleManager"></property>
+	</bean>
+	<bean id="templateEngine" scope="singleton"
+		class="org.tinygroup.template.impl.TemplateEngineDefault">
+	</bean>
+</beans>

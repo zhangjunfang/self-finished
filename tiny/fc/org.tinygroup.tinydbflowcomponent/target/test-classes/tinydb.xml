@@ -1,0 +1,24 @@
+<db-configuration
+	type="org.tinygroup.tinydb.operator.impl.BeanStringOperator" default="opensource" is-increase="false">
+	<dataSources default="test">
+		<dataSource id="test" type="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+			<property name="url" value="jdbc:derby:TESTDB;create=true"/>
+			<property name="username" value="opensource"/>
+			<property name="password" value="opensource"/>
+		</dataSource>
+	</dataSources>
+	<table-loads default="opensource">
+		<table-load type="org.tinygroup.tinydb.convert.impl.MetadataTableConfigLoad">
+			<property name="schema" value="opensource"/>
+			<property name="tableNamePattern" value="%"/>
+		</table-load>
+	</table-loads>
+	<dialect type="org.tinygroup.tinydb.dialect.impl.DerbyDialect">
+		<property name="incrementerName" value="incrementer"/>
+		<property name="columnName" value="value"/>
+		<property name="cacheSize" value="100"/>
+	</dialect>
+	<relations/>
+	<dialect-functions/>
+</db-configuration>

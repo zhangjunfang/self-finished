@@ -1,0 +1,28 @@
+##fmt,format,formatter
+##see java.util.Formatter
+${fmt("total:%(,.2f",234.289f)} #eol
+${format("a:%10s b:%10s c:%10s",1,2,3)} #eol
+${formatter("%4$2s %3$2s %2$2s %1$2s", "a", "b", "c", "d")} #eol
+
+
+##eval,evaluage
+#set(x="Hello",y="Leilei")
+${eval("${x}! ${y}")}  #eol
+#set(result=2)
+${evaluate("${result}==2")}  #eol
+
+##call,callMacro
+#macro append(name)
+   <b>${name}</b>
+#end
+#call("append","abc123")       #eol
+${callMacro("append","def456")} #eol
+
+##read,readContent
+${read("template/jet/includes/test.txt")} #eol
+
+##is,instanceOf,instance
+##${instance("abc","java.lang.String")} #eol
+
+##other function
+${"info".length()}  #eol

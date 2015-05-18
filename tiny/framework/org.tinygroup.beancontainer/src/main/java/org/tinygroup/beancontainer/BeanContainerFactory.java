@@ -16,17 +16,18 @@
 package org.tinygroup.beancontainer;
 
 import org.tinygroup.exception.ErrorCode;
-import org.tinygroup.exception.TinyBizRuntimeException;
+import org.tinygroup.exception.BaseRuntimeException;
 
 public class BeanContainerFactory {
 	public static BeanContainer<?> container;
 
+	@SuppressWarnings("rawtypes")
 	public static void setBeanContainer(String beanClassName) {
 		try {
 			container = (BeanContainer) Class.forName(beanClassName)
 					.newInstance();
 		} catch (Exception e) {
-			throw new TinyBizRuntimeException(ErrorCode.UNKNOWN_ERROR,
+			throw new BaseRuntimeException(ErrorCode.UNKNOWN_ERROR,
 					e, beanClassName);
 		}
 	}

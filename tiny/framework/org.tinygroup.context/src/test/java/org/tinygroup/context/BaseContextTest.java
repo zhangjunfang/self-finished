@@ -19,7 +19,7 @@ import org.tinygroup.context.impl.BaseContextImpl;
 
 import junit.framework.TestCase;
 
-public class BaseContextTest extends TestCase {
+public class BaseContextTest extends TestCase {  
 	BaseContext context = new BaseContextImpl();
 
 	protected void setUp() throws Exception {
@@ -29,12 +29,12 @@ public class BaseContextTest extends TestCase {
 
 	public void testPut() {
 		context.put("aa", 3);
-		assertEquals(3, context.get("aa"));
+		assertEquals(3, (int)context.get("aa"));
 	}
 
 	public void testRemove() {
-		context.put("aa", 3);
-		assertEquals(3, context.remove("aa"));
+		context.put("aa", 3);  
+		assertEquals(3, (int)context.remove("aa"));
 		if (context.exist("aa")) {
 			fail("应该不存在");
 		}
@@ -42,7 +42,7 @@ public class BaseContextTest extends TestCase {
 
 	public void testGetString() {
 		context.put("aa", 3);
-		assertEquals(3, context.get("aa"));
+		assertEquals(3, (int)context.get("aa"));
 	}
 
 	public void testGetStringT() {

@@ -1,0 +1,4 @@
+#if (true) abc#eol
+    012345678
+#end 999#eol
+AAA

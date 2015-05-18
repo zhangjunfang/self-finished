@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.tinygroup.context2object.TypeCreator;
 
+@SuppressWarnings("rawtypes")
 public class ListTypeCreator implements TypeCreator<List> {
 
 	public Class<List> getType() {

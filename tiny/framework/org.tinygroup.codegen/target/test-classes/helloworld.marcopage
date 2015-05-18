@@ -1,0 +1,8 @@
+#macro sayHello( $type $name)
+ public String sayHello($type $name){
+           if($name==null){
+              $name="haha";
+           }
+           return "hello"+$name;
+  }
+#end 

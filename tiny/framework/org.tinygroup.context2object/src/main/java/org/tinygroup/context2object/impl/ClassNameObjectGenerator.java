@@ -38,7 +38,7 @@ import org.tinygroup.context2object.TypeCreator;
 import org.tinygroup.logger.LogLevel;
 import org.tinygroup.logger.Logger;
 import org.tinygroup.logger.LoggerFactory;
-
+@SuppressWarnings("rawtypes")
 public class ClassNameObjectGenerator implements
 		ObjectGenerator<Object, String> {
 	private Logger logger = LoggerFactory

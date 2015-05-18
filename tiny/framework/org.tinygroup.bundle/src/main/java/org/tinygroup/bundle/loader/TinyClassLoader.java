@@ -134,7 +134,7 @@ public class TinyClassLoader extends URLClassLoader {
     }
 
     /**
-     * 添加子TinyClassLoade
+     * 添加子TinyClassLoader
      *
      * @param tinyClassLoader
      */
@@ -232,7 +232,8 @@ public class TinyClassLoader extends URLClassLoader {
      * @return
      * @throws IOException
      */
-    public Enumeration<URL> findResources(final String name) throws IOException {
+    @SuppressWarnings("unchecked")
+	public Enumeration<URL> findResources(final String name) throws IOException {
         final Enumeration<URL>[] enumerations = new Enumeration[1 + dependClassLoaderList
                 .size()];
         enumerations[0] = super.findResources(name);

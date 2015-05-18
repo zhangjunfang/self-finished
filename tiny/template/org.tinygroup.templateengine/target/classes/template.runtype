@@ -1,0 +1,4 @@
+<runtypes>
+	<!-- 调用模板引擎执行器TinyTemplateExecutor渲染如下后缀的模板页面-->
+	<runtype extension="page" class="org.tinygroup.template.executor.TinyTemplateExecutor" />
+</runtypes>

@@ -1,0 +1,3 @@
+#for (x : ["a","b","c","d"])
+    ${xFor.index} - ${x}#eol
+#end

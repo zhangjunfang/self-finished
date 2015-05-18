@@ -16,9 +16,9 @@
 package org.tinygroup.cepcore.exception;
 
 import org.tinygroup.exception.ErrorCode;
-import org.tinygroup.exception.TinySysRuntimeException;
+import org.tinygroup.exception.BaseRuntimeException;
 
-public class RequestNotFoundException extends TinySysRuntimeException {
+public class RequestNotFoundException extends BaseRuntimeException {
 	/**
 	 * 
 	 */

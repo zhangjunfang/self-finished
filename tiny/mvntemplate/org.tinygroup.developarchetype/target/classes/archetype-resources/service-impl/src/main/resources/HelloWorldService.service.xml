@@ -1,0 +1,10 @@
+<service-components>
+  <service-component bean="helloWorldService" >
+    <service-method local-name="sayHello" service-id="sayHello" method-name="sayHello" cacheable="false">
+      <service-parameters>
+        <service-parameter name="name" type="java.lang.String" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="result" required="false" is-array="false" type="java.lang.String"/>
+    </service-method>
+  </service-component>
+</service-components>

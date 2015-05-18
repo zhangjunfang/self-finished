@@ -1,0 +1,4 @@
+#include("include-sub.jetx")
+#include("./include-sub.jetx")
+#include("/template/jet/include-sub.jetx")
+#include("include-sub.jetx", {"myvar": "hello from parent"})

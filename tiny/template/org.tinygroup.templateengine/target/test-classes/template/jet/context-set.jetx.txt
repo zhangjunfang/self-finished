@@ -1,0 +1,6 @@
+a=0
+b=0
+c=
+x=0
+y=abc
+z=false

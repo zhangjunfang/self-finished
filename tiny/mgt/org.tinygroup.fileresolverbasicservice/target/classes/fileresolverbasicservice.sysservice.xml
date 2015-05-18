@@ -1,0 +1,26 @@
+<service-components>
+	<service-component
+		type="org.tinygroup.fileresolverbasicservice.FileResolverService"
+		group-id="org.tinygroup.flowbasicservice" artifact-id="FileResolverService">
+		<service-method name="getFileProcessorCount"
+			local-name="getFileProcessorCount" service-id="getFileProcessorCount"
+			version="" description="获取件扫描器 的数量" method-name="getFileProcessorCount">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="int" />
+		</service-method>
+		<service-method name="getFileProcessors" local-name="getFileProcessors"
+			service-id="getFileProcessors" version="" description="获取文件扫描器列表"
+			method-name="getFileProcessors">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="org.tinygroup.fileresolver.FileProcessor"
+				collection-type="java.util.ArrayList" />
+		</service-method>
+
+
+
+	</service-component>
+</service-components>

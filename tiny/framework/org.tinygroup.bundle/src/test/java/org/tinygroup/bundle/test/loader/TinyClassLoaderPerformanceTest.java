@@ -92,10 +92,8 @@ public class TinyClassLoaderPerformanceTest extends TestCase {
         for (int k = 1; k < 10; k++) {
             long start = System.currentTimeMillis();
             for (int i = 0; i < 10000; i++) {
-                int count = 0;
                 while (urls.hasMoreElements()) {
                     URL url = urls.nextElement();
-                    count++;
                     System.out.println(url.toString());
                 }
             }

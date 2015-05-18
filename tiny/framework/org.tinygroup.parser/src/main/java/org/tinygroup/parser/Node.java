@@ -155,7 +155,7 @@ public interface Node<T extends Node<T>> extends ForEachProcessor<T> {
     Node<T> setAttribute(String attributeName, String value);
 
     /**
-     * 匹量设置属性
+     * 批量设置属性
      *
      * @param attributeMap
      */

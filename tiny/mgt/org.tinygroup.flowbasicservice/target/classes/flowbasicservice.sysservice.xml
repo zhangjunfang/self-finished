@@ -1,0 +1,92 @@
+<service-components>
+	<service-component type="org.tinygroup.flowbasicservice.FlowService"
+		group-id="org.tinygroup.flowbasicservice" artifact-id="FlowService">
+
+		<service-method name="getTinyFlows" local-name="getTinyFlows"
+			service-id="getTinyFlows" version="" description="获取Tiny所有的逻辑流"
+			method-name="getFlows">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="flows" required="true" is-array="false"
+				type="org.tinygroup.flow.config.Flow" collection-type="java.util.ArrayList" />
+		</service-method>
+
+		<service-method name="getTinyFlow" local-name="getTinyFlow"
+			service-id="getTinyFlow" version="" description="根据id获取指定的Tiny逻辑流"
+			method-name="getFlow">
+			<service-parameters>
+				<service-parameter name="id" type="java.lang.String"
+					required="true" is-array="false" />
+			</service-parameters>
+			<service-result name="flow" required="true" is-array="false"
+				type="org.tinygroup.flow.config.Flow" />
+		</service-method>
+
+		<service-method name="getTinyComponentDefine"
+			local-name="getTinyComponentDefine" service-id="getTinyComponentDefine"
+			version="" description="根据id获取指定的Tiny逻辑流组件" method-name="getComponentDefine">
+			<service-parameters>
+				<service-parameter name="componentName" type="java.lang.String"
+					required="true" is-array="false" />
+			</service-parameters>
+			<service-result name="componentDefine" required="true"
+				is-array="false" type="org.tinygroup.flow.config.ComponentDefine" />
+		</service-method>
+		
+		<service-method name="getTinyComponentDefines"
+			local-name="getTinyComponentDefines" service-id="getTinyComponentDefines"
+			version="" description="根据id获取指定的Tiny逻辑流组件" method-name="getComponentDefines">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="componentDefines" required="true"
+				is-array="false" type="org.tinygroup.flow.config.ComponentDefine"
+				collection-type="java.util.ArrayList" />
+		</service-method>
+	</service-component>
+	
+	
+	<service-component type="org.tinygroup.flowbasicservice.PageFlowService"
+		group-id="org.tinygroup.flowbasicservice" artifact-id="PageFlowService">
+
+		<service-method name="getTinyPageFlows" local-name="getTinyPageFlows"
+			service-id="getTinyPageFlows" version="" description="获取Tiny所有的页面流"
+			method-name="getFlows">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="pageFlows" required="true" is-array="false"
+				type="org.tinygroup.flow.config.Flow" collection-type="java.util.ArrayList" />
+		</service-method>
+
+		<service-method name="getTinyPageFlow" local-name="getTinyPageFlow"
+			service-id="getTinyPageFlow" version="" description="根据id获取指定的Tiny页面流"
+			method-name="getFlow">
+			<service-parameters>
+				<service-parameter name="id" type="java.lang.String"
+					required="true" is-array="false" />
+			</service-parameters>
+			<service-result name="pageFlow" required="true" is-array="false"
+				type="org.tinygroup.flow.config.Flow" />
+		</service-method>
+
+		<service-method name="getTinyPageComponentDefine"
+			local-name="getTinyPageComponentDefine" service-id="getTinyPageComponentDefine"
+			version="" description="根据id获取指定的Tiny页面流组件" method-name="getComponentDefine">
+			<service-parameters>
+				<service-parameter name="componentName" type="java.lang.String"
+					required="true" is-array="false" />
+			</service-parameters>
+			<service-result name="pageComponentDefine" required="true"
+				is-array="false" type="org.tinygroup.flow.config.ComponentDefine" />
+		</service-method>
+		
+		<service-method name="getTinyPageComponentDefines"
+			local-name="getTinyPageComponentDefines" service-id="getTinyPageComponentDefines"
+			version="" description="根据id获取指定的Tiny页面流组件" method-name="getComponentDefines">
+			<service-parameters>
+			</service-parameters>
+			<service-result name="pageComponentDefines" required="true"
+				is-array="false" type="org.tinygroup.flow.config.ComponentDefine"
+				collection-type="java.util.ArrayList" />
+		</service-method>
+	</service-component>
+</service-components>

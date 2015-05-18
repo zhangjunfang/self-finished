@@ -21,7 +21,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javassist.ClassClassPath;
-import javassist.ClassPath;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtMethod;

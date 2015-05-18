@@ -15,9 +15,9 @@
  */
 package org.tinygroup.cepcore.exception;
 
-import org.tinygroup.exception.TinySysRuntimeException;
+import org.tinygroup.exception.BaseRuntimeException;
 
-public class CEPRunException extends TinySysRuntimeException{
+public class CEPRunException extends BaseRuntimeException{
 
 	public CEPRunException(Exception e,String code) {
 		super(code,e);

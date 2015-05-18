@@ -20,7 +20,11 @@ import java.util.List;
 
 import org.tinygroup.event.Event;
 import org.tinygroup.event.ServiceInfo;
-
+/***
+ * 
+ * @author ocean
+ *复杂事件处理(Complex Event Processing，CEP)
+ */
 public interface CEPCore extends Remote {
 	String CEP_CORE_BEAN = "cepcore";
 	void setEventProcessorChoose(EventProcessorChoose chooser);

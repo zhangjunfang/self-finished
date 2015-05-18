@@ -1,0 +1,7 @@
+<standard-fields package-name="org.tinygroup.common">
+  <standard-field title="主键字段" business-type-id="Varchar50" name="id" id="id"></standard-field>
+  <standard-field title="名称" business-type-id="Varchar50" name="name" id="name"></standard-field>
+  <standard-field title="年龄" business-type-id="Int" name="age" id="age"></standard-field>
+  <standard-field title="主键序列字段" business-type-id="Int" name="sequence_id" id="sequence_id"></standard-field> 
+  <standard-field title="dummy" business-type-id="Char1" name="dummy" id="dummy"></standard-field>   
+</standard-fields>

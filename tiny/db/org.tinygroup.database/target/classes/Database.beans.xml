@@ -1,0 +1,101 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd" default-autowire="byName" default-lazy-init="true">
+    <bean id="tableProcessor" scope="singleton" class="org.tinygroup.database.table.impl.TableProcessorImpl">
+        <property name="processorManager" ref="processorManager"></property>
+    </bean>
+    <bean id="initDataProcessor" scope="singleton" class="org.tinygroup.database.initdata.impl.InitDataProcessorImpl">
+        <property name="processorManager" ref="processorManager"></property>
+    </bean>
+    <bean id="processorManager" scope="singleton" class="org.tinygroup.database.impl.ProcessorManagerImpl">
+    </bean>
+    <bean id="customSqlProcessor" scope="singleton" class="org.tinygroup.database.customesql.impl.CustomSqlProcessorImpl">
+    </bean>
+    <bean id="viewProcessor" scope="singleton" class="org.tinygroup.database.view.impl.ViewProcessorImpl">
+        <property name="processorManager" ref="processorManager"></property>
+    </bean>
+    <bean id="dialectFunctionProcessor" scope="singleton" class="org.tinygroup.database.dialectfunction.impl.DialectFunctionProcessorImpl">
+    </bean>
+    <bean id="procedureProcessor" scope="singleton" class="org.tinygroup.database.procedure.impl.ProcedureProcessorImpl">
+        <property name="processorManager" ref="processorManager"></property>
+    </bean>
+
+    <bean id="oracleSqlProcessor" scope="singleton" class="org.tinygroup.database.table.impl.OracleSqlProcessorImpl">
+
+    </bean>
+    <bean id="mysqlSqlProcessor" scope="singleton" class="org.tinygroup.database.table.impl.MysqlSqlProcessorImpl">
+
+    </bean>
+
+    <bean id="derbySqlProcessor" scope="singleton" class="org.tinygroup.database.table.impl.DerbySqlProcessorImpl">
+    </bean>
+
+    <bean id="h2SqlProcessor" scope="singleton" class="org.tinygroup.database.table.impl.H2SqlProcessorImpl">
+    </bean>
+    <bean id="sqlserverSqlProcessor" scope="singleton" class="org.tinygroup.database.table.impl.SqlserverSqlProcessorImpl">
+    </bean>
+
+    <bean id="db2SqlProcessor" scope="singleton" class="org.tinygroup.database.table.impl.Db2SqlProcessorImpl">
+    </bean>
+
+    <bean id="initDataSqlProcessor" scope="singleton" class="org.tinygroup.database.initdata.impl.InitDataSqlProcessorImpl">
+    </bean>
+
+    <bean id="viewSqlProcessor" scope="singleton" class="org.tinygroup.database.view.impl.ViewSqlProcessorImpl">
+    </bean>
+    <bean id="sqlserverViewSqlProcessor" class="org.tinygroup.database.view.impl.SqlserverViewSqlProcessorImpl" scope="singleton"/>
+
+    <bean id="oracleProcedureSqlProcessor" scope="singleton" class="org.tinygroup.database.procedure.impl.OracleProcedureSqlProcessorImpl">
+    </bean>
+
+    <bean id="mySqlProcedureSqlProcessorImpl" scope="singleton" class="org.tinygroup.database.procedure.impl.MySqlProcedureSqlProcessorImpl">
+    </bean>
+
+    <bean id="tableFileResolver" scope="singleton" class="org.tinygroup.database.fileresolver.TableFileResolver">
+        <property name="tableProcessor" ref="tableProcessor"></property>
+    </bean>
+
+    <bean id="customSqlFileResolver" scope="singleton" class="org.tinygroup.database.fileresolver.CustomSqlFileResolver">
+        <property name="customSqlProcessor" ref="customSqlProcessor"></property>
+    </bean>
+    <bean id="dialectFunctionlFileResolver" scope="singleton" class="org.tinygroup.database.fileresolver.DialectFunctionlFileResolver">
+        <property name="functionProcessor" ref="dialectFunctionProcessor"></property>
+    </bean>
+    <bean id="initDataFileResolver" scope="singleton" class="org.tinygroup.database.fileresolver.InitDataFileResolver">
+        <property name="initDataProcessor" ref="initDataProcessor"></property>
+    </bean>
+    <bean id="procedureFileResolver" scope="singleton" class="org.tinygroup.database.fileresolver.ProcedureFileResolver">
+        <property name="procedureProcessor" ref="procedureProcessor"></property>
+    </bean>
+    <bean id="processorFileResolver" scope="singleton" class="org.tinygroup.database.fileresolver.ProcessorFileResolver">
+        <property name="processorManager" ref="processorManager"></property>
+    </bean>
+    <bean id="viewFileResolver" scope="singleton" class="org.tinygroup.database.fileresolver.ViewFileResolver">
+        <property name="viewProcessor" ref="viewProcessor"></property>
+    </bean>
+    <bean id="triggerFileProcessor" scope="singleton" class="org.tinygroup.database.fileresolver.TriggerFileProcessor">
+        <property name="processor" ref="triggerProcessor"></property>
+    </bean>
+    <bean id="triggerProcessor" scope="singleton" class="org.tinygroup.database.trigger.impl.TriggerProcessorImpl">
+        <property name="processorManager" ref="processorManager"></property>
+    </bean>
+
+    <bean id="db2SequenceSqlProcessor" scope="singleton" class="org.tinygroup.database.sequence.impl.Db2SequenceSqlProcessor">
+    </bean>
+    <bean id="oracleSequenceSqlProcessor" scope="singleton" class="org.tinygroup.database.sequence.impl.OracleSequenceSqlProcessor">
+    </bean>
+    <bean id="sequenceFileProcessor" scope="singleton" class="org.tinygroup.database.fileresolver.SequenceFileProcessor">
+        <property name="processor" ref="sequenceProcessor"></property>
+    </bean>
+    <bean id="sequenceProcessor" scope="singleton" class="org.tinygroup.database.sequence.impl.SequenceProcessorImpl">
+        <property name="processorManager" ref="processorManager"></property>
+    </bean>
+
+    <bean id="oracleTriggerSqlProcessor" scope="singleton" class="org.tinygroup.database.trigger.impl.OracleTriggerSqlProcessor">
+    </bean>
+    <bean id="mysqlTriggerSqlProcessor" scope="singleton" class="org.tinygroup.database.trigger.impl.MysqlTriggerSqlProcessor">
+    </bean>
+    <bean id="sqlServerTriggerSqlProcessor" scope="singleton" class="org.tinygroup.database.trigger.impl.SqlServerTriggerSqlProcessor">
+    </bean>
+</beans>

@@ -24,7 +24,10 @@ import org.tinygroup.context.impl.ContextImpl;
  * Created by luoguo on 2014/5/5.
  */
 public class ApplicationContextDefault extends ContextImpl implements ApplicationContext {
-    public ApplicationContextDefault() {
+   
+	private static final long serialVersionUID = -392641758600719141L;
+
+	public ApplicationContextDefault() {
 
     }
 

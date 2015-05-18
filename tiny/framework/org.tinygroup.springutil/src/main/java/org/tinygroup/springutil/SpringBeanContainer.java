@@ -30,7 +30,7 @@ import org.tinygroup.logger.LogLevel;
 import org.tinygroup.logger.Logger;
 import org.tinygroup.logger.LoggerFactory;
 import org.tinygroup.vfs.FileObject;
-
+@SuppressWarnings("unchecked")
 public class SpringBeanContainer implements BeanContainer<ApplicationContext> {
 	private static Logger logger = LoggerFactory
 			.getLogger(SpringBeanContainer.class);
@@ -124,6 +124,7 @@ public class SpringBeanContainer implements BeanContainer<ApplicationContext> {
 		return subs;
 	}
 
+	
 	public <T> Collection<T> getBeans(Class<T> type) {
 		Collection<T> collection = applicationContext.getBeansOfType(type)
 				.values();

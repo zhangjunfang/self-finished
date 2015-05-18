@@ -1,0 +1,19 @@
+#set(array=null)
+${array?.[1]}
+${1+1f-0.02d} #eol
+${2.5f*4/2.0d} #eol
+${10%2} #eol
+${10.0%2.0} #eol
+${++3} #eol
+${3++} #eol
+${--2} #eol
+${2--} #eol
+${2<<1} #eol
+${2>>1} #eol
+${4|6|6} #eol
+${4+6+6^3|3} #eol
+${true?1:2} #eol
+${2?:1} #eol
+${true||false} #eol
+${true&&false} #eol
+${1==2} #eol

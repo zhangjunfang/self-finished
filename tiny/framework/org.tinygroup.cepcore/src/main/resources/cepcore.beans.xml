@@ -12,7 +12,6 @@
 	</bean>
 	<bean id="requestParamValidate" name="requestParamValidate"
 		scope="singleton" class="org.tinygroup.cepcore.aop.impl.RequestParamValidate">
-		
 		<property name="cepCore">
 			<ref bean="cepcore" />
 		</property>

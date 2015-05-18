@@ -23,7 +23,7 @@ import java.util.Map;
 import org.tinygroup.event.Event;
 import org.tinygroup.exceptionhandler.ExceptionHandler;
 import org.tinygroup.exceptionhandler.ExceptionHandlerManager;
-
+@SuppressWarnings("rawtypes")
 public class ExceptionHandlerManagerImpl implements ExceptionHandlerManager {
 	private Map<String, ExceptionHandler> handlerNameMap = new HashMap<String, ExceptionHandler>();
 	private Map<Class<?>, ExceptionHandler> handlerMap = new HashMap<Class<?>, ExceptionHandler>();
@@ -40,6 +40,7 @@ public class ExceptionHandlerManagerImpl implements ExceptionHandlerManager {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public boolean handle(Throwable e,Event event) {
 		Class<?> exceptionClass = e.getClass();
 		int index = exceptionList.indexOf(exceptionClass);
@@ -58,6 +59,7 @@ public class ExceptionHandlerManagerImpl implements ExceptionHandlerManager {
 		return false;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public boolean handleWithAllHandler(Throwable e,Event event) {
 		Class<?> exceptionClass = e.getClass();
 		boolean flag = false;

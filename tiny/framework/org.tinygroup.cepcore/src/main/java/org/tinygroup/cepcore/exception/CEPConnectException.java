@@ -17,9 +17,9 @@ package org.tinygroup.cepcore.exception;
 
 import org.tinygroup.event.central.Node;
 import org.tinygroup.exception.ErrorCode;
-import org.tinygroup.exception.TinySysRuntimeException;
+import org.tinygroup.exception.BaseRuntimeException;
 
-public class CEPConnectException extends TinySysRuntimeException {
+public class CEPConnectException extends BaseRuntimeException {
 	private Node node;
 	private Exception exception;
 

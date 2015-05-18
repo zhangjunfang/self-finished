@@ -1,0 +1,4 @@
+#set(outinfo="HelloWorld")
+=======================
+#include("import1.vm")
+=======================

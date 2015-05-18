@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/context
+                    http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byName" default-lazy-init="true">
+
+	<bean id="tinydbAddService" name="tinydbAddService"
+		scope="prototype" class="org.tinygroup.flowbasiccomponent.TinydbAddService">
+	</bean>
+	<bean id="tinydbDeleteService" name="tinydbDeleteService"
+		scope="prototype" class="org.tinygroup.flowbasiccomponent.TinydbDeleteService">
+	</bean>
+	<bean id="tinydbQueryService" name="tinydbQueryService" scope="prototype"
+		class="org.tinygroup.flowbasiccomponent.TinydbQueryService">
+	</bean>
+	<bean id="tinydbQueryServiceWithId" name="tinydbQueryServiceWithId" scope="prototype"
+		class="org.tinygroup.flowbasiccomponent.TinydbQueryServiceWithId">
+	</bean>
+	<bean id="tinydbUpdateService" name="tinydbUpdateService" scope="prototype"
+		class="org.tinygroup.flowbasiccomponent.TinydbUpdateService">
+	</bean>
+	<bean id="tinydbPageQueryService" name="tinydbPageQueryService" scope="prototype"
+		class="org.tinygroup.flowbasiccomponent.TinydbPageQueryService">
+	</bean>
+	<bean id="tinydbSqlQueryService" name="tinydbSqlQueryService" scope="prototype"
+		class="org.tinygroup.flowbasiccomponent.TinydbSqlQueryService">
+		<property name="manager" ref="beanOperatorManager"></property>
+	</bean>
+</beans>

@@ -1,0 +1,9 @@
+total:234.29
+a:         1 b:         2 c:         3
+ d  c  b  a
+Hello!Leilei
+2==2
+<b>abc123</b>
+<b>def456</b>
+This is common file!
+4

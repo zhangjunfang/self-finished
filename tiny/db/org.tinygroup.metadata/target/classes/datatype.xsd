@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="standard-types">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="standard-type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="standard-type">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="description">
+          <xs:sequence>
+            <xs:element ref="placeholder-list"/>
+            <xs:element ref="dialect-type-list"/>
+          </xs:sequence>
+          <xs:attribute name="data-type" use="required" type="xs:integer"/>
+          <xs:attribute name="id" use="required"/>
+          <xs:attribute name="name" use="required" type="xs:NCName"/>
+          <xs:attribute name="title" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="placeholder-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="placeholder"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="placeholder">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="description">
+          <xs:attribute name="id" use="required"/>
+          <xs:attribute name="name" use="required" type="xs:NCName"/>
+          <xs:attribute name="title" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dialect-type-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="dialect-type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dialect-type">
+    <xs:complexType>
+      <xs:attribute name="base-type" use="required" type="xs:NCName"/>
+      <xs:attribute name="default-value" use="required"/>
+      <xs:attribute name="ext-type"/>
+      <xs:attribute name="language" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="description">
+    <xs:sequence>
+      <xs:element ref="description"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="description" type="xs:string"/>
+</xs:schema>
