@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<infinispan.version>5.2.0.Final</infinispan.version>
+	<infinispan.version>10.0.0.Final</infinispan.version>
 
         <compiler.plugin.version>2.3.2</compiler.plugin.version>
         <buildhelper.plugin.version>1.7</buildhelper.plugin.version>
