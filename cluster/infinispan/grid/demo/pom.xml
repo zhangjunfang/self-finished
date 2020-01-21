@@ -20,7 +20,7 @@
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-      <infinispan.version>6.0.0.Alpha1</infinispan.version>
+      <infinispan.version>10.1.1.Final</infinispan.version>
       <cst.version>2.0</cst.version>
       <shade.plugin.version>1.5</shade.plugin.version>
       <main.class>org.infinispan.grid.demo.Main</main.class>
