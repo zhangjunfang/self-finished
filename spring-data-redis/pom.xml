@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<slf4jVersion>1.7.10</slf4jVersion>
-		<junitVersion>4.12</junitVersion>
+		<junitVersion>4.13.1</junitVersion>
 		<jredisVersion>06052013</jredisVersion>
 		<jedisVersion>2.7.0</jedisVersion>
 		<springVersion>4.1.6.RELEASE</springVersion>
