@@ -14,7 +14,7 @@
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <version.jboss.maven.plugin>7.3.Final</version.jboss.maven.plugin>
-      <infinispan.version>5.2.1.Final</infinispan.version>
+      <infinispan.version>11.0.6.Final</infinispan.version>
       <endorsed.directory>/home/kylin/.m2/repository/org/jboss/spec/javax/annotation/jboss-annotations-api_1.1_spec/1.0.0.Final</endorsed.directory>
    </properties>
    
