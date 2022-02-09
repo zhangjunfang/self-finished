@@ -19,7 +19,7 @@
         <shade.plugin.version>1.5</shade.plugin.version>
         <exec.plugin.version>1.2.1</exec.plugin.version>
         
-        <infinispan.version>6.0.0.Alpha1</infinispan.version>
+        <infinispan.version>11.0.6.Final</infinispan.version>
 
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.6</maven.compiler.target>
