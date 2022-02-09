@@ -27,7 +27,7 @@
         <version.compiler.plugin>2.3.2</version.compiler.plugin>
         <version.war.plugin>2.2</version.war.plugin>
         
-        <infinispan.version>6.0.0.Alpha1</infinispan.version>
+        <infinispan.version>11.0.6.Final</infinispan.version>
 
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.6</maven.compiler.target>
