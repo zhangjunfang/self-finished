@@ -9,7 +9,7 @@
 		<junitVersion>4.12</junitVersion>
 		<jredisVersion>06052013</jredisVersion>
 		<jedisVersion>2.7.0</jedisVersion>
-		<springVersion>4.1.6.RELEASE</springVersion>
+		<springVersion>5.3.18</springVersion>
 		<springDataBuildVersion>1.7.0.BUILD-SNAPSHOT</springDataBuildVersion>
 		<log4jVersion>1.2.17</log4jVersion>
 		<version>1.6.0.BUILD-SNAPSHOT</version>
