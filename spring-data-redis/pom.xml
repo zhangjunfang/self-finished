@@ -16,7 +16,7 @@
 		<srpVersion>0.7</srpVersion>
 		<jacksonVersion>1.8.8</jacksonVersion>
 		<fasterXmlJacksonVersion>2.5.1</fasterXmlJacksonVersion>
-		<fasterXmlJacksonDatabindVersion>2.5.1</fasterXmlJacksonDatabindVersion>
+		<fasterXmlJacksonDatabindVersion>2.13.4.1</fasterXmlJacksonDatabindVersion>
 		<lettuceVersion>2.3.3</lettuceVersion>
 		<mockitoVersion>1.10.19</mockitoVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
